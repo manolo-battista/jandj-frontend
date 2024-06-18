@@ -27,7 +27,7 @@ export default function Signin() {
             <div className="mt-4 flex flex-col gap-4">
               <Input placeholder="Fullname" />
               <Input placeholder="Email address" />
-              <Input placeholder="Password" />
+              <Input placeholder="Password" type="password" />
               <Button className="w-full">Login</Button>
             </div>
           </div>

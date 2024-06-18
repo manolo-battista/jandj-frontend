@@ -16,7 +16,7 @@ export default function Sidebar() {
   const iconClassName = "cursor-pointer stroke-secondary hover:stroke-primary";
   const profileImage = "";
   return (
-    <div className="flex flex-col justify-start items-center p-4 border-r border-primary min-h-screen">
+    <div className="bg-background fixed flex flex-col justify-start items-center p-4 border-r border-primary min-h-screen">
       <Logo compact />
       <div className="mt-8 flex-1 flex flex-col items-center gap-6">
         <LayoutDashboardIcon
