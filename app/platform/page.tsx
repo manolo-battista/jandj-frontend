@@ -1,5 +1,6 @@
 import React from "react";
 import Divider from "@/components/ui/divider";
+import EventCard from "@/components/common/event-card";
 
 export default function Page() {
   return (
@@ -9,8 +10,18 @@ export default function Page() {
       <Divider className="mt-4" />
 
       <h4 className="mt-6 text-primary text-lg">Your current projects</h4>
+      <div className="grid grid-cols-3 gap-4">
+        {[0, 1].map((_, index) => (
+          <EventCard key={index} />
+        ))}
+      </div>
 
       <h4 className="mt-6 text-primary text-lg">Past activities</h4>
+      <div className="grid grid-cols-3 gap-4">
+        {[0, 1, 2, 3].map((_, index) => (
+          <EventCard key={index} />
+        ))}
+      </div>
     </div>
   );
 }
