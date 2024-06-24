@@ -13,7 +13,8 @@
       --popover: 0 0% 100%;
       --popover-foreground: 0 0% 3.9%;
 
-      --neutral: 0, 0%, 93%;
+      --neutral: 0, 0%, 73%;
+      --neutral-100: 0, 0%, 93%;
       --neutral-foreground: 0, 0%, 0%;
 
       --primary: 6, 100%, 46%;

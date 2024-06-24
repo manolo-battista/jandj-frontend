@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="border border-t absolute bottom-0 pb-4 flex flex-col items-center justify-center p-2 bg-background border-b border-primary">
       <Logo className="w-36" strapLine={false} />
-      <div className="mt-4 grid grid-cols-5 uppercase text-sm text-secondary gap-4 text-center">
+      <div className="mt-4 grid grid-cols-5 uppercase text-sm text-neutral gap-4 text-center">
         <a href="#" className="w-30 hover:underline">
           Privacy policy
         </a>
@@ -21,7 +21,7 @@ export default function Footer() {
           Contact us
         </a>
       </div>
-      <div className="mt-8 text-secondary text-center text-xs">
+      <div className="mt-8 text-neutral text-center text-xs">
         © Janssen Global Services, LLC, 2012-2024. All Rights Reserved. Your
         use of information on this site is subject to the terms of our{" "}
         <a href="" className="underline">
