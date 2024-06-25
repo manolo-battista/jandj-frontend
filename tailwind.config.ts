@@ -17,12 +17,29 @@ const config = {
         "2xl": "1400px",
       },
     },
+    fontSize: {
+      sm: "0.8rem",
+      base: "1rem",
+      xl: "1.25rem",
+      "2xl": "1.563rem",
+      "3xl": "1.953rem",
+      "4xl": "2.441rem",
+      "5xl": "5rem",
+      "6xl": "5rem",
+    },
+    fontFamily: {
+      "johnson-display": ["Johnson Display", "sans-serif"],
+      "johnson-text": ["Johnson Text", "sans-serif"],
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        background: {
+          DEFAULT: "hsl(var(--background))",
+          active: "hsl(var(--background-active))",
+        },
         foreground: "hsl(var(--foreground))",
         neutral: {
           DEFAULT: "hsl(var(--neutral))",
