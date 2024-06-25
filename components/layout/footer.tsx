@@ -2,7 +2,7 @@ import Logo from "@/components/common/logo";
 
 export default function Footer() {
   return (
-    <footer className="border border-t absolute bottom-0 pb-4 flex flex-col items-center justify-center p-2 bg-background border-b border-primary">
+    <footer className="w-full border-t absolute bottom-0 pb-4 flex flex-col items-center justify-center p-2 bg-background border-b border-primary">
       <Logo className="w-36" strapLine={false} />
       <div className="mt-4 grid grid-cols-5 uppercase text-sm text-neutral gap-4 text-center">
         <a href="#" className="w-30 hover:underline">
