@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
+import Divider from "@/components/ui/divider";
 
 export default function Page() {
   const colorCommonStyle = "border w-8 h-8";
@@ -30,6 +31,8 @@ export default function Page() {
       <Typography variant="legal-button">Label Button</Typography>
       <Typography variant="link">Link</Typography>
 
+      <Divider />
+
       <Typography variant="heading-lg" className="mt-4">
         Core Color Tokens
       </Typography>
@@ -38,37 +41,37 @@ export default function Page() {
         hierarchy, state, and brand identity
       </Typography>
       <div className="flex">
-        <div className={cn("bg-primary-100", colorCommonStyle)} />
-        <div className={cn("bg-primary-200", colorCommonStyle)} />
-        <div className={cn("bg-primary-300", colorCommonStyle)} />
-        <div className={cn("bg-primary-400", colorCommonStyle)} />
-        <div className={cn("bg-primary", colorCommonStyle)} />
-        <div className={cn("bg-primary-600", colorCommonStyle)} />
-        <div className={cn("bg-primary-700", colorCommonStyle)} />
-        <div className={cn("bg-primary-800", colorCommonStyle)} />
-        <div className={cn("bg-primary-900", colorCommonStyle)} />
+        <div className={cn("bg-red-100", colorCommonStyle)} />
+        <div className={cn("bg-red-200", colorCommonStyle)} />
+        <div className={cn("bg-red-300", colorCommonStyle)} />
+        <div className={cn("bg-red-400", colorCommonStyle)} />
+        <div className={cn("bg-red", colorCommonStyle)} />
+        <div className={cn("bg-red-600", colorCommonStyle)} />
+        <div className={cn("bg-red-700", colorCommonStyle)} />
+        <div className={cn("bg-red-800", colorCommonStyle)} />
+        <div className={cn("bg-red-900", colorCommonStyle)} />
       </div>
       <div className="flex">
-        <div className={cn("bg-secondary-100", colorCommonStyle)} />
-        <div className={cn("bg-secondary-200", colorCommonStyle)} />
-        <div className={cn("bg-secondary-300", colorCommonStyle)} />
-        <div className={cn("bg-secondary-400", colorCommonStyle)} />
-        <div className={cn("bg-secondary", colorCommonStyle)} />
-        <div className={cn("bg-secondary-600", colorCommonStyle)} />
-        <div className={cn("bg-secondary-700", colorCommonStyle)} />
-        <div className={cn("bg-secondary-800", colorCommonStyle)} />
-        <div className={cn("bg-secondary-900", colorCommonStyle)} />
+        <div className={cn("bg-gray-100", colorCommonStyle)} />
+        <div className={cn("bg-gray-200", colorCommonStyle)} />
+        <div className={cn("bg-gray-300", colorCommonStyle)} />
+        <div className={cn("bg-gray-400", colorCommonStyle)} />
+        <div className={cn("bg-gray", colorCommonStyle)} />
+        <div className={cn("bg-gray-600", colorCommonStyle)} />
+        <div className={cn("bg-gray-700", colorCommonStyle)} />
+        <div className={cn("bg-gray-800", colorCommonStyle)} />
+        <div className={cn("bg-gray-900", colorCommonStyle)} />
       </div>
       <div className="flex">
-        <div className={cn("bg-tertiary-100", colorCommonStyle)} />
-        <div className={cn("bg-tertiary-200", colorCommonStyle)} />
-        <div className={cn("bg-tertiary-300", colorCommonStyle)} />
-        <div className={cn("bg-tertiary-400", colorCommonStyle)} />
-        <div className={cn("bg-tertiary", colorCommonStyle)} />
-        <div className={cn("bg-tertiary-600", colorCommonStyle)} />
-        <div className={cn("bg-tertiary-700", colorCommonStyle)} />
-        <div className={cn("bg-tertiary-800", colorCommonStyle)} />
-        <div className={cn("bg-tertiary-900", colorCommonStyle)} />
+        <div className={cn("bg-blue-100", colorCommonStyle)} />
+        <div className={cn("bg-blue-200", colorCommonStyle)} />
+        <div className={cn("bg-blue-300", colorCommonStyle)} />
+        <div className={cn("bg-blue-400", colorCommonStyle)} />
+        <div className={cn("bg-blue", colorCommonStyle)} />
+        <div className={cn("bg-blue-600", colorCommonStyle)} />
+        <div className={cn("bg-blue-700", colorCommonStyle)} />
+        <div className={cn("bg-blue-800", colorCommonStyle)} />
+        <div className={cn("bg-blue-900", colorCommonStyle)} />
       </div>
 
       <div className="flex">
@@ -112,17 +115,7 @@ export default function Page() {
         <div className={cn("bg-neutral-black", colorCommonStyle)} />
       </div>
 
-      <Typography variant="heading-lg" className="mt-4">
-        Semantic Colors
-      </Typography>
-      <Typography variant="body-lg">
-        Detailed description according the title
-      </Typography>
-      <div className={cn("bg-background", colorCommonStyle)} />
-      <div className={cn("bg-background-active", colorCommonStyle)} />
-      <div className={cn("bg-layout-header", colorCommonStyle)} />
-      <div className={cn("bg-layout-footer", colorCommonStyle)} />
-      <div className={cn("bg-border", colorCommonStyle)} />
+      <Divider />
     </div>
   );
 }

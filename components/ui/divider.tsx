@@ -6,5 +6,7 @@ interface DividerProps {
 }
 
 export default function Divider(props: DividerProps) {
-  return <div className={cn("h-1 bg-primary w-28", props.className)} />;
+  return (
+    <div className={cn("my-6 w-full h-[1px] bg-border", props.className)} />
+  );
 }

@@ -1,8 +1,7 @@
 import Icon from "@/components/icons/icon";
 import { cn } from "@/lib/utils";
-
-const ArrowRightIcon = ({ className }: { className?: string }) => (
-  <Icon label="Right Icon">
+const ArrowLeftIcon = ({ className }: { className?: string }) => (
+  <Icon label="Left Icon">
     <svg
       className={cn("size-5", className)}
       width="24"
@@ -12,11 +11,11 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M16.6935 13.9515L3 13.9515L3 11.6373L16.6935 11.6373L10.659 5.43059L12.2497 3.79443L21 12.7944L12.2497 21.7944L10.659 20.1583L16.6935 13.9515Z"
+        d="M7.3065 11.6373L21 11.6373L21 13.9515L7.3065 13.9515L13.341 20.1583L11.7503 21.7944L3 12.7944L11.7503 3.79443L13.341 5.43059L7.3065 11.6373Z"
         fill="currentColor"
       />
     </svg>
   </Icon>
 );
 
-export { ArrowRightIcon };
+export { ArrowLeftIcon };
