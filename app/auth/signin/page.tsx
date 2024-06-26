@@ -7,7 +7,7 @@ export default function Signin() {
   return (
     <>
       <div
-        className="w-full h-screen bg-[url('/img/auth_background.png')] bg-no-repeat bg-cover bg-size"
+        className="w-full h-screen bg-[url('/img/auth/background.png')] bg-no-repeat bg-cover bg-size"
         style={{
           backgroundSize: "140%",
           backgroundPosition: "left",
