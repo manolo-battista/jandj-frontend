@@ -1,9 +1,10 @@
 import Logo from "@/components/common/logo";
 import { Typography } from "@/components/ui/typography";
 
-export default function Footer() {
+interface FooterProps {}
+export default function Footer(props: FooterProps) {
   return (
-    <footer className="w-full border-t border-t-red pb-4 flex flex-col items-center justify-center p-2 bg-background border-b border-primary">
+    <footer className="w-full border-t border-t-red pb-4 flex flex-col items-center justify-center p-2 bg-background">
       <Logo className="w-36" strapLine={false} />
       <Typography
         variant="legal"

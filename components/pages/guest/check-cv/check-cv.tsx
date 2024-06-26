@@ -4,8 +4,12 @@ import { ArrowRightIcon } from "@/components/icons/arrow-right-icon";
 import React from "react";
 import StepperFooter from "@/components/pages/guest/_common/stepper-footer";
 import { ArrowLeftIcon } from "@/components/icons/arrow-left-icon";
+import { useStepper } from "@/hooks/useStepper";
+import Divider from "@/components/ui/divider";
+import NeedSupport from "@/components/common/need-support";
 
 export default function CheckCv() {
+  const { onPreviousStep, onNextStep } = useStepper();
   return (
     <div>
       <Typography variant="body-lg" className="text-center">
@@ -18,6 +22,8 @@ export default function CheckCv() {
         correct version.
       </Typography>
 
+      <div className="mt-8 h-[800px] bg-[#525659]" />
+
       <StepperFooter
         message="Is this the most updated version?"
         action={
@@ -25,12 +31,28 @@ export default function CheckCv() {
             <Button variant="outlined" startIcon={<ArrowLeftIcon />}>
               I need to upload a new version
             </Button>
-            <Button startIcon={<ArrowLeftIcon />} endIcon={<ArrowRightIcon />}>
+            <Button
+              startIcon={
+                <div onClick={onPreviousStep}>
+                  <ArrowLeftIcon />
+                </div>
+              }
+              endIcon={
+                <div onClick={onNextStep}>
+                  <ArrowRightIcon />
+                </div>
+              }
+            >
               This CV is correct
             </Button>
           </div>
         }
       />
+
+      <Divider />
+      <div className="mt-8 flex justify-center">
+        <NeedSupport />
+      </div>
     </div>
   );
 }

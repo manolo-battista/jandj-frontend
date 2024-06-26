@@ -5,8 +5,10 @@ import Divider from "@/components/ui/divider";
 import NeedSupport from "@/components/common/need-support";
 import React from "react";
 import StepperFooter from "@/components/pages/guest/_common/stepper-footer";
+import { useStepper } from "@/hooks/useStepper";
 
 export default function ConfirmParticipation() {
+  const { onNextStep } = useStepper();
   return (
     <>
       <div className="text-center">
@@ -35,12 +37,13 @@ export default function ConfirmParticipation() {
       <StepperFooter
         message="Please confirm your presence"
         action={
-          <Button endIcon={<ArrowRightIcon />}>I&apos;m attending</Button>
+          <Button onClick={onNextStep} endIcon={<ArrowRightIcon />}>
+            I&apos;m attending
+          </Button>
         }
       />
 
       <Divider />
-
       <div className="mt-8 flex justify-center">
         <NeedSupport />
       </div>
