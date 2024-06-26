@@ -1,10 +1,15 @@
 import Logo from "@/components/common/logo";
+import { Typography } from "@/components/ui/typography";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t absolute bottom-0 pb-4 flex flex-col items-center justify-center p-2 bg-background border-b border-primary">
+    <footer className="w-full border-t border-t-red pb-4 flex flex-col items-center justify-center p-2 bg-background border-b border-primary">
       <Logo className="w-36" strapLine={false} />
-      <div className="mt-4 grid grid-cols-5 uppercase text-sm text-neutral gap-4 text-center">
+      <Typography
+        variant="legal"
+        color="inverse"
+        className="mt-4 grid grid-cols-5 uppercase gap-4 text-center"
+      >
         <a href="#" className="w-30 hover:underline">
           Privacy policy
         </a>
@@ -20,8 +25,8 @@ export default function Footer() {
         <a href="#" className="w-30 hover:underline">
           Contact us
         </a>
-      </div>
-      <div className="mt-8 text-neutral text-center text-xs">
+      </Typography>
+      <Typography variant="legal" color="inverse" className="mt-8 text-center">
         © Janssen Global Services, LLC, 2012-2024. All Rights Reserved. Your
         use of information on this site is subject to the terms of our{" "}
         <a href="" className="underline">
@@ -47,7 +52,7 @@ export default function Footer() {
         for country- and region-specific information of interest.
         <br />
         Last Updated: March 11, 2024
-      </div>
+      </Typography>
     </footer>
   );
 }
