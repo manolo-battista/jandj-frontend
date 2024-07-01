@@ -8,7 +8,9 @@ export default function RootLayout({
   return (
     <div className="flex">
       <Sidebar />
-      <div className="ml-20 flex-1 p-6">{children}</div>
+      <div className="ml-[72px] flex-1 p-6 bg-background-active">
+        {children}
+      </div>
     </div>
   );
 }
