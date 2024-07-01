@@ -59,15 +59,15 @@ body {
     --gray-100-foreground: 0 0% 0%;
     --gray-200: 30, 12%, 94%;
     --gray-200-foreground: 0 0% 0%;
-    --gray-300: 30, 13%, 81%;
+    --gray-300: 36, 10%, 90%;
     --gray-300-foreground: 0 0% 0%;
-    --gray-400: 34, 10%, 73%;
+    --gray-400: 30, 13%, 81%;
     --gray-400-foreground: 0 0% 0%;
-    --gray-500: 0, 0%, 84%;
+    --gray-500: 34, 10%, 73%;
     --gray-500-foreground: 0 0% 0%;
     --gray-600: 30, 8%, 60%;
     --gray-600-foreground: 0, 0%, 100%;
-    --gray-700: 23, 7%, 47%;
+    --gray-700: 23, 8%, 47%;
     --gray-700-foreground: 0, 0%, 100%;
     --gray-800: 20, 10%, 31%;
     --gray-800-foreground: 0, 0%, 100%;
@@ -136,7 +136,7 @@ body {
     --error-100-foreground: 0 0% 0%;
     --error-200: 3, 96%, 89%;
     --error-200-foreground: 0 0% 0%;
-    --error-300:4, 96%, 80%;
+    --error-300: 4, 96%, 80%;
     --error-300-foreground: 0 0% 0%;
     --error-400: 4, 96%, 80%;
     --error-400-foreground: 0 0% 0%;
@@ -151,7 +151,7 @@ body {
     --error-900: 8, 65%, 29%;
     --error-900-foreground: 0, 0%, 100%;
 
-
+    --tag: 36, 10%, 90%;
   }
 }
 

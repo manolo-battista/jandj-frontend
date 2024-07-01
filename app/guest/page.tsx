@@ -1,21 +1,17 @@
-"use client";
-import React from "react";
-import ConfirmParticipation from "@/components/pages/guest/confirm-participation/confirm-participation";
-import CheckCv from "@/components/pages/guest/check-cv/check-cv";
-import FillQiForm from "@/components/pages/guest/fill-qi-form/fill-qi-form";
-import Submit from "@/components/pages/guest/submit/submit";
-import { useStepper } from "@/hooks/useStepper";
+import React, { Suspense } from "react";
+import { redirect } from "next/navigation";
+import GuestPage from "@/components/pages/guest/GuestPage";
 
 export default function Page() {
-  const { active } = useStepper();
+  // TODO: implement expired logic
+  const hasExpired = false;
+
+  if (hasExpired) {
+    redirect("/guest/expired");
+  }
   return (
-    <>
-      {(active.name == "confirm-participation" || active.value == 0) && (
-        <ConfirmParticipation />
-      )}
-      {(active.name == "check-cv" || active.value == 1) && <CheckCv />}
-      {(active.name == "fill-qi-form" || active.value == 2) && <FillQiForm />}
-      {(active.name == "submit" || active.value == 3) && <Submit />}
-    </>
+    <Suspense>
+      <GuestPage />
+    </Suspense>
   );
 }

@@ -1,7 +1,10 @@
 import { cn } from "@/lib/utils";
-import { CategoryBadge } from "@/components/common/category-badge";
-import { UsersIcon, ClockIcon, MapPinIcon } from "lucide-react";
+import { Tag } from "@/components/common/tag";
 import { StatusBadge } from "@/components/common/status-badge";
+import { Typography } from "@/components/ui/typography";
+import Divider from "@/components/ui/divider";
+import Icon from "@/components/ui/icon";
+import React from "react";
 
 interface EventCardProps {
   className?: string;
@@ -11,27 +14,37 @@ export default function EventCard(props: EventCardProps) {
   return (
     <div className={cn("p-4 py-6 bg-card shadow-xl", className)}>
       <div className="flex items-center">
-        <p className="flex-1 text-[10px] uppercase">
+        <Typography variant="body-xs" className="flex-1 uppercase">
           MEDICAL EDUCATIONAL EVENT
-        </p>
+        </Typography>
         <StatusBadge>approved</StatusBadge>
       </div>
-      <p className="text-lg w-2/3">XXVII National Congress SOPSI</p>
+      <Typography variant="heading-card" className="w-2/3">
+        Event name
+      </Typography>
       <div className="flex gap-1 my-2">
-        <CategoryBadge>#psychiatry</CategoryBadge>
-        <CategoryBadge>#neurology</CategoryBadge>
+        <Tag>#psychiatry</Tag>
+        <Tag>#neurology</Tag>
       </div>
-      <div className="mt-8 flex flex-col gap-1">
-        <div className="flex items-center gap-1">
-          <UsersIcon className="w-4" /> <p className="text-sm">40</p>
+      <div className="mt-8 flex flex-col gap-3">
+        <div className="flex items-center gap-3">
+          <Icon.Leader className="fill-gray" />
+          <Typography variant="body-md">40</Typography>
         </div>
-        <div className="flex items-center gap-1">
-          <ClockIcon className="w-4" />{" "}
-          <p className="text-sm">21 - 23/02/2024</p>
+        <div className="flex items-center gap-3">
+          <Icon.Calendar className="fill-gray" />
+          <Typography variant="body-md">21 - 23/02/2024</Typography>
         </div>
-        <div className="flex items-center gap-1">
-          <MapPinIcon className="w-4" />{" "}
-          <p className="text-sm">Ergife Palace Hotel, Rome (IT)</p>
+        <div className="flex items-center gap-3">
+          <Icon.Hospital className="fill-gray" />
+          <Typography variant="body-md">
+            Ergife Palace Hotel, Rome (IT)
+          </Typography>
+        </div>
+        <Divider />
+        <div className="flex items-center gap-3">
+          <Icon.AuthorizedPermit className="fill-gray" />
+          <Typography variant="body-md">Owner (Ex. Donatella Rossi)</Typography>
         </div>
       </div>
     </div>

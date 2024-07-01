@@ -1,11 +1,11 @@
 import { Typography } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
-import { ArrowRightIcon } from "@/components/icons/arrow-right-icon";
 import Divider from "@/components/ui/divider";
 import NeedSupport from "@/components/common/need-support";
 import React from "react";
 import StepperFooter from "@/components/pages/guest/_common/stepper-footer";
-import { useStepper } from "@/hooks/useStepper";
+import { useStepper } from "@/hooks/use-stepper";
+import Icon from "@/components/ui/icon";
 
 export default function ConfirmParticipation() {
   const { onNextStep } = useStepper();
@@ -18,14 +18,31 @@ export default function ConfirmParticipation() {
           a guest at our next event:
         </Typography>
       </div>
-      <div className="mt-8 w-full bg-background-active p-12">
-        <div className="grid grid-cols-12">
-          <div className="md:col-span-4">image</div>
-          <div className="md:col-span-8">
-            <Typography variant="heading-card" color="red" className="mt-8">
+      <div className="w-full bg-background-active p-4 mt-8">
+        <div className="grid md:grid-cols-12 gap-4">
+          <div className="md:col-span-2 order-1 md:order-none">
+            <div className="h-[200px] bg-[#525659] hidden" />
+            <div className="md:hidden flex justify-center">
+              <Button
+                variant="outlined"
+                startIcon={<Icon.Download className="mr-2" />}
+              >
+                Download program
+              </Button>
+            </div>
+          </div>
+          <div className="md:col-span-10">
+            <Typography
+              variant="heading-card"
+              color="red"
+              className="text-center md:text-left"
+            >
               “New perspectives in multiple myeloma”
             </Typography>
-            <Typography variant="body-lg" className="mt-8">
+            <Typography
+              variant="body-lg"
+              className="mt-6 text-center md:text-left"
+            >
               Webinar to discuss the state of the art in the field of multiple
               myeloma, sharing new knowledge on the triage and therapy of
               patients affected by this pathology.
@@ -37,14 +54,14 @@ export default function ConfirmParticipation() {
       <StepperFooter
         message="Please confirm your presence"
         action={
-          <Button onClick={onNextStep} endIcon={<ArrowRightIcon />}>
+          <Button onClick={onNextStep} endIcon={<Icon.ArrowRight />}>
             I&apos;m attending
           </Button>
         }
       />
 
-      <Divider />
-      <div className="mt-8 flex justify-center">
+      <Divider className="hidden md:block my-6" />
+      <div className="mt-4 md:mt-0 flex justify-center">
         <NeedSupport />
       </div>
     </>

@@ -12,12 +12,7 @@ export default function RootLayout({
   return (
     <>
       <Navbar />
-      <div className="min-h-[65vh]">
-        <div className="p-6 flex flex-col items-center justify-center w-full">
-          <Stepper />
-        </div>
-        <div className="p-4 md:p-40 md:py-8 md:pt-0">{children}</div>
-      </div>
+      <div className="p-4 lg:p-40 lg:py-8 lg:pt-0">{children}</div>
       <Footer />
     </>
   );

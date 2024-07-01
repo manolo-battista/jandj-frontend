@@ -45,6 +45,9 @@ const config = {
           header: "hsl(var(--gray-900))",
           footer: "hsl(var(--gray-900))",
         },
+        tag: {
+          DEFAULT: "hsl(var(--gray-300))",
+        },
         red: {
           foreground: "hsl(var(--red-100))",
           100: "hsl(var(--red-100))",
