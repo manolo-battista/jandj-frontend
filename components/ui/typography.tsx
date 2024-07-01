@@ -20,8 +20,7 @@ const typographyVariants = cva("", {
       "heading-sm": "font-johnson-display text-sm",
       "heading-link": "font-johnson-display text-sm",
       "heading-xs": "font-johnson-display text-xs",
-      "heading-card":
-        "font-johnson-display text-[2rem] hover:underline hover:text-red",
+      "heading-card": "font-johnson-display text-[2rem]",
       "body-xl": "font-johnson-text text-[1.75rem]",
       "body-xl-italic": "font-johnson-text text-[1.75rem] italic",
       "body-xl-medium": "font-johnson-text text-[1.75rem] font-semibold",
@@ -29,6 +28,7 @@ const typographyVariants = cva("", {
       "body-md": "font-johnson-text text-[1rem]",
       "body-sm": "font-johnson-text text-[0.875rem]",
       "body-xs": "font-johnson-text text-[0.75rem]",
+      "body-xs-bold": "font-johnson-text text-[0.75rem] font-semibold",
       "body-label": "font-johnson-text text-[1rem]",
       legal: "font-johnson-text text-[0.75rem]",
       "legal-button": "font-johnson-text text-[1rem]",

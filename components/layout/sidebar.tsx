@@ -14,7 +14,10 @@ export default function Sidebar() {
       <Logo compact />
       <div className="mt-8 flex-1 flex flex-col items-center gap-6">
         <Icon.Home
-          className={cn(iconClassName, pathname === "/platform" && "fill-red")}
+          className={cn(
+            iconClassName,
+            pathname === "/events-platform" && "fill-red",
+          )}
         />
         <Icon.Calendar className={cn(iconClassName)} />
         <Icon.Folder className={cn(iconClassName)} />
