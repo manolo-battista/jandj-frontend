@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
-import { CheckIcon } from "lucide-react";
 import { Typography } from "@/components/ui/typography";
-import { useStepper } from "@/hooks/useStepper";
+import { useStepper } from "@/hooks/use-stepper";
+import Icon from "./icon";
 
 export default function Stepper() {
   const {
@@ -25,7 +25,7 @@ export default function Stepper() {
             </Typography>
             <div
               className={cn(
-                "flex items-center justify-center rounded-full border border-primary w-6 h-6",
+                "flex items-center justify-center rounded-full border-2 border-gray w-6 h-6",
                 index === active && "border-red",
                 (index < active ||
                   (active === lastStep && index === lastStep)) &&
@@ -36,7 +36,7 @@ export default function Stepper() {
                 <div className="rounded-full bg-red w-2 h-2" />
               )}
               {(index < active || index === lastStep) && (
-                <CheckIcon className="w-4 stroke-white" />
+                <Icon.Check className="fill-white w-20 h-20" />
               )}
             </div>
           </div>

@@ -1,15 +1,26 @@
 import { Typography } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
-import { ArrowRightIcon } from "@/components/icons/arrow-right-icon";
-import React from "react";
+import React, { useState } from "react";
 import StepperFooter from "@/components/pages/guest/_common/stepper-footer";
-import { ArrowLeftIcon } from "@/components/icons/arrow-left-icon";
-import { useStepper } from "@/hooks/useStepper";
+import { useStepper } from "@/hooks/use-stepper";
 import Divider from "@/components/ui/divider";
 import NeedSupport from "@/components/common/need-support";
+import Icon from "@/components/ui/icon";
+import { BottomDrawer } from "@/components/common/bottom-drawer";
+import useMobile from "@/hooks/use-mobile";
+import UploadCv from "@/components/pages/guest/check-cv/upload-cv";
+import { SimpleDialog } from "@/components/common/simple-dialog";
+import SuccessUploadCv from "@/components/pages/guest/check-cv/success-upload-cv";
 
 export default function CheckCv() {
   const { onPreviousStep, onNextStep } = useStepper();
+  const { isMobile, isTablet } = useMobile();
+  const [uploadCompleted, setUploadCompleted] = useState<boolean>(false);
+
+  function onUploadFiles() {
+    setUploadCompleted(true);
+  }
+
   return (
     <div>
       <Typography variant="body-lg" className="text-center">
@@ -21,36 +32,56 @@ export default function CheckCv() {
         Please review the document below and kindly confirm that this is the
         correct version.
       </Typography>
-
       <div className="mt-8 h-[800px] bg-[#525659]" />
-
       <StepperFooter
         message="Is this the most updated version?"
         action={
-          <div className="flex gap-4">
-            <Button variant="outlined" startIcon={<ArrowLeftIcon />}>
-              I need to upload a new version
-            </Button>
+          <div className="flex justify-center gap-2">
+            {isMobile && (
+              <BottomDrawer
+                title={
+                  !uploadCompleted ? "Upload your most updated CV" : "Success!"
+                }
+                onOpenChange={(open: boolean) =>
+                  !open && setUploadCompleted(false)
+                }
+                trigger={<Button variant="outlined">Upload a new CV</Button>}
+              >
+                {!uploadCompleted && <UploadCv onSubmit={onUploadFiles} />}
+                {uploadCompleted && <SuccessUploadCv />}
+              </BottomDrawer>
+            )}
+
+            {!isMobile && (
+              <SimpleDialog
+                title={
+                  !uploadCompleted ? "Upload your most updated CV" : "Success!"
+                }
+                onOpenChange={(open: boolean) =>
+                  !open && setUploadCompleted(false)
+                }
+                trigger={
+                  <Button variant="outlined">
+                    I need to upload a new version Upload a new CV
+                  </Button>
+                }
+              >
+                {!uploadCompleted && <UploadCv onSubmit={onUploadFiles} />}
+                {uploadCompleted && <SuccessUploadCv />}
+              </SimpleDialog>
+            )}
+
             <Button
-              startIcon={
-                <div onClick={onPreviousStep}>
-                  <ArrowLeftIcon />
-                </div>
-              }
-              endIcon={
-                <div onClick={onNextStep}>
-                  <ArrowRightIcon />
-                </div>
-              }
+              onClick={onNextStep}
+              endIcon={<Icon.ArrowRight className="fill-white" />}
             >
-              This CV is correct
+              {isMobile ? "Use this CV" : "This CV is correct"}
             </Button>
           </div>
         }
       />
-
-      <Divider />
-      <div className="mt-8 flex justify-center">
+      <Divider className="my-6" />
+      <div className="mt-4 md:mt-0 flex justify-center">
         <NeedSupport />
       </div>
     </div>

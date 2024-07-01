@@ -7,20 +7,25 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "generate-icons": "npx -p svg-to-ts svg-to-ts-object"
   },
   "dependencies": {
     "@radix-ui/react-accessible-icon": "^1.1.0",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-progress": "^1.1.0",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.395.0",
     "next": "14.2.4",
     "next-fonts": "^1.5.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-dropzone": "^14.2.3",
+    "svg-to-ts": "^12.0.0",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "vaul": "^0.9.1"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -37,5 +42,22 @@
     "prettier-plugin-tailwindcss": "^0.6.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "svg-to-ts": {
+    "tsx": true,
+    "generateType": true,
+    "objectName": "Test",
+    "srcFiles": [
+      "./icons/**/*.svg"
+    ],
+    "outputDirectory": "./components/icons/",
+    "svgoConfig": {
+      "plugins": [
+        "cleanupAttrs"
+      ]
+    },
+    "fileName": "icons.model",
+    "additionalModelOutputPath": "./components/icons/",
+    "compileSources": true
   }
 }

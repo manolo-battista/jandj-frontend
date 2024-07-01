@@ -1,6 +1,4 @@
 import { Typography } from "@/components/ui/typography";
-import { Button } from "@/components/ui/button";
-import { ArrowRightIcon } from "@/components/icons/arrow-right-icon";
 import React from "react";
 import Image from "next/image";
 
@@ -21,12 +19,6 @@ export default function Submit() {
           height={400}
           alt="Presence confirmed"
         />
-      </div>
-
-      <div className="flex justify-center mt-8">
-        <Button variant="outlined" endIcon={<ArrowRightIcon />}>
-          Back to homepage
-        </Button>
       </div>
     </div>
   );

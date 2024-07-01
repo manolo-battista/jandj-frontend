@@ -1,10 +1,9 @@
 import { Typography } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
-import { ArrowLeftIcon } from "@/components/icons/arrow-left-icon";
-import { ArrowRightIcon } from "@/components/icons/arrow-right-icon";
+import Icon from "@/components/ui/icon";
 import StepperFooter from "@/components/pages/guest/_common/stepper-footer";
 import React from "react";
-import { useStepper } from "@/hooks/useStepper";
+import { useStepper } from "@/hooks/use-stepper";
 import Divider from "@/components/ui/divider";
 import NeedSupport from "@/components/common/need-support";
 
@@ -23,26 +22,15 @@ export default function FillQiForm() {
         message="Have you filled an signed the QI form?"
         action={
           <div className="flex gap-4">
-            <Button
-              startIcon={
-                <div onClick={onPreviousStep}>
-                  <ArrowLeftIcon />
-                </div>
-              }
-              endIcon={
-                <div onClick={onNextStep}>
-                  <ArrowRightIcon />{" "}
-                </div>
-              }
-            >
+            <Button onClick={onNextStep} endIcon={<Icon.ArrowRight />}>
               Submit
             </Button>
           </div>
         }
       />
 
-      <Divider />
-      <div className="mt-8 flex justify-center">
+      <Divider className="my-6" />
+      <div className="mt-4 md:mt-0 flex justify-center">
         <NeedSupport />
       </div>
     </div>

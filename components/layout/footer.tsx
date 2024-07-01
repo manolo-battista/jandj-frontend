@@ -4,27 +4,27 @@ import { Typography } from "@/components/ui/typography";
 interface FooterProps {}
 export default function Footer(props: FooterProps) {
   return (
-    <footer className="w-full border-t border-t-red pb-4 flex flex-col items-center justify-center p-2 bg-background">
+    <footer className="w-full border-t border-t-red pb-28 md:pb-4 flex flex-col items-center justify-center p-2 bg-background">
       <Logo className="w-36" strapLine={false} />
       <Typography
         variant="legal"
         color="inverse"
-        className="mt-4 grid grid-cols-5 uppercase gap-4 text-center"
+        className="mt-4 grid grid-cols-6 md:grid-cols-5 uppercase gap-4 text-center"
       >
-        <a href="#" className="w-30 hover:underline">
+        <a href="#" className="w-30 hover:underline col-span-3 md:col-span-1">
           Privacy policy
         </a>
-        <a href="#" className="w-30 hover:underline">
+        <a href="#" className="w-30 hover:underline col-span-3 md:col-span-1">
           News center
         </a>
-        <a href="#" className="w-30 hover:underline">
-          Careers
-        </a>
-        <a href="#" className="w-30 hover:underline">
+        <a href="#" className="w-30 hover:underline col-span-2 md:col-span-1">
           Legal notice
         </a>
-        <a href="#" className="w-30 hover:underline">
+        <a href="#" className="w-30 hover:underline col-span-2 md:col-span-1">
           Contact us
+        </a>{" "}
+        <a href="#" className="w-30 hover:underline col-span-2 md:col-span-1">
+          Careers
         </a>
       </Typography>
       <Typography variant="legal" color="inverse" className="mt-8 text-center">
