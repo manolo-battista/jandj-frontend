@@ -17,7 +17,7 @@ export default function EventCard(props: EventCardProps) {
   const { variant = "default", status, className } = props;
   const isCompact = variant == "compact";
   return (
-    <div className={cn("p-4 py-6 bg-card shadow-xl", className)}>
+    <div className={cn("p-4 py-6 bg-card", className)}>
       <div className="flex items-center">
         <Typography variant="body-xs" className="flex-1 uppercase">
           MEDICAL EDUCATIONAL EVENT
