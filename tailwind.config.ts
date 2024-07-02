@@ -35,6 +35,7 @@ const config = {
           DEFAULT: "hsl(var(--border))",
           hover: "hsl(var(--border-hover))",
         },
+        card: "hsl(var(--card))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: {

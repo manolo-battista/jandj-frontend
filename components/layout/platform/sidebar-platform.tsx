@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import Icon from "@/components/ui/icon";
 
-export default function Sidebar() {
+export default function SidebarPlatform() {
   const pathname = usePathname();
   const iconClassName = "cursor-pointer fill-gray hover:fill-red w-6";
   const profileImage = "";

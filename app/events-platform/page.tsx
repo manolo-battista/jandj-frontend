@@ -1,7 +1,9 @@
 import React from "react";
 import Divider from "@/components/ui/divider";
-import EventCard from "@/components/common/event-card";
+import EventCard from "@/components/common/cards/event-card";
 import { Typography } from "@/components/ui/typography";
+import NavbarPlatform from "@/components/layout/platform/navbar-platform";
+import PageContainerPlatform from "@/components/layout/platform/page-container-platform";
 
 export default function Page() {
   function getMockStatus(index: number) {
@@ -19,34 +21,40 @@ export default function Page() {
     }
   }
   return (
-    <div>
-      <Typography variant="body-xl" color="red">
-        Hello Annie!
-      </Typography>
-      <Typography variant="body-lg">Welcome to your dashboard</Typography>
-      <Divider className="mt-4 h-1 w-[100px] bg-red" />
+    <>
+      <NavbarPlatform
+        title={
+          <>
+            <Typography variant="body-xl" color="red">
+              Hello Annie!
+            </Typography>
+            <Typography variant="body-lg">Welcome to your dashboard</Typography>
+          </>
+        }
+      />
+      <PageContainerPlatform>
+        <Typography variant="heading-card" color="red">
+          Current projects
+        </Typography>
+        <div className="grid grid-cols-3 gap-4">
+          {[0, 1].map((_, index) => (
+            <EventCard key={index} status={"approved"} />
+          ))}
+        </div>
 
-      <Typography variant="heading-card" color="red" className="mt-6">
-        Current projects
-      </Typography>
-      <div className="grid grid-cols-3 gap-4">
-        {[0, 1].map((_, index) => (
-          <EventCard key={index} status={"approved"} />
-        ))}
-      </div>
-
-      <Typography variant="heading-card" color="red" className="mt-6">
-        Past activities
-      </Typography>
-      <div className="grid grid-cols-3 gap-4">
-        {[0, 1, 2, 3, 4, 5].map((_, index) => (
-          <EventCard
-            key={index}
-            status={getMockStatus(index)}
-            variant="compact"
-          />
-        ))}
-      </div>
-    </div>
+        <Typography variant="heading-card" color="red" className="mt-6">
+          Past activities
+        </Typography>
+        <div className="grid grid-cols-3 gap-4">
+          {[0, 1, 2, 3, 4, 5].map((_, index) => (
+            <EventCard
+              key={index}
+              status={getMockStatus(index)}
+              variant="compact"
+            />
+          ))}
+        </div>
+      </PageContainerPlatform>
+    </>
   );
 }

@@ -12,7 +12,6 @@ const buttonVariants = cva(
       variant: {
         default: "",
         outlined: "",
-        secondary: "",
         link: "",
       },
       color: {
@@ -41,6 +40,12 @@ const buttonVariants = cva(
         color: "primary",
         variant: "outlined",
         className: "border border-red text-red",
+      },
+      //   link
+      {
+        color: "primary",
+        variant: "link",
+        className: "text-red",
       },
     ],
     defaultVariants: {
@@ -90,7 +95,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {startIcon}
         <Typography
           // @ts-ignore
-          color={cn("on-color", variant === "outlined" && "red")}
+          color={cn(
+            "on-color",
+            variant === "outlined" || (variant === "link" && "red"),
+          )}
           className={cn(startIcon && "ml-2", endIcon && "mr-2")}
         >
           {children}
