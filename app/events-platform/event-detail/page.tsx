@@ -2,6 +2,7 @@
 import { StatusBadge } from "@/components/common/status-badge";
 import Divider from "@/components/ui/divider";
 import { Typography } from "@/components/ui/typography";
+import { cn } from "@/lib/utils";
 import { ITabButton, ITabContent } from "@/types/tab";
 import { useState } from "react";
 
@@ -31,9 +32,7 @@ export default function EventDetail() {
       </div>
       <div className="bg-white w-full h-fit p-6">Detail box</div>
 
-      <div className="mt-6">
-        <TabSection />
-      </div>
+      <TabSection />
     </>
   );
 }
@@ -46,7 +45,7 @@ const TabSection = () => {
     { title: "Documents", content: "Tab 3" },
   ];
   return (
-    <div className="w-full">
+    <div className="w-full mt-6">
       <div className="flex justify-center items-center gap-10">
         {tabs.map((tab, idx) => (
           <TabButton
@@ -57,6 +56,7 @@ const TabSection = () => {
           />
         ))}
       </div>
+      <Divider className="my-0" />
       <TabContent content={tabs[activeTab].content} />
     </div>
   );
@@ -64,7 +64,10 @@ const TabSection = () => {
 
 const TabButton = ({ title, isActive, onClick }: ITabButton) => {
   return (
-    <button onClick={onClick}>
+    <button
+      onClick={onClick}
+      className={cn("px-4", isActive ? "border-b-2 border-red-500" : "")}
+    >
       <Typography variant="heading-sm" color={isActive ? "red" : "primary"}>
         {title}
       </Typography>
