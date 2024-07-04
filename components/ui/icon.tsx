@@ -9,7 +9,7 @@ interface IconProps {
 }
 
 const defaultProps = { className: "w-5 flex-no-shrink fill-current" };
-export default {
+const IconSet = {
   AccessibleBathroom: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4411,3 +4411,5 @@ export default {
     </svg>
   ),
 };
+
+export default IconSet;

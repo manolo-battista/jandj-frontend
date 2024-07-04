@@ -97,7 +97,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           // @ts-ignore
           color={cn(
             "on-color",
-            variant === "outlined" || (variant === "link" && "red"),
+            (variant === "outlined" || variant === "link") && "red",
           )}
           className={cn(startIcon && "ml-2", endIcon && "mr-2")}
         >
