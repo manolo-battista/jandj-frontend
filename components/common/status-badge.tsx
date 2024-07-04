@@ -3,9 +3,10 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 import { IStatus } from "@/types/status";
+import { Typography } from "@/components/ui/typography";
 
 const badgeVariants = cva(
-  "border-transparent uppercase inline-flex items-center rounded-md border px-2.5 py-0.5 text-[10px] font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "max-h-5 border-transparent uppercase inline-flex items-center rounded-md border px-2.5 py-0.5 text-[10px] font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
   {
     variants: {
       variant: {
@@ -42,7 +43,17 @@ function StatusBadge({ className, variant, status, ...props }: BadgeProps) {
       )}
       {...props}
     >
-      {status}
+      <Typography
+        variant="body-xs"
+        className={cn(
+          status === "approved" && "bg-success text-success-800",
+          status === "pending" && "bg-warning-200 text-warning-800",
+          status === "cancelled" && "bg-error text-white",
+          status === "postponed" && "bg-error text-white",
+        )}
+      >
+        {status}
+      </Typography>
     </div>
   );
 }

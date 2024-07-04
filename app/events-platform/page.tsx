@@ -1,11 +1,13 @@
+"use client";
 import React from "react";
-import Divider from "@/components/ui/divider";
 import EventCard from "@/components/common/cards/event-card";
 import { Typography } from "@/components/ui/typography";
 import NavbarPlatform from "@/components/layout/platform/navbar-platform";
 import PageContainerPlatform from "@/components/layout/platform/page-container-platform";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
   function getMockStatus(index: number) {
     switch (index) {
       case 0:
@@ -33,16 +35,20 @@ export default function Page() {
         }
       />
       <PageContainerPlatform>
-        <Typography variant="heading-card" color="red">
+        <Typography variant="heading-card" color="red" className="mb-6">
           Current projects
         </Typography>
         <div className="grid grid-cols-3 gap-4">
           {[0, 1].map((_, index) => (
-            <EventCard key={index} status={"approved"} />
+            <EventCard
+              key={index}
+              status={"approved"}
+              onClick={() => router.push("/events-platform/event/1")}
+            />
           ))}
         </div>
 
-        <Typography variant="heading-card" color="red" className="mt-6">
+        <Typography variant="heading-card" color="red" className="my-6">
           Past activities
         </Typography>
         <div className="grid grid-cols-3 gap-4">
