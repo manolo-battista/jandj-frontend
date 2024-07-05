@@ -1,5 +1,6 @@
 "use client";
 import { StatusBadge } from "@/components/common/status-badge";
+import KanbanBoard from "@/components/pages/events-platform/activities-tracker/KanbanBoard";
 import Divider from "@/components/ui/divider";
 import { Typography } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
@@ -40,7 +41,7 @@ export default function EventDetail() {
 const TabSection = () => {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
-    { title: "Activities Tracker", content: "Tab 1" },
+    { title: "Activities Tracker", content: <KanbanBoard /> },
     { title: "Attendees", content: "Tab 2" },
     { title: "Documents", content: "Tab 3" },
   ];

@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    redirects() {
-        return [{ source: "/", destination: "/auth/signin", permanent: false }];
-    },
+    // false to disable strict mode and work with dnd library
+    reactStrictMode: false,
+    // redirects() {
+    //     return [{ source: "/", destination: "/auth/signin", permanent: false }];
+    // },
     async rewrites() {
         return [{ source: "/next/api/:path*", destination: "/api/:path*" }];
     },
