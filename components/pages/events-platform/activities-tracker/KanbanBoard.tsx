@@ -55,13 +55,6 @@ const mockedTasks = {
   ],
 };
 
-const KanbanColumns = [
-  { title: "To do", id: "todo" },
-  { title: "In progress", id: "in-progress" },
-  { title: "Done", id: "done" },
-  { title: "Blocked", id: "blocked" },
-];
-
 export default function KanbanBoard() {
   const [doneTasks, setDoneTasks] = useState([...mockedTasks.done]);
   const [toDoTasks, setToDoTasks] = useState([...mockedTasks.todo]);
@@ -72,7 +65,6 @@ export default function KanbanBoard() {
 
   function handleDragEnd(result) {
     const { destination, source, draggableId } = result;
-    console.log(result);
 
     if (source.droppableId === destination.droppableId) return;
 
@@ -84,6 +76,10 @@ export default function KanbanBoard() {
 
     if (source.droppableId === "in-progress") {
       setInProgressTasks(removeTaskById(draggableId, inProgressTasks));
+    }
+
+    if (source.droppableId === "blocked") {
+      setBlockedTasks(removeTaskById(draggableId, blockedTasks));
     }
 
     if (source.droppableId === "done") {
@@ -99,17 +95,18 @@ export default function KanbanBoard() {
 
     // Add task to destination column
     if (destination.droppableId === "todo") {
-      console.log("entra qui todo");
       setToDoTasks([...toDoTasks, task]);
     }
 
+    if (destination.droppableId === "blocked") {
+      setBlockedTasks([...blockedTasks, task]);
+    }
+
     if (destination.droppableId === "in-progress") {
-      console.log("entra qui in-progess");
       setInProgressTasks([...inProgressTasks, task]);
     }
 
     if (destination.droppableId === "done") {
-      console.log("entra qui done");
       setDoneTasks([...doneTasks, task]);
     }
   }
