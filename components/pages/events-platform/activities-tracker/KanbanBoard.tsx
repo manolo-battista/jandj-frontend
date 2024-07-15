@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { findTaskById, reorderTasks, removeTaskById } from "@/utils/ taskUtils";
+import { IStatus } from "@/types/status";
 
 const mockedTasks = {
   todo: [
@@ -79,7 +80,7 @@ export default function KanbanBoard() {
 
     const selectedTask: IKanbanBoardTask | undefined = findTaskById(
       draggableId,
-      allTasks,
+      allTasks
     );
 
     if (!selectedTask) return;
@@ -93,7 +94,7 @@ export default function KanbanBoard() {
       const reorderedTasks = reorderTasks(
         destination.index,
         selectedTask,
-        remainedTasks,
+        remainedTasks
       );
       setTasks({
         ...tasks,
@@ -106,7 +107,7 @@ export default function KanbanBoard() {
     const reorderedDestinationTasks = reorderTasks(
       destination.index,
       selectedTask,
-      destinationTasks,
+      destinationTasks
     );
 
     setTasks({
@@ -179,28 +180,36 @@ function KanbanBoardTask({
           {...provide.draggableProps}
           {...provide.dragHandleProps}
         >
-          <div className="flex justify-end">
-            <StatusBadge status={"pending"} className="" />
-          </div>
+          <StatusBadge status={IStatus.DRAFT} className="" />
+          <StatusBadge status={IStatus.APPROVED} className="" />
+          <StatusBadge status={IStatus.CANCELLED} className="" />
+          <StatusBadge status={IStatus.HIGHT_PRIORITY} className="" />
+          <StatusBadge status={IStatus.LOW_PRIORITY} className="capitalize" />
+          <StatusBadge
+            status={IStatus.MEDIUM_PRIORITY}
+            className="capitalize"
+          />
+          <StatusBadge status={IStatus.HIGHT_PRIORITY} className="capitalize" />
+          <StatusBadge status={IStatus.URGENT} className="" />
+          <StatusBadge status={IStatus.LIVE} className="" />
+
           <Typography variant="body-md" color="primary" className="mt-2">
             {content}
           </Typography>
-          <Divider />
+          <Divider className="bg-gray-300" />
           <div className="flex justify-between mt-2">
             <div className="flex items-center gap-1">
-              <Icon.Calendar />
+              <Icon.Calendar className="w-3 h-3 fill-gray-400" />
               <Typography variant="body-xs-bold" color="primary">
                 26 Sep 2024
               </Typography>
             </div>
             <div className="flex gap-1">
               <div className="flex items-center">
-                <Icon.Chat className="w-4 h-4" />
-                <p>0</p>
-              </div>
-              <div className="flex items-center">
-                <Icon.Document className="w-4 h-4" />
-                <p>0</p>
+                <Icon.Document className="w-3 h-3 fill-gray-400" />
+                <Typography variant="body-xs-bold" color="primary">
+                  0
+                </Typography>
               </div>
             </div>
           </div>
