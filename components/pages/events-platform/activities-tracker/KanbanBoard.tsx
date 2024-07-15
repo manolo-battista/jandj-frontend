@@ -79,7 +79,7 @@ export default function KanbanBoard() {
 
     const selectedTask: IKanbanBoardTask | undefined = findTaskById(
       draggableId,
-      allTasks
+      allTasks,
     );
 
     if (!selectedTask) return;
@@ -93,7 +93,7 @@ export default function KanbanBoard() {
       const reorderedTasks = reorderTasks(
         destination.index,
         selectedTask,
-        remainedTasks
+        remainedTasks,
       );
       setTasks({
         ...tasks,
@@ -106,7 +106,7 @@ export default function KanbanBoard() {
     const reorderedDestinationTasks = reorderTasks(
       destination.index,
       selectedTask,
-      destinationTasks
+      destinationTasks,
     );
 
     setTasks({
