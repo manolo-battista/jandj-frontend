@@ -1,4 +1,4 @@
-import Sidebar from "@/components/layout/sidebar";
+import SidebarPlatform from "@/components/layout/platform/sidebar-platform";
 
 export default function RootLayout({
   children,
@@ -7,8 +7,8 @@ export default function RootLayout({
 }>) {
   return (
     <div className="flex">
-      <Sidebar />
-      <div className="ml-[72px] flex-1 p-6 bg-background-active">
+      <SidebarPlatform />
+      <div className="min-h-screen ml-[72px] flex-1 bg-background-active">
         {children}
       </div>
     </div>

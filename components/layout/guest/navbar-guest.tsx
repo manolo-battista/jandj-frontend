@@ -1,8 +1,8 @@
 import Logo from "@/components/common/logo";
 
-interface NavbarProps {}
+interface NavbarGuestProps {}
 
-export default function Navbar(props: NavbarProps) {
+export default function NavbarGuest(props: NavbarGuestProps) {
   return (
     <nav className="p-4 bg-background-active border-b border-gray">
       <div />
