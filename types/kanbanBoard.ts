@@ -7,7 +7,18 @@ type IKanbanBoardColumn = {
 type IKanbanBoardTask = {
   id: string;
   content: string;
-  index: number;
 };
 
-export type { IKanbanBoardColumn, IKanbanBoardTask };
+type IDragResult = {
+  destination: {
+    droppableId: string;
+    index: number;
+  } | null;
+  source: {
+    droppableId: string;
+    index: number;
+  };
+  draggableId: string;
+};
+
+export type { IKanbanBoardColumn, IKanbanBoardTask, IDragResult };
