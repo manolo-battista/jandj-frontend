@@ -1,3 +1,5 @@
+import { IStatus } from "./status";
+
 type IKanbanBoardColumn = {
   tasks: IKanbanBoardTask[];
   title: string;
@@ -7,6 +9,7 @@ type IKanbanBoardColumn = {
 type IKanbanBoardTask = {
   id: string;
   content: string;
+  status: IStatus;
 };
 
 type IDragResult = {

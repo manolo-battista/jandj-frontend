@@ -19,37 +19,44 @@ const mockedTasks = {
     {
       id: "1",
       content: "Send Reminder to confirm actual CV to Mr. Lars Ulrich",
+      status: IStatus.URGENT,
     },
     {
       id: "2",
       content:
         "Book appointment for privacy module signature with Mrs. Tania Lee",
+      status: IStatus.HIGHT_PRIORITY,
     },
   ],
   inProgress: [
     {
       id: "3",
       content: "Collect PubMed link from Mr. James Hetfield",
+      status: IStatus.LOW_PRIORITY,
     },
   ],
   done: [
     {
       id: "5",
       content: "Collect updated CV document from Mr. Marc Wright",
+      status: IStatus.MEDIUM_PRIORITY,
     },
     {
       id: "6",
       content: "AsciugCollect updated CV document from Mr. John Doere",
+      status: IStatus.URGENT,
     },
   ],
   blocked: [
     {
       id: "7",
       content: "Collect updated CV document from Mr. Marc Wright",
+      status: IStatus.HIGHT_PRIORITY,
     },
     {
       id: "8",
       content: "Collect updated CV document from Mr. John Doe",
+      status: IStatus.LOW_PRIORITY,
     },
   ],
 };
@@ -168,9 +175,9 @@ function KanbanBoardColumn({ tasks, title, id }: IKanbanBoardColumn) {
 function KanbanBoardTask({
   content,
   id,
-  children,
+  status,
   index,
-}: IKanbanBoardTask & { index: number; children: React.ReactNode }) {
+}: IKanbanBoardTask & { index: number }) {
   return (
     <Draggable draggableId={id} key={id} index={index as number}>
       {(provide) => (
@@ -180,18 +187,10 @@ function KanbanBoardTask({
           {...provide.draggableProps}
           {...provide.dragHandleProps}
         >
-          <StatusBadge status={IStatus.DRAFT} className="" />
-          <StatusBadge status={IStatus.APPROVED} className="" />
-          <StatusBadge status={IStatus.CANCELLED} className="" />
-          <StatusBadge status={IStatus.HIGHT_PRIORITY} className="" />
-          <StatusBadge status={IStatus.LOW_PRIORITY} className="capitalize" />
-          <StatusBadge
-            status={IStatus.MEDIUM_PRIORITY}
-            className="capitalize"
-          />
-          <StatusBadge status={IStatus.HIGHT_PRIORITY} className="capitalize" />
-          <StatusBadge status={IStatus.URGENT} className="" />
-          <StatusBadge status={IStatus.LIVE} className="" />
+          <div className="flex justify-between items-center">
+            <StatusBadge status={status} className="capitalize" />
+            <Icon.DotsMenu />
+          </div>
 
           <Typography variant="body-md" color="primary" className="mt-2">
             {content}
@@ -206,7 +205,7 @@ function KanbanBoardTask({
             </div>
             <div className="flex gap-1">
               <div className="flex items-center">
-                <Icon.Document className="w-3 h-3 fill-gray-400" />
+                <Icon.Document className="w-3 h-3 fill-gray-400 mr-1" />
                 <Typography variant="body-xs-bold" color="primary">
                   0
                 </Typography>
