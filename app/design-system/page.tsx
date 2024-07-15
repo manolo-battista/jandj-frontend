@@ -3,6 +3,14 @@ import { Typography } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import Divider from "@/components/ui/divider";
 import Icon from "@/components/ui/icon";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Page() {
   const colorCommonStyle = "border w-8 h-8";
@@ -476,6 +484,23 @@ export default function Page() {
         <Icon.Write />
         <Icon.XRay />
         <Icon.Yen />
+      </div>
+
+      <div>
+        <Typography variant="heading-lg" className="mt-4">
+          Dropdowns
+        </Typography>
+        <DropdownMenu>
+          <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem>Billing</DropdownMenuItem>
+            <DropdownMenuItem>Team</DropdownMenuItem>
+            <DropdownMenuItem>Subscription</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );
