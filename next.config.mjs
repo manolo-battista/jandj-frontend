@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    // false to disable strict mode and work with dnd library
     reactStrictMode: true,
     redirects() {
         return [{ source: "/", destination: "/auth/signin", permanent: false }];
