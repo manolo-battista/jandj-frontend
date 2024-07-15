@@ -1,4 +1,5 @@
-import React, { ReactNode } from "react";
+"use client";
+import React, { ReactNode, useState } from "react";
 import { Typography } from "@/components/ui/typography";
 import NavbarPlatform from "@/components/layout/platform/navbar-platform";
 import PageContainerPlatform from "@/components/layout/platform/page-container-platform";
@@ -7,6 +8,51 @@ import Icon from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 import AvatarProfile from "@/components/common/avatar-profile";
 import Divider from "@/components/ui/divider";
+import KanbanBoard from "@/components/pages/events-platform/activities-tracker/kanban-board";
+import { ITabButton, ITabContent } from "@/types/tab";
+import { IStatus } from "@/types/status";
+
+const TabSection = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const tabs = [
+    { title: "Activities Tracker", content: <KanbanBoard /> },
+    { title: "Attendees", content: "Tab 2" },
+    { title: "Documents", content: "Tab 3" },
+  ];
+  return (
+    <div className="w-full mt-6">
+      <div className="flex justify-center items-center gap-10">
+        {tabs.map((tab, idx) => (
+          <TabButton
+            key={idx}
+            title={tab.title}
+            isActive={activeTab === idx}
+            onClick={() => setActiveTab(idx)}
+          />
+        ))}
+      </div>
+      <Divider className="my-0" />
+      <TabContent content={tabs[activeTab].content} />
+    </div>
+  );
+};
+
+const TabButton = ({ title, isActive, onClick }: ITabButton) => {
+  return (
+    <button
+      onClick={onClick}
+      className={cn("px-4", isActive ? "border-b-2 border-red-500" : "")}
+    >
+      <Typography variant="heading-sm" color={isActive ? "red" : "primary"}>
+        {title}
+      </Typography>
+    </button>
+  );
+};
+
+const TabContent = ({ content }: ITabContent) => {
+  return <div>{content}</div>;
+};
 
 export default function Page() {
   const RowItem = (props: {
@@ -27,7 +73,7 @@ export default function Page() {
       <NavbarPlatform
         title={
           <div className="flex gap-2 items-center">
-            <StatusBadge status="pending" />
+            <StatusBadge status={IStatus.DRAFT} />
             <Typography variant="heading-card">
               New perspectives in multiple myeloma
             </Typography>
@@ -134,6 +180,8 @@ export default function Page() {
             <Typography variant="body-md">Donatella Rossi</Typography>
           </div>
         </div>
+
+        <TabSection />
       </PageContainerPlatform>
     </>
   );

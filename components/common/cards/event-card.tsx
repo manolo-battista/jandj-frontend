@@ -17,7 +17,7 @@ interface EventCardProps {
 export default function EventCard(props: EventCardProps) {
   const { variant = "default", status, className, onClick } = props;
   const isCompact = variant == "compact";
-  const isCancelled = status === "cancelled";
+  const isCancelled = status === IStatus.CANCELLED;
 
   const mockAttendees = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (

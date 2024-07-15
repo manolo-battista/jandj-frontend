@@ -21,7 +21,7 @@ const badgeVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
+  },
 );
 
 export interface BadgeProps
@@ -43,7 +43,7 @@ function StatusBadge({ className, variant, status, ...props }: BadgeProps) {
         status === IStatus.LIVE && "border-red-500 text-red",
         status === IStatus.LOW_PRIORITY && "bg-blue-100",
         status === IStatus.MEDIUM_PRIORITY && "bg-warning-100",
-        status === IStatus.HIGHT_PRIORITY && "bg-yellow-300"
+        status === IStatus.HIGHT_PRIORITY && "bg-yellow-300",
       )}
       {...props}
     >
@@ -57,7 +57,7 @@ function StatusBadge({ className, variant, status, ...props }: BadgeProps) {
           status === IStatus.LIVE && "text-red",
           status === IStatus.LOW_PRIORITY && "text-blue-900",
           status === IStatus.MEDIUM_PRIORITY && "text-yellow-500",
-          status === IStatus.HIGHT_PRIORITY && "text-yellow-800"
+          status === IStatus.HIGHT_PRIORITY && "text-yellow-800",
         )}
       >
         {status === IStatus.LIVE ? (

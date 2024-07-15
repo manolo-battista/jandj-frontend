@@ -5,21 +5,22 @@ import { Typography } from "@/components/ui/typography";
 import NavbarPlatform from "@/components/layout/platform/navbar-platform";
 import PageContainerPlatform from "@/components/layout/platform/page-container-platform";
 import { useRouter } from "next/navigation";
+import { IStatus } from "@/types/status";
 
 export default function Page() {
   const router = useRouter();
   function getMockStatus(index: number) {
     switch (index) {
       case 0:
-        return "approved";
+        return IStatus.APPROVED;
       case 1:
-        return "pending";
+        return IStatus.DRAFT;
       case 2:
-        return "cancelled";
+        return IStatus.CANCELLED;
       case 3:
-        return "postponed";
+        return IStatus.LIVE;
       default:
-        return "pending";
+        return IStatus.DRAFT;
     }
   }
   return (
@@ -42,7 +43,7 @@ export default function Page() {
           {[0, 1].map((_, index) => (
             <EventCard
               key={index}
-              status={"approved"}
+              status={IStatus.APPROVED}
               onClick={() => router.push("/events-platform/event/1")}
             />
           ))}
