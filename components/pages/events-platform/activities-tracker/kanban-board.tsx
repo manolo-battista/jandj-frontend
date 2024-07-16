@@ -11,7 +11,7 @@ import {
 } from "@/types/kanbanBoard";
 import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import { findTaskById, reorderTasks, removeTaskById } from "@/utils/ taskUtils";
+import { findTaskById, reorderTasks, removeTaskById } from "@/utils/task-utils";
 import { IStatus } from "@/types/status";
 
 const mockedTasks = {

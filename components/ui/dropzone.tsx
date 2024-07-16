@@ -73,7 +73,7 @@ export default function Dropzone(props: DropzoneProps) {
           )}
         >
           <input {...getInputProps()} />
-          {icon ?? <Icon.Cloud className="w-14 fill-red" />}
+          {icon ?? <Icon.UploadCloud className="w-10 mb-2 fill-red" />}
           <div
             className={cn(
               "text-center",

@@ -6,7 +6,7 @@ interface LogoProps {
 }
 
 export default function Logo(props: LogoProps) {
-  const { color = "red", compact, strapLine = true } = props;
+  const { color = "red", compact, strapLine = true, className } = props;
   return compact ? (
     <svg
       width="40"
@@ -14,6 +14,7 @@ export default function Logo(props: LogoProps) {
       viewBox="0 0 40 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <path
         d="M34.46 16.5281C30.7119 16.5281 28.9958 14.4282 28.9958 11.6058V10.0252L31.8634 9.6414V11.9219C31.8634 14.2701 32.6311 15.4443 34.4826 15.4443C36.2889 15.4443 36.9437 14.3379 36.9437 12.1703V0.361328H39.8339V11.8993C39.8339 14.3379 38.2308 16.5281 34.46 16.5281Z"
@@ -59,6 +60,7 @@ export default function Logo(props: LogoProps) {
       height="40"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 576.77 53.67"
+      className={className}
     >
       <path
         className="cls-1"

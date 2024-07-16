@@ -36,11 +36,11 @@ function StatusBadge({ className, variant, status, ...props }: BadgeProps) {
       className={cn(
         badgeVariants({ variant }),
         className,
-        status === IStatus.DRAFT && "bg-blue-300 text-warning-800",
-        status === IStatus.APPROVED && "bg-green-200 text-success-800",
-        status === IStatus.URGENT && "bg-error-100 text-white",
-        status === IStatus.CANCELLED && "bg-gray-200 text-white",
-        status === IStatus.LIVE && "border-red-500 text-red",
+        status === IStatus.DRAFT && "bg-blue-200",
+        status === IStatus.APPROVED && "bg-green-200",
+        status === IStatus.URGENT && "bg-error-100",
+        status === IStatus.CANCELLED && "bg-gray-200",
+        status === IStatus.LIVE && "border-red-500",
         status === IStatus.LOW_PRIORITY && "bg-blue-100",
         status === IStatus.MEDIUM_PRIORITY && "bg-warning-100",
         status === IStatus.HIGHT_PRIORITY && "bg-yellow-300",
@@ -61,10 +61,10 @@ function StatusBadge({ className, variant, status, ...props }: BadgeProps) {
         )}
       >
         {status === IStatus.LIVE ? (
-          <div className="flex gap-1 items-center">
-            <div className="h-2 w-2 bg-red rounded-full"></div>
+          <span className="flex gap-1 items-center">
+            <span className="h-2 w-2 bg-red rounded-full"></span>
             {status}
-          </div>
+          </span>
         ) : (
           status
         )}

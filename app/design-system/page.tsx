@@ -298,6 +298,7 @@ export default function Page() {
         <Icon.Link />
         <Icon.Loading />
         <Icon.Lock />
+        <Icon.Logout />
         <Icon.LuggageRoom />
         <Icon.LungCancer2 />
         <Icon.LungCancer />
@@ -455,6 +456,7 @@ export default function Page() {
         <Icon.Umbrella />
         <Icon.Unhappy />
         <Icon.UnisexRestroom />
+        <Icon.UploadCloud />
         <Icon.Urology />
         <Icon.Usd />
         <Icon.Vial />

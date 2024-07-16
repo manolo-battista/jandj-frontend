@@ -19,28 +19,42 @@ export default function Page() {
       icon: <Icon.Hospital className="w-10 fill-red" />,
       title: "Corporate & Policy",
       description:
-        "Tese events include Institutional events, Patient Advocacy, J&J News, Media Collaboration",
+        "Questi eventi includono eventi istituzionali, Patient Advocacy, J&J News, Media Collaboration",
       action: "internal",
+    },
+    {
+      icon: <Icon.Euro className="w-10 fill-red" />,
+      title: "Eventi promozionali",
+      description:
+        "Lorem ipsum dolor sit amet consectetur. Consectetur turpis malesuada varius bibendum cras",
+      action: "iconnect",
     },
     {
       icon: <Icon.Collaboration className="w-10 fill-red" />,
       title: "Advisory Board",
       description:
-        "Events to improve patients’ assistance through insights sharing and collaboration from a select group of experts",
+        "Eventi per migliorare l’assistenza ai pazienti condividendo informazioni tra un gruppo selezionato di esperti",
       action: "iconnect",
     },
     {
       icon: <Icon.HealthcareProvider className="w-10 fill-red" />,
       title: "Fee for Services",
       description:
-        "Tailored high-specialized advice from a select group of experts",
+        "Consulenza ad hoc altamente specializzata da parte di un gruppo selezionato di esperti",
       action: "iconnect",
     },
     {
       icon: <Icon.Education className="w-10 fill-red" />,
-      title: "Medical Education",
+      title: "Congressi",
       description:
-        "3rd-party-organized independent aimed at promoting medical scientific knowledge without corporate influence",
+        "Eventi finalizzati alla promozione della conoscienza medico-scientifica",
+      action: "iconnect",
+    },
+    {
+      icon: <Icon.Record className="w-10 fill-red" />,
+      title: "Sponsorship",
+      description:
+        "Eventi indipendenti organizzati da terze perti per promuovere conoscenza medica senza influenza della compagnia",
       action: "iconnect",
     },
   ];
@@ -67,7 +81,7 @@ export default function Page() {
               icon={eventType.icon}
               title={eventType.title}
               description={eventType.description}
-              className="col-span-6"
+              className="col-span-4"
               action={
                 eventType.action === "internal" ? (
                   <Button startIcon={<Icon.Add />}>Create</Button>

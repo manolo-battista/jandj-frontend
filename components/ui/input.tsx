@@ -21,6 +21,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           )}
           ref={ref}
           {...props}
+          onChange={(e) => console.log(e.target.value)}
         />
         {endIcon && <div className="absolute right-3 top-2">{endIcon}</div>}
       </div>
