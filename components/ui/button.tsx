@@ -23,9 +23,8 @@ const buttonVariants = cva(
       },
       size: {
         default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "size-10",
+        sm: "h-8 px-3 py-0",
+        lg: "h-12 px-8",
       },
     },
     compoundVariants: [
@@ -54,7 +53,7 @@ const buttonVariants = cva(
         color: "secondary",
         variant: "outlined",
         className:
-          "border border-gray-800 text-gray-800 hover:border-transparent hover:bg-gray-300",
+          "border border-gray text-gray-800 hover:border-transparent hover:bg-gray-300",
       },
     ],
     defaultVariants: {

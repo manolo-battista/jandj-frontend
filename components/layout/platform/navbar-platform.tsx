@@ -1,6 +1,4 @@
 import React, { ReactNode } from "react";
-import { Input } from "@/components/ui/input";
-import Icon from "@/components/ui/icon";
 
 interface NavbarPlatformProps {
   title?: ReactNode;

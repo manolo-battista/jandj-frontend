@@ -1,11 +1,25 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { Typography } from "@/components/ui/typography";
 import NavbarPlatform from "@/components/layout/platform/navbar-platform";
 import PageContainerPlatform from "@/components/layout/platform/page-container-platform";
 import DoctorCard from "@/components/common/cards/doctor-card";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { TabButton } from "@/components/ui/tab";
+import ActionBarPlatform from "@/components/layout/platform/action-bar-platform";
+import Divider from "@/components/ui/divider";
 export default function Page() {
+  const [activeTab, setActiveTab] = useState(0);
+  const tabs = [
+    { title: "HCP", content: "Tab 1" },
+    { title: "Istituzionali", content: "Tab 2" },
+    { title: "Stampa", content: "Tab 3" },
+    { title: "Associazioni di pazienti", content: "Tab 4" },
+    { title: "Altro", content: "Tab 5" },
+  ];
+
   return (
     <>
       <NavbarPlatform
@@ -18,20 +32,29 @@ export default function Page() {
           </>
         }
       />
+      <ActionBarPlatform>
+        <Button
+          color="secondary"
+          size="sm"
+          variant="outlined"
+          endIcon={<Icon.Add className="w-4 h-4" />}
+        >
+          Aggiungi un nuovo profilo
+        </Button>
+      </ActionBarPlatform>
+      <div className="p-6 pb-0">
+        {tabs.map((tab, idx) => (
+          <TabButton
+            key={idx}
+            title={tab.title}
+            isActive={activeTab === idx}
+            onClick={() => setActiveTab(idx)}
+          />
+        ))}
+      </div>
+      <Divider className="my-0" />
       <PageContainerPlatform>
-        <div className="flex">
-          <Typography variant="heading-card" color="red" className="flex-1">
-            Doctors
-          </Typography>
-          <Button
-            variant="outlined"
-            startIcon={<Icon.HealthcareProvider />}
-            endIcon={<Icon.Add />}
-          >
-            Add a new doctor
-          </Button>
-        </div>
-        <div className="grid grid-cols-12 gap-6 mt-6">
+        <div className="grid grid-cols-12 gap-6 mt-2">
           {[0, 1, 2, 3, 4].map((doctor, index) => (
             <div key={index} className="col-span-4">
               <DoctorCard />
@@ -39,6 +62,7 @@ export default function Page() {
           ))}
         </div>
       </PageContainerPlatform>
+      F
     </>
   );
 }

@@ -1,19 +1,5 @@
 import * as React from "react";
-
-import { Button } from "@/components/ui/button";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
 import { ReactNode } from "react";
-import { Typography } from "@/components/ui/typography";
-import Icon from "@/components/ui/icon";
-import NeedSupport from "@/components/common/need-support";
 import {
   Dialog,
   DialogContent,

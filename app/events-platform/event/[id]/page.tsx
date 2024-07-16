@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 import AvatarProfile from "@/components/common/avatar-profile";
 import Divider from "@/components/ui/divider";
 import KanbanBoard from "@/components/pages/events-platform/activities-tracker/kanban-board";
-import { ITabButton, ITabContent } from "@/types/tab";
 import { IStatus } from "@/types/status";
+import { TabButton, TabContent } from "@/components/ui/tab";
 
 const TabSection = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -35,23 +35,6 @@ const TabSection = () => {
       <TabContent content={tabs[activeTab].content} />
     </div>
   );
-};
-
-const TabButton = ({ title, isActive, onClick }: ITabButton) => {
-  return (
-    <button
-      onClick={onClick}
-      className={cn("px-4", isActive ? "border-b-2 border-red-500" : "")}
-    >
-      <Typography variant="heading-sm" color={isActive ? "red" : "primary"}>
-        {title}
-      </Typography>
-    </button>
-  );
-};
-
-const TabContent = ({ content }: ITabContent) => {
-  return <div>{content}</div>;
 };
 
 export default function Page() {

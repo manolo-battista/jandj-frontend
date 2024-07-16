@@ -1,3 +1,4 @@
+"use client";
 import React, { ReactNode } from "react";
 import { Input } from "@/components/ui/input";
 import Icon from "@/components/ui/icon";
@@ -7,8 +8,10 @@ interface NavbarPlatformProps {
   onSearch?(searchedText: string): void;
 }
 
-export default function ActionBarPlatform(props: NavbarPlatformProps) {
-  const { children, onSearch } = props;
+export default function ActionBarPlatform({
+  children,
+  onSearch,
+}: NavbarPlatformProps) {
   return (
     <div className="px-6 py-2 bg-background-active border-b border-gray flex items-center">
       <div className="flex-1">{children}</div>

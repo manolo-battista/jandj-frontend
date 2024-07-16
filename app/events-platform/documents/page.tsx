@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { Typography } from "@/components/ui/typography";
 import NavbarPlatform from "@/components/layout/platform/navbar-platform";
@@ -6,6 +5,7 @@ import PageContainerPlatform from "@/components/layout/platform/page-container-p
 import DocumentCard from "@/components/common/cards/document-card";
 import ActionBarPlatform from "@/components/layout/platform/action-bar-platform";
 import { Button } from "@/components/ui/button";
+import Icon from "@/components/ui/icon";
 export default function Page() {
   return (
     <>
@@ -20,9 +20,16 @@ export default function Page() {
         }
       />
       <ActionBarPlatform
-        onSearch={(searchedText) => console.log("Cerca ", searchedText)}
+      // onSearch={(searchedText) => console.log("Cerca ", searchedText)}
       >
-        <Button variant="outlined">Carica un nuovo template</Button>
+        <Button
+          color="secondary"
+          size="sm"
+          variant="outlined"
+          endIcon={<Icon.Add className="w-4 h-4" />}
+        >
+          Carica un nuovo template
+        </Button>
       </ActionBarPlatform>
       <PageContainerPlatform>
         <Typography variant="heading-card" color="red">
