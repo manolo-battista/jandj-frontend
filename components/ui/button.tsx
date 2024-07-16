@@ -47,6 +47,15 @@ const buttonVariants = cva(
         variant: "link",
         className: "text-red",
       },
+
+      // secondary
+      //   outlined
+      {
+        color: "secondary",
+        variant: "outlined",
+        className:
+          "border border-gray-800 text-gray-800 hover:border-transparent hover:bg-gray-300",
+      },
     ],
     defaultVariants: {
       variant: "default",
@@ -60,7 +69,7 @@ const buttonVariants = cva(
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  color?: "primary";
+  color?: "primary" | "secondary";
   asChild?: boolean;
   startIcon?: ReactNode;
   endIcon?: ReactNode;

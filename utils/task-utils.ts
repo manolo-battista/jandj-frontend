@@ -1,4 +1,4 @@
-import { IKanbanBoardTask } from "@/types/kanbanBoard";
+import { IKanbanBoardTask } from "@/types/kanban-board";
 
 function findTaskById(id: string, tasks: IKanbanBoardTask[]) {
   return tasks.find((task) => task.id === id) as IKanbanBoardTask;
