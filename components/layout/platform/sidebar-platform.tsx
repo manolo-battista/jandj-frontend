@@ -54,11 +54,11 @@ export default function SidebarPlatform() {
             )}
           />
         </Link>
-        <Link href={`${baseUrl}/doctors`}>
+        <Link href={`${baseUrl}/crm`}>
           <Icon.Collaboration
             className={cn(
               iconClassName,
-              pathname === `${baseUrl}/doctors` && "fill-red",
+              pathname === `${baseUrl}/crm` && "fill-red",
             )}
           />
         </Link>

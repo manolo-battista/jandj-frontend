@@ -9,7 +9,7 @@ import Icon from "@/components/ui/icon";
 import { BottomDrawer } from "@/components/common/bottom-drawer";
 import useMobile from "@/hooks/use-mobile";
 import UploadCv from "@/components/pages/guest/check-cv/upload-cv";
-import { SimpleDialog } from "@/components/common/simple-dialog";
+import { UploadDocumentDialog } from "@/components/common/upload-document-dialog";
 import SuccessUploadCv from "@/components/pages/guest/check-cv/success-upload-cv";
 
 export default function CheckCv() {
@@ -53,7 +53,7 @@ export default function CheckCv() {
             )}
 
             {!isMobile && (
-              <SimpleDialog
+              <UploadDocumentDialog
                 title={
                   !uploadCompleted ? "Upload your most updated CV" : "Success!"
                 }
@@ -68,7 +68,7 @@ export default function CheckCv() {
               >
                 {!uploadCompleted && <UploadCv onSubmit={onUploadFiles} />}
                 {uploadCompleted && <SuccessUploadCv />}
-              </SimpleDialog>
+              </UploadDocumentDialog>
             )}
 
             <Button

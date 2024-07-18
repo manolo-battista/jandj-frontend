@@ -8,7 +8,7 @@ interface IconProps {
   className?: string;
 }
 
-const defaultProps = { className: "w-5 flex-no-shrink fill-current" };
+const defaultProps = { className: "w-4 flex-no-shrink fill-current" };
 const IconSet = {
   AccessibleBathroom: (props: IconProps) => (
     <svg

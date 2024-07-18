@@ -20,6 +20,7 @@
 
 body {
   font-family: 'Johnson Text', sans-serif;
+  background: #f8f7f6;
 }
 
 @layer base {

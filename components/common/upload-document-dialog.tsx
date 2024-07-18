@@ -10,38 +10,32 @@ import {
 } from "@/components/ui/dialog";
 import { Typography } from "@/components/ui/typography";
 
-export interface SimpleDialogProps {
+interface UploadDocumentDialogProps {
   trigger: ReactNode;
-  title?: string | ReactNode;
+  title: string | ReactNode;
   description?: string | ReactNode;
   children?: ReactNode;
   onOpenChange?(open: boolean): false | void;
 }
 
-export function SimpleDialog({
+export function UploadDocumentDialog({
   trigger,
   title,
   description,
   children,
   onOpenChange,
-}: SimpleDialogProps) {
+}: UploadDocumentDialogProps) {
   return (
     <Dialog onOpenChange={onOpenChange}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className="max-w-[80%]">
         <DialogHeader>
-          <DialogTitle>
-            <Typography variant="heading-md" color="red">
-              {title}
-            </Typography>
+          <DialogTitle className="text-center">
+            <Typography variant="heading-sm">{title}</Typography>
           </DialogTitle>
-          <DialogDescription>
-            <Typography variant="heading-sm" color="red" className="mt-4">
-              {description}
-            </Typography>
-          </DialogDescription>
+          <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
-        <div>{children}</div>
+        <div className="px-20">{children}</div>
       </DialogContent>
     </Dialog>
   );

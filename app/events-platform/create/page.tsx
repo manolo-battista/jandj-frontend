@@ -5,13 +5,7 @@ import PageContainerPlatform from "@/components/layout/platform/page-container-p
 import Icon from "@/components/ui/icon";
 import EventTypeCard from "@/components/common/cards/event-type-card";
 import { Button } from "@/components/ui/button";
-
-interface IEventType {
-  icon: ReactNode;
-  title: string;
-  description: string;
-  action: "internal" | "iconnect";
-}
+import { IEventType } from "@/types/event";
 
 export default function Page() {
   const eventTypes: IEventType[] = [

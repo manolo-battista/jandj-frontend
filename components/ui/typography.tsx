@@ -16,7 +16,7 @@ const typographyVariants = cva("", {
     variant: {
       "heading-xl": "font-johnson-display text-xl",
       "heading-lg": "font-johnson-display text-lg",
-      "heading-md": "font-johnson-display text-md",
+      "heading-md": "font-johnson-display text-md font-light",
       "heading-sm": "font-johnson-display text-sm",
       "heading-link": "font-johnson-display text-sm",
       "heading-xs": "font-johnson-display text-xs",

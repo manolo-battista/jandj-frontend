@@ -10,6 +10,10 @@ import Icon from "@/components/ui/icon";
 import { TabButton } from "@/components/ui/tab";
 import ActionBarPlatform from "@/components/layout/platform/action-bar-platform";
 import Divider from "@/components/ui/divider";
+import { SimpleDialog } from "@/components/common/simple-dialog";
+import ProfileTypeCard from "@/components/common/cards/profile-type-card";
+import CrmDetailDialog from "@/components/pages/events-platform/crm/crm-detail-dialog";
+import SelectNewProfileDialog from "@/components/pages/events-platform/crm/select-new-profile-dialog";
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
@@ -33,14 +37,18 @@ export default function Page() {
         }
       />
       <ActionBarPlatform>
-        <Button
-          color="secondary"
-          size="sm"
-          variant="outlined"
-          endIcon={<Icon.Add className="w-4 h-4" />}
-        >
-          Aggiungi un nuovo profilo
-        </Button>
+        <SelectNewProfileDialog
+          trigger={
+            <Button
+              color="secondary"
+              size="sm"
+              variant="outlined"
+              endIcon={<Icon.Add className="w-4 h-4" />}
+            >
+              Aggiungi un nuovo profilo
+            </Button>
+          }
+        />
       </ActionBarPlatform>
       <div className="p-6 pb-0">
         {tabs.map((tab, idx) => (
@@ -57,12 +65,17 @@ export default function Page() {
         <div className="grid grid-cols-12 gap-6 mt-2">
           {[0, 1, 2, 3, 4].map((doctor, index) => (
             <div key={index} className="col-span-4">
-              <DoctorCard />
+              <CrmDetailDialog
+                trigger={
+                  <button>
+                    <DoctorCard />
+                  </button>
+                }
+              />
             </div>
           ))}
         </div>
       </PageContainerPlatform>
-      F
     </>
   );
 }

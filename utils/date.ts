@@ -14,10 +14,10 @@ export function getDate(
   }
   if (isValidDate(tmpDate))
     return Intl.DateTimeFormat(
-      locale ?? "fr-CA",
+      locale ?? "it-IT",
       options ?? {
         year: "numeric",
-        month: "2-digit",
+        month: "long",
         day: "2-digit",
       },
     )?.format(tmpDate as Date);
