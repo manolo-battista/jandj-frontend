@@ -1,18 +1,28 @@
-import { IStatus } from "./status";
+import { SetStateAction } from "react";
+
+type ITasks = {
+  todo: IKanbanBoardTask[];
+  done: IKanbanBoardTask[];
+  blocked: IKanbanBoardTask[];
+  inProgress: IKanbanBoardTask[];
+};
 
 type IKanbanBoardColumn = {
-  tasks: IKanbanBoardTask[];
+  columnTasks: IKanbanBoardTask[];
+  allTasks: IKanbanBoardTask[];
   title: string;
   id: string;
-  onDuplicateTask: (taskID: string) => void;
-  onDeleteTask: (taskID: string) => void;
+  setTasks: React.Dispatch<React.SetStateAction<ITasks>>;
 };
 
 type IKanbanBoardTask = {
   id: string;
+  title: string;
   content: string;
   status: ITaskStatus;
-  priority: IStatus;
+  priority: ITaskPriority | undefined;
+  date: Date | undefined;
+  files?: string[];
 };
 
 type IDragResult = {
@@ -34,4 +44,11 @@ export enum ITaskStatus {
   DONE = "done",
 }
 
-export type { IKanbanBoardColumn, IKanbanBoardTask, IDragResult };
+export enum ITaskPriority {
+  URGENT = "urgente",
+  LOW_PRIORITY = "priorità bassa",
+  MEDIUM_PRIORITY = "priorità media",
+  HIGHT_PRIORITY = "priorità alta",
+}
+
+export type { IKanbanBoardColumn, IKanbanBoardTask, IDragResult, ITasks };

@@ -10,7 +10,7 @@ import AvatarProfile from "@/components/common/avatar-profile";
 import Divider from "@/components/ui/divider";
 import KanbanBoard from "@/components/pages/events-platform/activities-tracker/kanban-board";
 import { IStatus } from "@/types/status";
-import { TabButton, TabContent } from "@/components/ui/tab";
+import { ITabButton, ITabContent } from "@/types/tab";
 
 const TabSection = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -20,8 +20,8 @@ const TabSection = () => {
     { title: "Documents", content: "Tab 3" },
   ];
   return (
-    <div className="w-full mt-6">
-      <div className="flex justify-center items-center gap-10">
+    <div className="mt-6 w-full">
+      <div className="flex items-center justify-center gap-10">
         {tabs.map((tab, idx) => (
           <TabButton
             key={idx}
@@ -35,6 +35,23 @@ const TabSection = () => {
       <TabContent content={tabs[activeTab].content} />
     </div>
   );
+};
+
+const TabButton = ({ title, isActive, onClick }: ITabButton) => {
+  return (
+    <button
+      onClick={onClick}
+      className={cn("px-4", isActive ? "border-b-2 border-red-500" : "")}
+    >
+      <Typography variant="heading-sm" color={isActive ? "red" : "primary"}>
+        {title}
+      </Typography>
+    </button>
+  );
+};
+
+const TabContent = ({ content }: ITabContent) => {
+  return <div className="min-w-[1024px] overflow-x-auto">{content}</div>;
 };
 
 export default function Page() {
@@ -55,7 +72,7 @@ export default function Page() {
     <>
       <NavbarPlatform
         title={
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2">
             <StatusBadge status={IStatus.DRAFT} />
             <Typography variant="heading-card">
               New perspectives in multiple myeloma
@@ -68,7 +85,7 @@ export default function Page() {
           Event Details
         </Typography>
 
-        <div className={cn("p-4 py-6 bg-card")}>
+        <div className={cn("bg-card p-4 py-6")}>
           <div className="grid grid-cols-12">
             <div className="col-span-8">
               <div>
@@ -92,7 +109,7 @@ export default function Page() {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-12 mt-8">
+              <div className="mt-8 grid grid-cols-12">
                 <div className="col-span-6">
                   <Typography variant="body-xs" className="mb-4">
                     Attendees
@@ -106,7 +123,7 @@ export default function Page() {
                   <Typography variant="body-xs" className="mb-4">
                     Panel
                   </Typography>
-                  <div className="flex gap-2 items-center">
+                  <div className="flex items-center gap-2">
                     <Typography color="inverse" className="underline">
                       See the list
                     </Typography>

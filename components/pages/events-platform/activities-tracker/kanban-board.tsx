@@ -1,6 +1,5 @@
 "use client";
 
-import { StatusBadge } from "@/components/common/status-badge";
 import Divider from "@/components/ui/divider";
 import Icon from "@/components/ui/icon";
 import { Typography } from "@/components/ui/typography";
@@ -8,6 +7,8 @@ import {
   IDragResult,
   IKanbanBoardColumn,
   IKanbanBoardTask,
+  ITaskPriority,
+  ITasks,
   ITaskStatus,
 } from "@/types/kanban-board";
 import { useState } from "react";
@@ -20,67 +21,85 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
-import { IStatus } from "@/types/status";
+import TaskDetailDialog from "./task-detail-dialog";
+import CreateTaskDialog from "./create-task-dialog";
+import { formattedTaskStatusTitle } from "@/utils/getStatusTitle";
+import { getFormattedDate } from "@/utils/getFormattedDate";
+import { PriorityBadge } from "./priority-badge";
 
 const mockedTasks = {
   todo: [
     {
       id: "1",
-      content: "Send Reminder to confirm actual CV to Mr. Lars Ulrich",
-      priority: IStatus.URGENT,
+      title: "Send Reminder to confirm actual CV to Mr. Lars Ulrich",
+      content:
+        "Il Curriculum del dott. Ulrich è stato aggiornato l’ultima volta più di un anno fa (il 15 Giu 2021), quindi è considerato obsoleto. Chiedi al dottore se è la versione più aggiornata.",
+      priority: ITaskPriority.URGENT,
       status: ITaskStatus.TODO,
+      date: new Date(),
     },
     {
       id: "2",
-      content:
+      title:
         "Book appointment for privacy module signature with Mrs. Tania Lee",
-      priority: IStatus.HIGHT_PRIORITY,
+      content:
+        "Il Curriculum del dott. Ulrich è stato aggiornato l’ultima volta più di un anno fa (il 15 Giu 2021), quindi è considerato obsoleto. Chiedi al dottore se è la versione più aggiornata.",
+      priority: ITaskPriority.HIGHT_PRIORITY,
       status: ITaskStatus.TODO,
+      date: new Date(),
     },
   ],
   inProgress: [
     {
       id: "3",
-      content: "PROVA",
-      priority: IStatus.LOW_PRIORITY,
+      title: "PROVA",
+      content:
+        "Il Curriculum del dott. Ulrich è stato aggiornato l’ultima volta più di un anno fa (il 15 Giu 2021), quindi è considerato obsoleto. Chiedi al dottore se è la versione più aggiornata.",
+      priority: ITaskPriority.LOW_PRIORITY,
       status: ITaskStatus.IN_PROGRESS,
+      date: new Date(),
     },
   ],
   done: [
     {
       id: "5",
-      content: "Collect updated CV document from Mr. Marc Wright",
-      priority: IStatus.MEDIUM_PRIORITY,
+      title: "Collect updated CV document from Mr. Marc Wright",
+      content:
+        "Il Curriculum del dott. Ulrich è stato aggiornato l’ultima volta più di un anno fa (il 15 Giu 2021), quindi è considerato obsoleto. Chiedi al dottore se è la versione più aggiornata.",
+      priority: ITaskPriority.MEDIUM_PRIORITY,
       status: ITaskStatus.DONE,
+      date: new Date(),
     },
     {
       id: "6",
-      content: "AsciugCollect updated CV document from Mr. John Doere",
-      priority: IStatus.URGENT,
+      title: "AsciugCollect updated CV document from Mr. John Doere",
+      content:
+        "Il Curriculum del dott. Ulrich è stato aggiornato l’ultima volta più di un anno fa (il 15 Giu 2021), quindi è considerato obsoleto. Chiedi al dottore se è la versione più aggiornata.",
+      priority: ITaskPriority.URGENT,
       status: ITaskStatus.DONE,
+      date: new Date(),
     },
   ],
   blocked: [
     {
       id: "7",
-      content: "Collect updated CV document from Mr. Marc Wright",
-      priority: IStatus.HIGHT_PRIORITY,
+      title: "Collect updated CV document from Mr. Marc Wright",
+      content:
+        "Il Curriculum del dott. Ulrich è stato aggiornato l’ultima volta più di un anno fa (il 15 Giu 2021), quindi è considerato obsoleto. Chiedi al dottore se è la versione più aggiornata.",
+      priority: ITaskPriority.HIGHT_PRIORITY,
       status: ITaskStatus.BLOCKED,
+      date: new Date(),
     },
     {
       id: "8",
-      content: "Collect updated CV document from Mr. John Doe",
-      priority: IStatus.LOW_PRIORITY,
+      title: "Collect updated CV document from Mr. John Doe",
+      content:
+        "Il Curriculum del dott. Ulrich è stato aggiornato l’ultima volta più di un anno fa (il 15 Giu 2021), quindi è considerato obsoleto. Chiedi al dottore se è la versione più aggiornata.",
+      priority: ITaskPriority.LOW_PRIORITY,
       status: ITaskStatus.BLOCKED,
+      date: new Date(),
     },
   ],
-};
-
-type ITasks = {
-  todo: IKanbanBoardTask[];
-  done: IKanbanBoardTask[];
-  blocked: IKanbanBoardTask[];
-  inProgress: IKanbanBoardTask[];
 };
 
 export default function KanbanBoard() {
@@ -89,28 +108,16 @@ export default function KanbanBoard() {
     inProgress: [...mockedTasks.inProgress],
     blocked: [...mockedTasks.blocked],
     done: [...mockedTasks.done],
+    blocked: [...mockedTasks.blocked],
+    done: [...mockedTasks.done],
   });
+  const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
   const allTasks = [
     ...tasks.todo,
     ...tasks.done,
     ...tasks.blocked,
     ...tasks.inProgress,
   ];
-
-  const getColumnTitle = (columnId: string) => {
-    switch (columnId) {
-      case "todo":
-        return "Da fare";
-      case "inProgress":
-        return "In corso";
-      case "blocked":
-        return "Bloccate";
-      case "done":
-        return "Concluse";
-      default:
-        return "";
-    }
-  };
 
   function handleDragEnd(result: IDragResult) {
     const { destination, source, draggableId } = result;
@@ -123,6 +130,7 @@ export default function KanbanBoard() {
     if (!selectedTask) return;
     if (!destination) return;
 
+    selectedTask.status = destination?.droppableId as ITaskStatus;
     selectedTask.status = destination?.droppableId as ITaskStatus;
     const sourceTasks = tasks[source.droppableId as keyof ITasks];
     const remainedTasks = removeTaskById(draggableId, sourceTasks);
@@ -155,61 +163,60 @@ export default function KanbanBoard() {
     });
   }
 
-  function handleDuplicateTask(taskID: string) {
-    const task = findTaskById(taskID, allTasks);
-    if (!task) return;
-    const newTask = { ...task, id: JSON.stringify(allTasks.length + 2) };
-
+  function handleCreateNewTask(task: IKanbanBoardTask) {
+    const taskID = JSON.stringify(allTasks.length + 2);
+    const status = task.status;
     setTasks({
       ...tasks,
-      [task.status]: [...tasks[task.status], newTask],
-    });
-  }
-
-  function handleDeliteTask(taskID: string) {
-    const task = findTaskById(taskID, allTasks);
-    if (!task) return;
-
-    const updatedTasks = removeTaskById(taskID, tasks[task.status]);
-    setTasks({
-      ...tasks,
-      [task.status]: updatedTasks,
+      [status]: [...tasks[status], { ...task, id: taskID }],
     });
   }
 
   return (
-    <DragDropContext onDragEnd={handleDragEnd}>
-      <Button
-        color="secondary"
-        variant="outlined"
-        startIcon={<Icon.Add />}
-        className="ml-3 mt-6"
-        onClick={() => console.log("Add new task")}
-      >
-        Aggiungi una nuova task
-      </Button>
-      <div className="grid grid-cols-4 gap-3 divide-x-2 divide-gray-300 mt-4">
-        {Object.keys(tasks).map((key) => (
-          <KanbanBoardColumn
-            tasks={tasks[key as keyof ITasks]}
-            title={getColumnTitle(key)}
-            id={key}
-            key={key}
-            onDuplicateTask={(taskID: string) => handleDuplicateTask(taskID)}
-            onDeleteTask={(taskID: string) => handleDeliteTask(taskID)}
+    <>
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <div className="mt-6 px-3">
+          <CreateTaskDialog
+            onOpenChange={(open: boolean) =>
+              !open && setIsCreateDialogOpen(false)
+            }
+            onSubmit={handleCreateNewTask}
+            trigger={
+              <Button
+                color="secondary"
+                variant="outlined"
+                size={"sm"}
+                startIcon={<Icon.Add className="h-4 w-4" />}
+                onClick={() => setIsCreateDialogOpen(true)}
+              >
+                Aggiungi una nuova task
+              </Button>
+            }
           />
-        ))}
-      </div>
-    </DragDropContext>
+        </div>
+        <div className="mt-4 grid grid-cols-4 gap-3 divide-x-2 divide-gray-300">
+          {Object.keys(tasks).map((key) => (
+            <KanbanBoardColumn
+              setTasks={setTasks}
+              columnTasks={tasks[key as keyof ITasks]}
+              allTasks={allTasks}
+              title={formattedTaskStatusTitle(key as ITaskStatus)}
+              id={key}
+              key={key}
+            />
+          ))}
+        </div>
+      </DragDropContext>
+    </>
   );
 }
 
 function KanbanBoardColumn({
-  tasks,
+  columnTasks,
+  allTasks,
   title,
   id,
-  onDeleteTask,
-  onDuplicateTask,
+  setTasks,
 }: IKanbanBoardColumn) {
   return (
     <div className="px-3">
@@ -225,13 +232,14 @@ function KanbanBoardColumn({
               ref={provide.innerRef}
               {...provide.droppableProps}
             >
-              {tasks.map((task, index) => (
+              {columnTasks.map((task: IKanbanBoardTask, index: number) => (
                 <KanbanBoardTask
                   {...task}
                   key={task.id}
+                  allTasks={allTasks}
                   index={index}
-                  onDuplicateTask={() => onDuplicateTask(task.id)}
-                  onDeleteTask={() => onDeleteTask(task.id)}
+                  columnTasks={columnTasks}
+                  setTasks={setTasks}
                 />
               ))}
             </div>
@@ -243,74 +251,150 @@ function KanbanBoardColumn({
 }
 
 function KanbanBoardTask({
-  content,
-  id,
-  priority,
   index,
-  onDuplicateTask,
-  onDeleteTask,
+  setTasks,
+  allTasks,
+  columnTasks,
+  ...taskProps
 }: IKanbanBoardTask & {
   index: number;
-  onDuplicateTask: () => void;
-  onDeleteTask: () => void;
+  allTasks: IKanbanBoardTask[];
+  columnTasks: IKanbanBoardTask[];
+  setTasks: React.Dispatch<React.SetStateAction<ITasks>>;
 }) {
-  return (
-    <Draggable draggableId={id} key={id} index={index as number}>
-      {(provide) => (
-        <div
-          className="bg-white p-4 flex-col mt-2 max-h-fit"
-          ref={provide.innerRef}
-          {...provide.draggableProps}
-          {...provide.dragHandleProps}
-        >
-          <div className="flex justify-between items-center">
-            <StatusBadge status={priority} className="capitalize" />
-            <DropdownMenu>
-              <DropdownMenuTrigger>
-                <Icon.DotsMenu />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white w-[150px] shadow-md ">
-                <DropdownMenuItem
-                  className="flex gap-4 items-center min-h-[34px] hover:bg-gray-200 p-2"
-                  onClick={onDuplicateTask}
-                >
-                  <Icon.Stationery className="w-4 h-4" />
-                  <Typography variant="legal">Duplica</Typography>
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  className="flex gap-4 items-center min-h-[34px] hover:bg-gray-200 p-2"
-                  onClick={onDeleteTask}
-                >
-                  <Icon.AFib className="w-4 h-4" />
-                  <Typography variant="legal">Elimina</Typography>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-          <Typography variant="body-md" color="primary" className="mt-2">
-            {content}
-          </Typography>
-          <Divider className="bg-gray-300" />
-          <div className="flex justify-between mt-2">
-            <div className="flex items-center gap-1">
-              <Icon.Calendar className="w-3 h-3 fill-gray-400" />
-              <Typography variant="body-xs-bold" color="primary">
-                26 Sep 2024
-              </Typography>
+  function onDuplicateTask() {
+    const newTask = { ...taskProps, id: JSON.stringify(allTasks.length + 2) };
+    setTasks((prev) => {
+      return {
+        ...prev,
+        [taskProps.status]: [...columnTasks, newTask],
+      };
+    });
+  }
+
+  function onDeleteTask() {
+    const updatedTasks = removeTaskById(taskProps.id, columnTasks);
+    setTasks((prev) => {
+      return {
+        ...prev,
+        [taskProps.status]: updatedTasks,
+      };
+    });
+  }
+
+  function onEditTask(editedTask: IKanbanBoardTask) {
+    const taskBeforeEdit = findTaskById(editedTask.id, allTasks);
+    const isStatusChanged = editedTask.status !== taskBeforeEdit.status;
+    const remainedTasks = removeTaskById(editedTask.id, columnTasks);
+
+    if (isStatusChanged) {
+      setTasks((prev) => {
+        return {
+          ...prev,
+          // Remove the task from the previous status
+          [taskBeforeEdit.status]: remainedTasks,
+          // Add the task to the new status
+          [editedTask.status]: [...prev[editedTask.status], editedTask],
+        };
+      });
+    } else {
+      const updatedTasks = columnTasks.map((task) => {
+        if (task.id === editedTask.id) {
+          return editedTask;
+        }
+        return task;
+      });
+      setTasks((prev) => {
+        return {
+          ...prev,
+          [editedTask.status]: updatedTasks,
+        };
+      });
+    }
+  }
+
+  return (
+    <>
+      <Draggable
+        draggableId={taskProps.id}
+        key={taskProps.id}
+        index={index as number}
+      >
+        {(provide) => (
+          <div
+            className="group mt-2 max-h-fit flex-col bg-white p-4"
+            ref={provide.innerRef}
+            {...provide.draggableProps}
+            {...provide.dragHandleProps}
+            onClick={() => setIsDialogOpen(true)}
+          >
+            <div className="flex items-center justify-between">
+              <PriorityBadge priority={taskProps.priority ?? "placeholder"} />
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Icon.DotsMenu />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-[150px] bg-white shadow-md">
+                  <DropdownMenuItem
+                    className="flex min-h-[34px] items-center gap-4 p-2 hover:bg-gray-200"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onDuplicateTask();
+                    }}
+                  >
+                    <Icon.Stationery className="h-4 w-4" />
+                    <Typography variant="legal">Duplica</Typography>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="flex min-h-[34px] items-center gap-4 p-2 hover:bg-gray-200"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onDeleteTask();
+                    }}
+                  >
+                    <Icon.AFib className="h-4 w-4" />
+                    <Typography variant="legal">Elimina</Typography>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
-            <div className="flex gap-1">
-              <div className="flex items-center">
-                <Icon.Document className="w-3 h-3 fill-gray-400 mr-1" />
+
+            <Typography
+              variant="body-md"
+              color="primary"
+              className="mt-2 group-hover:text-red"
+            >
+              {taskProps.title}
+            </Typography>
+            <Divider className="bg-gray-300" />
+            <div className="mt-2 flex justify-between">
+              <div className="flex items-center gap-1">
+                <Icon.Calendar className="h-3 w-3 fill-gray-400" />
                 <Typography variant="body-xs-bold" color="primary">
-                  0
+                  {getFormattedDate(taskProps.date)}
                 </Typography>
               </div>
+              <div className="flex gap-1">
+                <div className="flex items-center">
+                  <Icon.Document className="mr-1 h-3 w-3 fill-gray-400" />
+                  <Typography variant="body-xs-bold" color="primary">
+                    {taskProps.files?.length ?? 0}
+                  </Typography>
+                </div>
+              </div>
             </div>
+            {/* {children} */}
           </div>
-          {/* {children} */}
-        </div>
-      )}
-    </Draggable>
+        )}
+      </Draggable>
+      <TaskDetailDialog
+        setOpen={setIsDialogOpen}
+        isOpen={isDialogOpen}
+        task={taskProps}
+        onSubmit={onEditTask}
+      />
+    </>
   );
 }

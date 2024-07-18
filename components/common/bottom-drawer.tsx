@@ -28,7 +28,7 @@ export function BottomDrawer(props: BottomDrawerProps) {
     <Drawer onOpenChange={onOpenChange}>
       <DrawerTrigger asChild>{trigger}</DrawerTrigger>
       <DrawerContent>
-        <div className="mx-auto h-[96vh] md:h-screen w-full p-4">
+        <div className="mx-auto h-[96vh] w-full p-4 md:h-screen">
           <DrawerClose asChild>
             <Typography variant="body-label" color="red" className="flex gap-3">
               <Icon.ArrowLeft />

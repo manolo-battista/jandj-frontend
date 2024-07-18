@@ -128,7 +128,7 @@ export default function Page() {
       <Typography variant="heading-lg" className="mt-4">
         Icons
       </Typography>
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex flex-wrap gap-2">
         <Icon.AccessibleBathroom />
         <Icon.AccessibleParking />
         <Icon.Add />

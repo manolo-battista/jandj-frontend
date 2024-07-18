@@ -6,7 +6,7 @@ import { Typography } from "@/components/ui/typography";
 import { ReactNode } from "react";
 
 const buttonVariants = cva(
-  "rounded-full cursor-pointer inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "rounded-full cursor-pointer inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -95,7 +95,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         className={cn(
           buttonVariants({ variant, color, className, size }),
-          disabled && "bg-gray-200 text-gray-400 border-0 cursor-not-allowed",
+          disabled && "cursor-not-allowed border-0 bg-gray-200 text-gray-400",
         )}
         ref={ref}
         {...props}
