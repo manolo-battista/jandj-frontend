@@ -171,7 +171,7 @@ export default function KanbanBoard() {
   }
 
   return (
-    <div className="absolute max-w-full">
+    <div className="absolute max-w-full pb-10">
       <DragDropContext onDragEnd={handleDragEnd}>
         <div className="mt-6 px-3">
           <CreateTaskDialog
@@ -192,7 +192,7 @@ export default function KanbanBoard() {
             }
           />
         </div>
-        <div className="mt-4 flex gap-3 divide-x-2 divide-gray-300 overflow-x-auto">
+        <div className="mt-4 flex gap-3 divide-x-2 divide-gray-300 overflow-x-auto overflow-y-hidden">
           {Object.keys(tasks).map((key) => (
             <KanbanBoardColumn
               setTasks={setTasks}
