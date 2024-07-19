@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/table";
 import { Typography } from "@/components/ui/typography";
 import React from "react";
+import { AttendeeStatus, AttendeeStatusBadge } from "./attedee-status-badge";
 
 const mockedLabels = [
   {
@@ -55,9 +56,12 @@ export default function Attendees() {
           ))}
         </TableRow>
       </TableHeader>
-      <div className="mt-6"></div>
+      <div className="mt-"></div>
       <TableBody>
-        <TableRow>
+        <TableRow
+          className="cursor-pointer border-gray"
+          onClick={() => console.log("open dialog")}
+        >
           <TableCell>
             <AvatarBadge name="Dott. Nome Cognome" role="Specializzazione" />
           </TableCell>
@@ -75,8 +79,62 @@ export default function Attendees() {
               </Typography>
             </div>
           </TableCell>
+          <TableCell>
+            <Typography variant="body-sm">12345678</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body-sm">12345678</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body-sm">€ 980,00</Typography>
+          </TableCell>
+          <TableCell>
+            <AttendeeStatusBadge status={AttendeeStatus.APPROVED} />
+          </TableCell>
+          <TableCell>
+            <AttendeeStatusBadge status={AttendeeStatus.MISS_APPROVED} />
+          </TableCell>
+          <TableCell>
+            <AttendeeStatusBadge status={AttendeeStatus.SENT_FOR_SIGNATURE} />
+          </TableCell>
         </TableRow>
-        <TableRow></TableRow>
+        <TableRow>
+          <TableCell>
+            <AvatarBadge name="Dott.ssa Nome Cognome" role="Specializzazione" />
+          </TableCell>
+          <TableCell className="flex h-full justify-start gap-4">
+            <div className="flex flex-col items-center">
+              <Icon.Document />
+              <Typography variant="body-sm" color="inverse">
+                CV
+              </Typography>
+            </div>
+            <div className="flex flex-col items-center">
+              <Icon.Close className="text-red" />
+              <Typography variant="body-sm" color="inverse">
+                QI
+              </Typography>
+            </div>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body-sm">12345678</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body-sm">12345678</Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body-sm">€ 980,00</Typography>
+          </TableCell>
+          <TableCell>
+            <AttendeeStatusBadge status={AttendeeStatus.REJECTED} />
+          </TableCell>
+          <TableCell>
+            <AttendeeStatusBadge status={AttendeeStatus.TO_PAY} />
+          </TableCell>
+          <TableCell>
+            <AttendeeStatusBadge status={AttendeeStatus.TO_APPROVE} />
+          </TableCell>
+        </TableRow>
       </TableBody>
     </Table>
   );
