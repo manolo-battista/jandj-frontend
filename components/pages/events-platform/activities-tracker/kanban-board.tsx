@@ -108,8 +108,6 @@ export default function KanbanBoard() {
     inProgress: [...mockedTasks.inProgress],
     blocked: [...mockedTasks.blocked],
     done: [...mockedTasks.done],
-    blocked: [...mockedTasks.blocked],
-    done: [...mockedTasks.done],
   });
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
   const allTasks = [
@@ -173,7 +171,7 @@ export default function KanbanBoard() {
   }
 
   return (
-    <>
+    <div className="absolute max-w-full">
       <DragDropContext onDragEnd={handleDragEnd}>
         <div className="mt-6 px-3">
           <CreateTaskDialog
@@ -194,7 +192,7 @@ export default function KanbanBoard() {
             }
           />
         </div>
-        <div className="mt-4 grid grid-cols-4 gap-3 divide-x-2 divide-gray-300">
+        <div className="mt-4 flex gap-3 divide-x-2 divide-gray-300 overflow-x-auto">
           {Object.keys(tasks).map((key) => (
             <KanbanBoardColumn
               setTasks={setTasks}
@@ -207,7 +205,7 @@ export default function KanbanBoard() {
           ))}
         </div>
       </DragDropContext>
-    </>
+    </div>
   );
 }
 
@@ -219,7 +217,7 @@ function KanbanBoardColumn({
   setTasks,
 }: IKanbanBoardColumn) {
   return (
-    <div className="px-3">
+    <div className="min-w-[300px] px-3">
       <Typography variant="heading-xs" color="primary">
         {title}
       </Typography>

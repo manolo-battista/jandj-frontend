@@ -65,7 +65,7 @@ export default function TaskDetailDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={setOpen}>
-      <DialogContent className="max-h-[90%] max-w-[80%] overflow-y-scroll py-14">
+      <DialogContent className="max-h-[80%] max-w-[80%] overflow-y-scroll py-14">
         <DialogHeader
           className="flex cursor-pointer flex-row items-center gap-2"
           onClick={handleEditing}
@@ -78,9 +78,10 @@ export default function TaskDetailDialog({
 
         {isEditing ? (
           <Textarea
-            className={cn("mt-4 text-md")}
+            className={cn("mt-4 border-none p-0 text-md")}
             placeholder="Titolo"
             value={taskData.title}
+            autoFocus={true}
             onChange={(e) =>
               setTaskData({ ...taskData, title: e.target.value })
             }
@@ -96,22 +97,22 @@ export default function TaskDetailDialog({
         )}
 
         <div className="grid w-[50%] grid-cols-2 gap-4">
-          <div className="col-span-1 grid grid-rows-3 gap-6">
-            <div className="flex items-center gap-2">
+          <div className="col-span-1 grid grid-rows-3 gap-2">
+            <div className="flex h-10 items-center gap-2">
               <Icon.Chart className={cn(iconStyle)} />
               <Typography variant="body-md">Stato</Typography>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex h-10 items-center gap-2">
               <Icon.Calendar className={cn(iconStyle)} />
               <Typography variant="body-md">Data di Scadenza</Typography>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex h-10 items-center gap-2">
               <Icon.CircleAlert className={cn(iconStyle)} />
               <Typography variant="body-md">Priorità</Typography>
             </div>
           </div>
 
-          <div className="col-span-1 grid grid-rows-3 gap-6">
+          <div className="col-span-1 grid grid-rows-3 gap-2">
             {isEditing ? (
               <Select
                 disabled={!isEditing}

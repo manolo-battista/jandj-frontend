@@ -51,7 +51,7 @@ const TabButton = ({ title, isActive, onClick }: ITabButton) => {
 };
 
 const TabContent = ({ content }: ITabContent) => {
-  return <div className="min-w-[1024px] overflow-x-auto">{content}</div>;
+  return <div className="relative">{content}</div>;
 };
 
 export default function Page() {

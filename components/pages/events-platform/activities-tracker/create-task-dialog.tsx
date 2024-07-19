@@ -1,6 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { DialogHeader, Dialog, DialogContent } from "@/components/ui/dialog";
+import {
+  DialogHeader,
+  Dialog,
+  DialogContent,
+  DialogClose,
+} from "@/components/ui/dialog";
 import Dropzone from "@/components/ui/dropzone";
 import Icon from "@/components/ui/icon";
 import {
@@ -66,7 +71,7 @@ export default function TaskDetailDialog({
     <Dialog onOpenChange={onOpenChange}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
 
-      <DialogContent className="max-h-[90%] max-w-[80%] overflow-y-scroll py-14">
+      <DialogContent className="max-h-[80%] max-w-[80%] overflow-y-scroll py-14">
         <Textarea
           className={cn("mt-4 text-md")}
           placeholder="Titolo"
@@ -185,14 +190,16 @@ export default function TaskDetailDialog({
         </Dropzone>
         <Divider className="mt-10" />
         <div className="mt-6 flex justify-end">
-          <Button
-            onClick={handleSubmit}
-            startIcon={<Icon.Check className="h-6 w-6" />}
-          >
-            <Typography variant="body-md" color="on-color">
-              Pubblica Task
-            </Typography>
-          </Button>
+          <DialogClose asChild>
+            <Button
+              onClick={handleSubmit}
+              startIcon={<Icon.Check className="h-6 w-6" />}
+            >
+              <Typography variant="body-md" color="on-color">
+                Pubblica Task
+              </Typography>
+            </Button>
+          </DialogClose>
         </div>
       </DialogContent>
     </Dialog>
