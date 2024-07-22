@@ -11,12 +11,13 @@ import Divider from "@/components/ui/divider";
 import KanbanBoard from "@/components/pages/events-platform/activities-tracker/kanban-board";
 import { IStatus } from "@/types/status";
 import { ITabButton, ITabContent } from "@/types/tab";
+import Attendees from "@/components/pages/events-platform/attendees/attendees";
 
 const TabSection = () => {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
     { title: "Activities Tracker", content: <KanbanBoard /> },
-    { title: "Attendees", content: "Tab 2" },
+    { title: "Attendees", content: <Attendees /> },
     { title: "Documents", content: "Tab 3" },
   ];
   return (
@@ -51,7 +52,7 @@ const TabButton = ({ title, isActive, onClick }: ITabButton) => {
 };
 
 const TabContent = ({ content }: ITabContent) => {
-  return <div className="min-w-[1024px] overflow-x-auto">{content}</div>;
+  return <div className="relative">{content}</div>;
 };
 
 export default function Page() {

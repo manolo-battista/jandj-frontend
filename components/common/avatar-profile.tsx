@@ -33,21 +33,21 @@ export default function AvatarProfile(props: AvatarProfileProps) {
   return index < maxLength ? (
     <Avatar
       className={cn(
-        "border-[2px] border-white w-7 h-7",
+        "h-7 w-7 border-[2px] border-white",
         index > 0 && "-ml-[7px]",
         colorList[index],
         className,
       )}
     >
       <AvatarFallback>
-        <Typography className="text-white text-[14px]">
+        <Typography className="text-[14px] text-white">
           {getInitials()}
         </Typography>
       </AvatarFallback>
     </Avatar>
   ) : (
     index === maxLength && (
-      <Typography className="mt-[2px] ml-1">+{length - maxLength}</Typography>
+      <Typography className="ml-1 mt-[2px]">+{length - maxLength}</Typography>
     )
   );
 }

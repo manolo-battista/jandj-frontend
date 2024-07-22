@@ -56,7 +56,7 @@ function StatusBadge({ className, variant, status, ...props }: BadgeProps) {
           <div className="flex items-center gap-1">
             <div className="h-2 w-2 rounded-full bg-red"></div>
             {status}
-          </span>
+          </div>
         ) : (
           status
         )}
