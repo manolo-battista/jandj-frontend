@@ -4,14 +4,12 @@ import React, { useState } from "react";
 import { Typography } from "@/components/ui/typography";
 import NavbarPlatform from "@/components/layout/platform/navbar-platform";
 import PageContainerPlatform from "@/components/layout/platform/page-container-platform";
-import DoctorCard from "@/components/common/cards/doctor-card";
+import CrmCard from "@/components/common/cards/doctor-card";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import { TabButton } from "@/components/ui/tab";
 import ActionBarPlatform from "@/components/layout/platform/action-bar-platform";
 import Divider from "@/components/ui/divider";
-import { SimpleDialog } from "@/components/common/simple-dialog";
-import ProfileTypeCard from "@/components/common/cards/profile-type-card";
 import CrmDetailDialog from "@/components/pages/events-platform/crm/crm-detail-dialog";
 import SelectNewProfileDialog from "@/components/pages/events-platform/crm/select-new-profile-dialog";
 export default function Page() {
@@ -68,7 +66,7 @@ export default function Page() {
               <CrmDetailDialog
                 trigger={
                   <button>
-                    <DoctorCard />
+                    <CrmCard />
                   </button>
                 }
               />

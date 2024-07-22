@@ -11,23 +11,19 @@ import AvatarProfile from "@/components/common/avatar-profile";
 import Document from "@/components/common/document";
 import { Badge } from "@/components/ui/badge";
 
-interface DoctorCardProps {
+interface CrmCardProps {
   variant?: "default" | "compact";
   className?: string;
 }
-export default function DoctorCard(props: DoctorCardProps) {
+export default function CrmCard(props: CrmCardProps) {
   const { variant = "default", className } = props;
   const isCompact = variant == "compact";
 
   const mockAttendees = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (
     <div className={cn("bg-card p-4 py-6", className)}>
-      <div className="flex items-center gap-2">
-        <AvatarProfile
-          name="Utente Prova"
-          className="h-12 w-12"
-          textVariant={"body-label"}
-        />
+      <div className="flex items-center gap-2 text-left">
+        <AvatarProfile name="Utente Prova" className="h-12 w-12" />
         <div>
           <Typography variant="heading-sm">Dr. Name Surname</Typography>
           <Typography variant="body-sm" color="inverse">
