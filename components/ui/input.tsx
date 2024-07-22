@@ -47,6 +47,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       type,
       hasError,
       helperText,
+      onChange,
       ...props
     },
     ref,
@@ -72,7 +73,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               )}
               ref={ref}
               {...props}
-              onChange={(e) => console.log(e.target.value)}
             />
           ) : (
             <Typography

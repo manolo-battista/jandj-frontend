@@ -19,6 +19,7 @@ export default function ActionBarPlatform({
         className="max-w-[40%]"
         placeholder="Cerca per nome"
         endIcon={<Icon.Search className="w-6 fill-red" />}
+        // @ts-ignore
         onChange={(e) => onSearch?.(e.target.value)}
       />
     </div>

@@ -23,8 +23,8 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import TaskDetailDialog from "./task-detail-dialog";
 import CreateTaskDialog from "./create-task-dialog";
-import { formattedTaskStatusTitle } from "@/utils/getStatusTitle";
-import { getFormattedDate } from "@/utils/getFormattedDate";
+import { getFormattedDate } from "@/utils/get-formatted-date";
+import { formattedTaskStatusTitle } from "@/utils/get-status-title";
 import { PriorityBadge } from "./priority-badge";
 
 const mockedTasks = {

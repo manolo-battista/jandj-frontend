@@ -22,8 +22,8 @@ import {
   ITaskPriority,
   ITaskStatus,
 } from "@/types/kanban-board";
-import { getFormattedDate } from "@/utils/getFormattedDate";
-import { formattedTaskStatusTitle } from "@/utils/getStatusTitle";
+import { getFormattedDate } from "@/utils/get-formatted-date";
+import { formattedTaskStatusTitle } from "@/utils/get-status-title";
 import React, { useState } from "react";
 import { PriorityBadge } from "./priority-badge";
 import { Textarea } from "@/components/ui/textarea";

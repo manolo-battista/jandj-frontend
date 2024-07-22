@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Typography } from "@/components/ui/typography";
 import NavbarPlatform from "@/components/layout/platform/navbar-platform";
 import PageContainerPlatform from "@/components/layout/platform/page-container-platform";
-import CrmCard from "@/components/common/cards/doctor-card";
+import CrmCard from "@/components/common/cards/crm-card";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import { TabButton } from "@/components/ui/tab";
