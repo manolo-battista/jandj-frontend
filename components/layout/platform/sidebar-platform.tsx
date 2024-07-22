@@ -28,11 +28,11 @@ export default function SidebarPlatform() {
   const iconClassName = "cursor-pointer fill-gray hover:fill-red w-6";
   const baseUrl = "/events-platform";
   return (
-    <div className="min-w-[72px] bg-background fixed flex flex-col justify-start items-center p-4 border-r border-red min-h-screen">
+    <div className="fixed flex min-h-screen min-w-[72px] flex-col items-center justify-start border-r border-red bg-background p-4">
       <Link href={`${baseUrl}/`}>
         <Logo compact className="w-9" />
       </Link>
-      <div className="mt-24 flex-1 flex flex-col items-center gap-6">
+      <div className="mt-24 flex flex-1 flex-col items-center gap-6">
         <Link href={`${baseUrl}/`}>
           <Icon.Home
             className={cn(iconClassName, pathname === baseUrl && "fill-red")}
@@ -63,7 +63,7 @@ export default function SidebarPlatform() {
           />
         </Link>
       </div>
-      <div className="mt-8 mb-16 flex-1 flex items-center justify-end flex-col gap-6">
+      <div className="mb-16 mt-8 flex flex-1 flex-col items-center justify-end gap-6">
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -71,7 +71,7 @@ export default function SidebarPlatform() {
                 <Icon.Bell className={iconClassName} />
               </div>
             </TooltipTrigger>
-            <TooltipContent className="bg-white z-50">
+            <TooltipContent className="z-50 bg-white">
               <Typography variant="body-xs">
                 Stiamo lavorando sulla funzionalità notifiche.
               </Typography>
@@ -83,14 +83,14 @@ export default function SidebarPlatform() {
           <DropdownMenuTrigger>
             <AvatarProfile
               name="Utente Prova"
-              className="w-10 h-10 bg-blue-600"
+              className="h-10 w-10 bg-blue-600"
             />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="ml-2 p-2">
             <div className="flex items-center gap-2 p-2">
               <AvatarProfile
                 name="Utente Prova"
-                className="w-10 h-10 bg-blue-600"
+                className="h-10 w-10 bg-blue-600"
               />
               <div>
                 <Typography>Utente Prova</Typography>

@@ -59,7 +59,7 @@ export default function TaskDetailDialog({
   const [taskData, setTaskData] = useState<IKanbanBoardTask>(initialTaskData);
 
   const iconStyle = "w-4 h-4";
-  const fieldStyle = "border-b-gray-500 border-b-2 bg-gray-100 px-3 py-2";
+  const fieldStyle = "border-0 border-b-gray border-b-2 bg-gray-100 px-3 py-2";
   const formattedDate = getFormattedDate(taskData.date);
 
   function handleSubmit() {
@@ -73,7 +73,7 @@ export default function TaskDetailDialog({
 
       <DialogContent className="max-h-[80%] max-w-[80%] overflow-y-scroll py-14">
         <Textarea
-          className={cn("mt-4 text-md")}
+          className={cn("mt-4 border-none text-md")}
           placeholder="Titolo"
           value={taskData.title}
           onChange={(e) => setTaskData({ ...taskData, title: e.target.value })}

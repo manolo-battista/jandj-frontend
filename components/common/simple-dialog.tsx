@@ -11,10 +11,11 @@ import {
 import { Typography } from "@/components/ui/typography";
 
 export interface SimpleDialogProps {
-  trigger: ReactNode;
+  trigger?: ReactNode;
   title?: string | ReactNode;
   description?: string | ReactNode;
   children?: ReactNode;
+  isOpen?: boolean;
   onOpenChange?(open: boolean): false | void;
 }
 
@@ -24,23 +25,27 @@ export function SimpleDialog({
   description,
   children,
   onOpenChange,
+  isOpen,
 }: SimpleDialogProps) {
   return (
-    <Dialog onOpenChange={onOpenChange}>
+    <Dialog onOpenChange={onOpenChange} open={isOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className="max-w-[80%]">
-        <DialogHeader>
-          <DialogTitle>
-            <Typography variant="heading-md" color="red">
-              {title}
-            </Typography>
-          </DialogTitle>
-          <DialogDescription>
-            <Typography variant="heading-sm" color="red" className="mt-4">
-              {description}
-            </Typography>
-          </DialogDescription>
-        </DialogHeader>
+        {title ||
+          (description && (
+            <DialogHeader>
+              <DialogTitle>
+                <Typography variant="heading-md" color="red">
+                  {title}
+                </Typography>
+              </DialogTitle>
+              <DialogDescription>
+                <Typography variant="heading-sm" color="red" className="mt-4">
+                  {description}
+                </Typography>
+              </DialogDescription>
+            </DialogHeader>
+          ))}
         <div>{children}</div>
       </DialogContent>
     </Dialog>
