@@ -26,7 +26,7 @@ export default function Page() {
           color="secondary"
           size="sm"
           variant="outlined"
-          endIcon={<Icon.Add className="w-4 h-4" />}
+          endIcon={<Icon.Add className="h-4 w-4" />}
         >
           Carica un nuovo template
         </Button>
@@ -35,7 +35,7 @@ export default function Page() {
         <Typography variant="heading-card" color="red">
           Template
         </Typography>
-        <div className="grid grid-cols-12 gap-6 mt-6">
+        <div className="mt-6 grid grid-cols-12 gap-6">
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((template) => (
             <DocumentCard key={template} />
           ))}

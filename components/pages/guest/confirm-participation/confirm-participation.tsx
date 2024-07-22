@@ -18,11 +18,11 @@ export default function ConfirmParticipation() {
           a guest at our next event:
         </Typography>
       </div>
-      <div className="w-full bg-background-active p-4 mt-8">
-        <div className="grid md:grid-cols-12 gap-4">
-          <div className="md:col-span-2 order-1 md:order-none">
-            <div className="h-[200px] bg-[#525659] hidden" />
-            <div className="md:hidden flex justify-center">
+      <div className="mt-8 w-full bg-background-active p-4">
+        <div className="grid gap-4 md:grid-cols-12">
+          <div className="order-1 md:order-none md:col-span-2">
+            <div className="hidden h-[200px] bg-[#525659]" />
+            <div className="flex justify-center md:hidden">
               <Button
                 variant="outlined"
                 startIcon={<Icon.Download className="mr-2" />}
@@ -60,8 +60,8 @@ export default function ConfirmParticipation() {
         }
       />
 
-      <Divider className="hidden md:block my-6" />
-      <div className="mt-4 md:mt-0 flex justify-center">
+      <Divider className="my-6 hidden md:block" />
+      <div className="mt-4 flex justify-center md:mt-0">
         <NeedSupport />
       </div>
     </>

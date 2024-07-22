@@ -18,12 +18,12 @@ export default function EventTypeCard({
   action,
 }: EventTypeCardProps) {
   return (
-    <div className={cn("p-4 py-6 bg-card", className)}>
+    <div className={cn("bg-card p-4 py-6", className)}>
       <div className={"flex gap-4"}>
-        <div className="mt-4 mx-2">{icon}</div>
+        <div className="mx-2 mt-4">{icon}</div>
         <div>
           <Typography variant="body-lg">{title}</Typography>
-          <Typography variant="body-md" className="text-gray min-h-[60px]">
+          <Typography variant="body-md" className="min-h-[60px] text-gray">
             {description}
           </Typography>
         </div>

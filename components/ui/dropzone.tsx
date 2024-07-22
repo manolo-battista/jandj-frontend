@@ -6,7 +6,7 @@ import { Typography } from "@/components/ui/typography";
 import Icon from "@/components/ui/icon";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
-import {horizontal} from "@hello-pangea/dnd/src/state/axis";
+import { horizontal } from "@hello-pangea/dnd/src/state/axis";
 interface DropzoneProps {
   value?: any;
   label?: string;
@@ -18,7 +18,7 @@ interface DropzoneProps {
   disabled?: boolean;
   className?: string;
   children?: ReactNode;
-  orientation?: "vertical" | "horizontal"
+  orientation?: "vertical" | "horizontal";
 }
 
 interface AcceptedFile extends File {
@@ -29,7 +29,7 @@ const maxSize = 5243000; // 5Mb as bytes
 export default function Dropzone(props: DropzoneProps) {
   const {
     value,
-    orientation = 'vertical',
+    orientation = "vertical",
     title = "Select a file from your device",
     description = "JPG, PNG or PDF, file size no more than 10MB",
     label,
@@ -69,18 +69,23 @@ export default function Dropzone(props: DropzoneProps) {
         <div
           {...getRootProps({ className: "dropzone" })}
           className={cn(
-            "min-h-20 md:min-h-[40px] flex cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-gray p-8 text-center duration-75 hover:border-red",
-            selectedFiles.length > 0 || orientation == 'horizontal' && "flex-row md:min-h-[80px] gap-2",
+            "flex min-h-20 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-gray p-8 text-center duration-75 hover:border-red md:min-h-[40px]",
+            selectedFiles.length > 0 && "flex-row gap-2 md:min-h-[80px]",
+            "flex min-h-20 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-gray p-8 text-center duration-75 hover:border-red md:min-h-[40px]",
+            selectedFiles.length > 0 ||
+              (orientation == "horizontal" && "flex-row gap-2 md:min-h-[80px]"),
             disabled && "pointer-events-none opacity-60",
             className,
           )}
         >
           <input {...getInputProps()} />
-          {icon ?? <Icon.UploadCloud className="w-10 mb-2 fill-red" />}
+          {icon ?? <Icon.UploadCloud className="mb-2 w-10 fill-red" />}
           <div
             className={cn(
               "text-center",
-              selectedFiles.length > 0 || orientation == 'horizontal' && "text-left flex-1",
+              selectedFiles.length > 0 && "flex-1 text-left",
+              selectedFiles.length > 0 ||
+                (orientation == "horizontal" && "flex-1 text-left"),
             )}
           >
             <Typography variant="body-md">{title}</Typography>

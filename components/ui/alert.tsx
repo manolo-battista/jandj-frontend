@@ -72,7 +72,7 @@ const AlertTitle = React.forwardRef<
     className={cn("mb-1 font-medium leading-none tracking-tight", className)}
     {...props}
   >
-    <Typography variant="body-md" className="font-bold mb-1">
+    <Typography variant="body-md" className="mb-1 font-bold">
       {props.children}
     </Typography>
   </h5>
@@ -99,7 +99,7 @@ const AlertAction = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("text-sm [&_p]:leading-relaxed mt-2", className)}
+    className={cn("mt-2 text-sm [&_p]:leading-relaxed", className)}
     {...props}
   >
     <Typography variant="body-sm" color="red">

@@ -13,12 +13,12 @@ export default function ActionBarPlatform({
   onSearch,
 }: NavbarPlatformProps) {
   return (
-    <div className="px-6 py-2 bg-background-active border-b border-gray flex items-center">
+    <div className="flex items-center border-b border-gray bg-background-active px-6 py-2">
       <div className="flex-1">{children}</div>
       <Input
         className="max-w-[40%]"
         placeholder="Cerca per nome"
-        endIcon={<Icon.Search className="fill-red w-6" />}
+        endIcon={<Icon.Search className="w-6 fill-red" />}
         onChange={(e) => onSearch?.(e.target.value)}
       />
     </div>

@@ -11,7 +11,7 @@ export default function GuestPage() {
   const { active } = useStepper();
   return (
     <>
-      <div className="p-6 flex flex-col items-center justify-center w-full">
+      <div className="flex w-full flex-col items-center justify-center p-6">
         <Stepper />
       </div>
 

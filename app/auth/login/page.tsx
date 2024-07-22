@@ -8,22 +8,22 @@ export default function Signin() {
   return (
     <>
       <div
-        className="w-full h-screen bg-[url('/img/auth/background.png')] bg-no-repeat bg-cover bg-size"
+        className="bg-size h-screen w-full bg-[url('/img/auth/background.png')] bg-cover bg-no-repeat"
         style={{
           backgroundSize: "140%",
           backgroundPosition: "left",
         }}
       >
-        <div className="z-0 absolute left-0 top-0 w-screen h-screen bg-[#0046856B] backdrop-blur-2xl" />
+        <div className="absolute left-0 top-0 z-0 h-screen w-screen bg-[#0046856B] backdrop-blur-2xl" />
       </div>
-      <div className="absolute top-0 left-0 w-full h-screen grid grid-cols-12">
-        <div className="col-span-6 h-full flex flex-col justify-center px-28">
+      <div className="absolute left-0 top-0 grid h-screen w-full grid-cols-12">
+        <div className="col-span-6 flex h-full flex-col justify-center px-28">
           <Typography variant="heading-md" className="text-white">
             Event Management
           </Typography>
-          <Logo color="white" className="mt-4 w-100" />
+          <Logo color="white" className="w-100 mt-4" />
         </div>
-        <div className="col-span-6 h-full flex items-center justify-center">
+        <div className="col-span-6 flex h-full items-center justify-center">
           <div className="bg-background p-20">
             <Typography variant="body-lg" className="text-black">
               Welcome!

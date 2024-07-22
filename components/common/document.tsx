@@ -13,8 +13,8 @@ export default function Document(props: DocumentProps) {
   const { className, index = 0, type = "" } = props;
 
   return (
-    <div className="flex gap-1 items-center">
-      <Icon.Document className={cn("fill-blue-700 w-5", className)} />
+    <div className="flex items-center gap-1">
+      <Icon.Document className={cn("w-5 fill-blue-700", className)} />
       <Typography variant="body-xs" color="inverse">
         {type}
       </Typography>

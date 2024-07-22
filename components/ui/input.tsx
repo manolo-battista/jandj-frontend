@@ -66,7 +66,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {!readOnly ? (
             <input
               type={type}
-              className={cn(inputVariants({ variant }), hasError && 'border-error text-error')}
+              className={cn(
+                inputVariants({ variant }),
+                hasError && "border-error text-error",
+              )}
               ref={ref}
               {...props}
               onChange={(e) => console.log(e.target.value)}
@@ -81,9 +84,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           )}
           {endIcon && <div className="absolute right-3 top-2">{endIcon}</div>}
         </div>
-          <Typography variant="body-xs" className={cn("mt-1", hasError && 'text-error')}>
-             {helperText}
-          </Typography>
+        <Typography
+          variant="body-xs"
+          className={cn("mt-1", hasError && "text-error")}
+        >
+          {helperText}
+        </Typography>
       </div>
     );
   },
