@@ -53,14 +53,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ref,
   ) => {
     return (
-      <div className="flex flex-col">
-        {label && (
-          <Typography variant="legal" className="mb-1">
-            {label}
-            {required && <span className="text-red">*</span>}
-          </Typography>
-        )}
+      <>
         <div className={cn("relative w-full", className)}>
+          {label && (
+            <Typography variant="legal" className="mb-1">
+              {label}
+              {required && <span className="text-red">*</span>}
+            </Typography>
+          )}
           {startIcon && (
             <div className="absolute left-3 top-2">{startIcon}</div>
           )}
@@ -83,14 +83,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </Typography>
           )}
           {endIcon && <div className="absolute right-3 top-2">{endIcon}</div>}
+          <Typography
+            variant="body-xs"
+            className={cn("mt-1", hasError && "text-error")}
+          >
+            {helperText}
+          </Typography>
         </div>
-        <Typography
-          variant="body-xs"
-          className={cn("mt-1", hasError && "text-error")}
-        >
-          {helperText}
-        </Typography>
-      </div>
+      </>
     );
   },
 );

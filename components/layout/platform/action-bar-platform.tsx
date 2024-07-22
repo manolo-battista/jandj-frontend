@@ -16,6 +16,7 @@ export default function ActionBarPlatform({
     <div className="flex items-center border-b border-gray bg-background-active px-6 py-2">
       <div className="flex-1">{children}</div>
       <Input
+        variant="outlined"
         className="max-w-[40%]"
         placeholder="Cerca per nome"
         endIcon={<Icon.Search className="w-6 fill-red" />}
