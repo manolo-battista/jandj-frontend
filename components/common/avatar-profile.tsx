@@ -1,7 +1,10 @@
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import React from "react";
-import { Typography } from "@/components/ui/typography";
+import { Typography, typographyVariants } from "@/components/ui/typography";
+import { VariantProps } from "class-variance-authority";
+
+type TypographyVariants = VariantProps<typeof typographyVariants>;
 
 interface AvatarProfileProps {
   index?: number;
@@ -9,10 +12,18 @@ interface AvatarProfileProps {
   length?: number;
   maxLength?: number;
   className?: string;
+  textVariant?: TypographyVariants["variant"];
 }
 
 export default function AvatarProfile(props: AvatarProfileProps) {
-  const { className, index = 0, name = "", length = 0, maxLength = 4 } = props;
+  const {
+    className,
+    index = 0,
+    name = "",
+    length = 0,
+    maxLength = 4,
+    textVariant = "body-xs",
+  } = props;
   const colorList = [
     "bg-[#DF8F9B]",
     "bg-[#0F68B2]",
@@ -40,7 +51,7 @@ export default function AvatarProfile(props: AvatarProfileProps) {
       )}
     >
       <AvatarFallback>
-        <Typography className="text-[14px] text-white">
+        <Typography className="text-white" variant={textVariant}>
           {getInitials()}
         </Typography>
       </AvatarFallback>

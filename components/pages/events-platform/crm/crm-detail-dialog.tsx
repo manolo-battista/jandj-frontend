@@ -27,7 +27,7 @@ export default function CrmDetailDialog({ trigger }: CrmDetailDialogProps) {
   }) => (
     <>
       <div className="flex gap-2 py-2">
-        <div className="flex gap-2 min-w-[30%]">
+        <div className="flex min-w-[30%] gap-2">
           {props.icon}
           <Typography className="body-xs">{props.title}</Typography>
         </div>
@@ -79,7 +79,7 @@ export default function CrmDetailDialog({ trigger }: CrmDetailDialogProps) {
             Modifca
           </Typography>
           <div className="flex items-start gap-2">
-            <AvatarProfile name="Marco Rossi" className="w-12 h-12" />
+            <AvatarProfile name="Marco Rossi" className="h-12 w-12" />
             <span>
               Dott. Nome Cognome
               <Typography variant="body-md" color="inverse" className="mt-2">

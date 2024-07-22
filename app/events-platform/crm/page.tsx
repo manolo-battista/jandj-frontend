@@ -43,7 +43,7 @@ export default function Page() {
               color="secondary"
               size="sm"
               variant="outlined"
-              endIcon={<Icon.Add className="w-4 h-4" />}
+              endIcon={<Icon.Add className="h-4 w-4" />}
             >
               Aggiungi un nuovo profilo
             </Button>
@@ -62,7 +62,7 @@ export default function Page() {
       </div>
       <Divider className="my-0" />
       <PageContainerPlatform>
-        <div className="grid grid-cols-12 gap-6 mt-2">
+        <div className="mt-2 grid grid-cols-12 gap-6">
           {[0, 1, 2, 3, 4].map((doctor, index) => (
             <div key={index} className="col-span-4">
               <CrmDetailDialog

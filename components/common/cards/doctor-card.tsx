@@ -21,9 +21,13 @@ export default function DoctorCard(props: DoctorCardProps) {
 
   const mockAttendees = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (
-    <div className={cn("p-4 py-6 bg-card", className)}>
-      <div className="flex gap-2 items-center">
-        <AvatarProfile name="Utente Prova" className="w-12 h-12" />
+    <div className={cn("bg-card p-4 py-6", className)}>
+      <div className="flex items-center gap-2">
+        <AvatarProfile
+          name="Utente Prova"
+          className="h-12 w-12"
+          textVariant={"body-label"}
+        />
         <div>
           <Typography variant="heading-sm">Dr. Name Surname</Typography>
           <Typography variant="body-sm" color="inverse">
@@ -34,15 +38,15 @@ export default function DoctorCard(props: DoctorCardProps) {
 
       <div className="mt-6 flex flex-col gap-3">
         <div className="flex items-center gap-3">
-          <Icon.Email className="fill-gray w-5" />
+          <Icon.Email className="w-5 fill-gray" />
           <Typography variant="body-xs">name.surname@hospital.com</Typography>
         </div>
         <div className="flex items-center gap-3">
-          <Icon.Phone className="fill-gray w-5" />
+          <Icon.Phone className="w-5 fill-gray" />
           <Typography variant="body-xs">+39 1234567890</Typography>
         </div>
         <div className="flex items-center gap-3">
-          <Icon.Hospital className="fill-gray w-5" />
+          <Icon.Hospital className="w-5 fill-gray" />
           <Typography variant="body-xs">Niguarda hospital</Typography>
         </div>
         <div className="mt-4 flex items-center gap-3">

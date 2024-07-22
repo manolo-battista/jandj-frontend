@@ -27,7 +27,7 @@ const badgeVariants = cva(
 
 // INVIATO PER FIRMA IN INGLESE
 
-export enum AttendeeStatus {
+export enum AttendeeBadgeStatus {
   APPROVED = "approvato",
   TO_APPROVE = "da approvare",
   SENT_FOR_SIGNATURE = "inviato per firma",
@@ -39,7 +39,7 @@ export enum AttendeeStatus {
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {
-  status: AttendeeStatus;
+  status: AttendeeBadgeStatus;
 }
 
 function AttendeeStatusBadge({
@@ -50,21 +50,21 @@ function AttendeeStatusBadge({
 }: BadgeProps) {
   const iconStyle = "w-3 h-3 mr-1";
 
-  const startIcon = (status: AttendeeStatus) => {
+  const startIcon = (status: AttendeeBadgeStatus) => {
     switch (status) {
-      case AttendeeStatus.APPROVED:
+      case AttendeeBadgeStatus.APPROVED:
         return <Icon.Check className={cn(iconStyle, "text-green-700")} />;
-      case AttendeeStatus.TO_APPROVE:
+      case AttendeeBadgeStatus.TO_APPROVE:
         return (
           <Icon.QuestionMark className={cn(iconStyle, "text-yellow-700")} />
         );
-      case AttendeeStatus.SENT_FOR_SIGNATURE:
+      case AttendeeBadgeStatus.SENT_FOR_SIGNATURE:
         return <Icon.Share className={cn(iconStyle, "text-blue-700")} />;
-      case AttendeeStatus.MISS_APPROVED:
+      case AttendeeBadgeStatus.MISS_APPROVED:
         return <Icon.Loading className={cn(iconStyle, "text-gray-600")} />;
-      case AttendeeStatus.TO_PAY:
+      case AttendeeBadgeStatus.TO_PAY:
         return <Icon.Payment className={cn(iconStyle, "text-yello-700")} />;
-      case AttendeeStatus.REJECTED:
+      case AttendeeBadgeStatus.REJECTED:
         return <Icon.Close className={cn(iconStyle, "text-red-700")} />;
       default:
         return null;
@@ -76,25 +76,25 @@ function AttendeeStatusBadge({
       className={cn(
         badgeVariants({ variant }),
         className,
-        status === AttendeeStatus.APPROVED && "bg-success-200",
-        status === AttendeeStatus.TO_APPROVE && "bg-warning-200",
-        status === AttendeeStatus.SENT_FOR_SIGNATURE && "bg-blue-200",
-        // status === AttendeeStatus.MISS_APPROVED && "bg-gray-200",
-        status === AttendeeStatus.TO_PAY && "bg-warning-200",
-        status === AttendeeStatus.REJECTED && "bg-red-200",
+        status === AttendeeBadgeStatus.APPROVED && "bg-green-200",
+        status === AttendeeBadgeStatus.TO_APPROVE && "bg-warning-200",
+        status === AttendeeBadgeStatus.SENT_FOR_SIGNATURE && "bg-blue-200",
+        // status === AttendeeBadgeStatus.MISS_APPROVED && "bg-gray-200",
+        status === AttendeeBadgeStatus.TO_PAY && "bg-warning-200",
+        status === AttendeeBadgeStatus.REJECTED && "bg-red-200",
       )}
       {...props}
     >
       <Typography
         variant="body-xs"
         className={cn(
-          "flex items-center",
-          status === AttendeeStatus.APPROVED && "text-success-700",
-          status === AttendeeStatus.TO_APPROVE && "text-yellow-700",
-          status === AttendeeStatus.SENT_FOR_SIGNATURE && "text-blue-700",
-          status === AttendeeStatus.MISS_APPROVED && "text-gray-600",
-          status === AttendeeStatus.TO_PAY && "text-yello-700",
-          status === AttendeeStatus.REJECTED && "text-red-700",
+          "flex items-center text-nowrap",
+          status === AttendeeBadgeStatus.APPROVED && "text-success-700",
+          status === AttendeeBadgeStatus.TO_APPROVE && "text-yellow-700",
+          status === AttendeeBadgeStatus.SENT_FOR_SIGNATURE && "text-blue-700",
+          status === AttendeeBadgeStatus.MISS_APPROVED && "text-gray-600",
+          status === AttendeeBadgeStatus.TO_PAY && "text-yello-700",
+          status === AttendeeBadgeStatus.REJECTED && "text-red-700",
         )}
       >
         {startIcon(status)}
