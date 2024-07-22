@@ -205,13 +205,13 @@ const AttendeesRowDetailDialog = ({
 
   const ActivityRowItem = () => (
     <>
-      <div className="my-3 grid grid-cols-12 items-center">
-        <div className="col-span-1">
-          <Typography variant="body-sm" color="inverse">
+      <div className="my-3 flex flex-wrap gap-2">
+        <div>
+          <Typography variant="body-sm" color="inverse" className="text-nowrap">
             {getFormattedDate(new Date())}
           </Typography>
         </div>
-        <div className="col-span-10 ml-1">
+        <div>
           <Typography variant="body-sm">
             Ha firmato “Transfer of Value” per l’evento “Nuove Prospettive sul
             Mieloma Multiplo”
