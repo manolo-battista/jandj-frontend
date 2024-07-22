@@ -7,7 +7,7 @@ interface NavbarPlatformProps {
 export default function NavbarPlatform(props: NavbarPlatformProps) {
   const { title } = props;
   return (
-    <nav className="p-6 py-4 bg-background-active border-b border-gray flex items-center">
+    <nav className="flex items-center border-b border-gray bg-background-active p-6 py-4">
       <div className="flex-1">{title}</div>
     </nav>
   );

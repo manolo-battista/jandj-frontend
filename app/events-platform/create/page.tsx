@@ -68,7 +68,7 @@ export default function Page() {
         <Typography variant="heading-card" color="red">
           Create a New Event
         </Typography>
-        <div className="grid grid-cols-12 gap-6 mt-6">
+        <div className="mt-6 grid grid-cols-12 gap-6">
           {eventTypes.map((eventType, index) => (
             <EventTypeCard
               key={`event-${index}`}

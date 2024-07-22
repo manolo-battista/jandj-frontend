@@ -22,13 +22,13 @@ export default function UploadCv(props: UploadCvProps) {
 
       {files.length > 0 && (
         <div>
-          <aside className="grid gap-2 mt-8">
+          <aside className="mt-8 grid gap-2">
             {files.map((file, index) => (
               <UploadingFile key={index} file={file} />
             ))}
           </aside>
 
-          <aside className="grid gap-2 mt-8">
+          <aside className="mt-8 grid gap-2">
             {files.map((file, index) => (
               <UploadedFile key={index} file={file} />
             ))}
@@ -42,7 +42,7 @@ export default function UploadCv(props: UploadCvProps) {
         </div>
       )}
 
-      <div className="mt-8 mb-4 w-full text-center">
+      <div className="mb-4 mt-8 w-full text-center">
         <NeedSupport />
       </div>
     </div>

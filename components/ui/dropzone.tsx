@@ -66,18 +66,18 @@ export default function Dropzone(props: DropzoneProps) {
         <div
           {...getRootProps({ className: "dropzone" })}
           className={cn(
-            "min-h-20 md:min-h-[40px] flex cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-gray p-8 text-center duration-75 hover:border-red",
-            selectedFiles.length > 0 && "flex-row md:min-h-[80px] gap-2",
+            "flex min-h-20 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-gray p-8 text-center duration-75 hover:border-red md:min-h-[40px]",
+            selectedFiles.length > 0 && "flex-row gap-2 md:min-h-[80px]",
             disabled && "pointer-events-none opacity-60",
             className,
           )}
         >
           <input {...getInputProps()} />
-          {icon ?? <Icon.UploadCloud className="w-10 mb-2 fill-red" />}
+          {icon ?? <Icon.UploadCloud className="mb-2 w-10 fill-red" />}
           <div
             className={cn(
               "text-center",
-              selectedFiles.length > 0 && "text-left flex-1",
+              selectedFiles.length > 0 && "flex-1 text-left",
             )}
           >
             <Typography variant="body-md">{title}</Typography>

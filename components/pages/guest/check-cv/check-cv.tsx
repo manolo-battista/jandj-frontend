@@ -81,7 +81,7 @@ export default function CheckCv() {
         }
       />
       <Divider className="my-6" />
-      <div className="mt-4 md:mt-0 flex justify-center">
+      <div className="mt-4 flex justify-center md:mt-0">
         <NeedSupport />
       </div>
     </div>

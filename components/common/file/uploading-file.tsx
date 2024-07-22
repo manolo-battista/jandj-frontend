@@ -20,11 +20,11 @@ const UploadingFile = (props: UploadingFileProps) => {
       )}
       key={file.path}
     >
-      <div className="w-full text-md flex items-center gap-2">
+      <div className="flex w-full items-center gap-2 text-md">
         <Icon.Document className="w-8 fill-red" />
-        <div className="w-full flex flex-col">
+        <div className="flex w-full flex-col">
           <div className="flex">
-            <Typography variant="body-sm" className="text-gray flex-1">
+            <Typography variant="body-sm" className="flex-1 text-gray">
               {file.path}
             </Typography>
             <Typography variant="body-sm">{formatBytes(file.size)}</Typography>

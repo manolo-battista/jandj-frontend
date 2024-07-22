@@ -12,7 +12,7 @@ export default function SuccessUploadCv() {
     <div className="text-center">
       <Typography variant="body-lg">
         We stored your latest CV document in our systems
-        <div className="py-8 pb-20 flex justify-center">
+        <div className="flex justify-center py-8 pb-20">
           <Image
             src="/img/guest/success-upload.svg"
             width={100}

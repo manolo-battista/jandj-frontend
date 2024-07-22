@@ -12,7 +12,7 @@ export default function Submit() {
         We look forward to have you as our guest!
       </Typography>
 
-      <div className="flex justify-center mt-8">
+      <div className="mt-8 flex justify-center">
         <Image
           src="/img/guest/submit-illustration.svg"
           width={400}

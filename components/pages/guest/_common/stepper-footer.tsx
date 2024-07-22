@@ -8,10 +8,10 @@ interface StepperFooterProps {
 export default function StepperFooter(props: StepperFooterProps) {
   const { message, action } = props;
   return (
-    <div className="flex flex-col bg-white fixed w-full left-0 bottom-0 p-2 border-t items-center md:mt-8 md:relative md:border-none md:p-0 md:flex-row">
+    <div className="fixed bottom-0 left-0 flex w-full flex-col items-center border-t bg-white p-2 md:relative md:mt-8 md:flex-row md:border-none md:p-0">
       <Typography
         variant="body-label"
-        className="flex-1 text-center md:text-left mb-2 md:mb-0"
+        className="mb-2 flex-1 text-center md:mb-0 md:text-left"
       >
         {message}
       </Typography>

@@ -26,7 +26,7 @@ export interface BadgeProps
 function Tag({ className, variant, ...props }: BadgeProps) {
   return (
     <div className={cn(badgeVariants({ variant }), className)} {...props}>
-      <div className="w-1 h-4 rounded-md mx-1 bg-red" />
+      <div className="mx-1 h-4 w-1 rounded-md bg-red" />
       <Typography variant="footer-header-card">{props.children}</Typography>
     </div>
   );

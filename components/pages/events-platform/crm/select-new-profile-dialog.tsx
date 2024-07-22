@@ -48,7 +48,7 @@ export default function SelectNewProfileDialog({
           color="secondary"
           size="sm"
           variant="outlined"
-          endIcon={<Icon.Add className="w-4 h-4" />}
+          endIcon={<Icon.Add className="h-4 w-4" />}
         >
           Aggiungi un nuovo profilo
         </Button>
@@ -66,7 +66,7 @@ export default function SelectNewProfileDialog({
               <AddNewProfileDialog
                 profileType={profileType}
                 trigger={
-                  <Button startIcon={<Icon.Add className="w-4 h-4" />}>
+                  <Button startIcon={<Icon.Add className="h-4 w-4" />}>
                     Crea
                   </Button>
                 }

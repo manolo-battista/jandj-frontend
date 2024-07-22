@@ -10,7 +10,7 @@ export default function RootLayout({
       <div className="z-50">
         <SidebarPlatform />
       </div>
-      <div className="min-h-screen ml-[72px] flex-1 bg-background-active">
+      <div className="ml-[72px] min-h-screen flex-1 bg-background-active">
         {children}
       </div>
     </div>

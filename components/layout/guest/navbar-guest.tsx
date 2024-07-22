@@ -4,7 +4,7 @@ interface NavbarGuestProps {}
 
 export default function NavbarGuest(props: NavbarGuestProps) {
   return (
-    <nav className="p-4 bg-background-active border-b border-gray">
+    <nav className="border-b border-gray bg-background-active p-4">
       <div />
       <div className="flex flex-1 justify-center">
         <Logo className="w-44" />
