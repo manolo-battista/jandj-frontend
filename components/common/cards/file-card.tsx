@@ -31,12 +31,10 @@ export default function FileCard({ file }: { file?: File }) {
 
 const LoadFile = (props: DropzoneProps & { partecipantName: string }) => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-  const { accept, disabled, children, onChange, partecipantName, maxSize } =
-    props;
+  const { accept, disabled, children, onChange, partecipantName } = props;
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept,
     multiple: false,
-    maxSize,
     onDrop: (acceptedFiles, fileRejections) => {
       setSelectedFiles([...selectedFiles, ...acceptedFiles]);
       onChange?.([...selectedFiles, ...acceptedFiles]);

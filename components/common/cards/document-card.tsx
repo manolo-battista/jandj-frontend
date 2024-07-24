@@ -51,5 +51,3 @@ export default function DocumentCard(props: DocumentCardProps) {
     </div>
   );
 }
-
-
