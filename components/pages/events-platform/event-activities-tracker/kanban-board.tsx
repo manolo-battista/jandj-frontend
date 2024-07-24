@@ -23,9 +23,9 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import TaskDetailDialog from "./task-detail-dialog";
 import CreateTaskDialog from "./create-task-dialog";
-import { getFormattedDate } from "@/utils/get-formatted-date";
-import { formattedTaskStatusTitle } from "@/utils/get-status-title";
 import { PriorityBadge } from "./priority-badge";
+import { formattedTaskStatusTitle } from "@/utils/get-status-title";
+import { getFormattedDate } from "@/utils/get-formatted-date";
 
 const mockedTasks = {
   todo: [
@@ -102,7 +102,7 @@ const mockedTasks = {
   ],
 };
 
-export default function KanbanBoard() {
+export default function EventKanbanBoard() {
   const [tasks, setTasks] = useState<ITasks>({
     todo: [...mockedTasks.todo],
     inProgress: [...mockedTasks.inProgress],

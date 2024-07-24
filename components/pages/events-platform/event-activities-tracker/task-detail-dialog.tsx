@@ -22,11 +22,11 @@ import {
   ITaskPriority,
   ITaskStatus,
 } from "@/types/kanban-board";
-import { getFormattedDate } from "@/utils/get-formatted-date";
-import { formattedTaskStatusTitle } from "@/utils/get-status-title";
 import React, { useState } from "react";
 import { PriorityBadge } from "./priority-badge";
 import { Textarea } from "@/components/ui/textarea";
+import { getFormattedDate } from "@/utils/get-formatted-date";
+import { formattedTaskStatusTitle } from "@/utils/get-status-title";
 
 type TaskDetailProps = {
   setOpen: (open: boolean) => false | void;

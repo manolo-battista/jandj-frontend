@@ -29,6 +29,7 @@ import {
   AlertTitle,
 } from "@/components/ui/alert";
 import { getFormattedDate } from "@/utils/get-formatted-date";
+import { cn } from "@/lib/utils";
 
 const mockedLabels = [
   {
@@ -62,7 +63,7 @@ const mockedLabels = [
   { name: "Pagamento", containerStyle: "" },
 ];
 
-export default function Attendees() {
+export default function EventAttendees() {
   const iconStyle = "w-6 h-6";
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedAttendee, setSelectedAttendee] =
@@ -92,7 +93,7 @@ export default function Attendees() {
             </TableCell>
             <TableCell className="flex justify-start gap-4">
               <div className="flex flex-col items-center">
-                <Icon.Document className={iconStyle} />
+                <Icon.Document className={cn(iconStyle, "text-blue-700")} />
                 <Typography variant="body-sm" color="inverse">
                   CV
                 </Typography>
@@ -132,9 +133,9 @@ export default function Attendees() {
                 role={"Specializzazione"}
               />
             </TableCell>
-            <TableCell className="flex h-full justify-start gap-4">
+            <TableCell className="flex gap-4">
               <div className="flex flex-col items-center">
-                <Icon.Document className={iconStyle} />
+                <Icon.Document className={cn(iconStyle, "text-blue-700")} />
                 <Typography variant="body-sm" color="inverse">
                   CV
                 </Typography>

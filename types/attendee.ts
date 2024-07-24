@@ -1,4 +1,4 @@
-import { AttendeeBadgeStatus } from "@/components/pages/events-platform/attendees/attedee-status-badge";
+import { AttendeeBadgeStatus } from "@/components/pages/events-platform/event-attendees/attedee-status-badge";
 
 type AttendeesDocumentStatus = "approved" | "rejected" | "pending";
 

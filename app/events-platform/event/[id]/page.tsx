@@ -8,17 +8,18 @@ import Icon from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 import AvatarProfile from "@/components/common/avatar-profile";
 import Divider from "@/components/ui/divider";
-import KanbanBoard from "@/components/pages/events-platform/activities-tracker/kanban-board";
 import { IStatus } from "@/types/status";
 import { ITabButton, ITabContent } from "@/types/tab";
-import Attendees from "@/components/pages/events-platform/attendees/attendees";
+import EventKanbanBoard from "@/components/pages/events-platform/event-activities-tracker/kanban-board";
+import EventAttendees from "@/components/pages/events-platform/event-attendees/event-attendees";
+import EventDocuments from "@/components/pages/events-platform/event-documents/event-documents";
 
 const TabSection = () => {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
-    { title: "Activities Tracker", content: <KanbanBoard /> },
-    { title: "Attendees", content: <Attendees /> },
-    { title: "Documents", content: "Tab 3" },
+    { title: "Activities Tracker", content: <EventKanbanBoard /> },
+    { title: "Attendees", content: <EventAttendees /> },
+    { title: "Documents", content: <EventDocuments /> },
   ];
   return (
     <div className="mt-6 w-full">

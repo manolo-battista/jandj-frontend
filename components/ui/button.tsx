@@ -2,8 +2,10 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { Typography } from "@/components/ui/typography";
+import { Typography, typographyVariants } from "@/components/ui/typography";
 import { ReactNode } from "react";
+
+type TypographyVariants = VariantProps<typeof typographyVariants>;
 
 const buttonVariants = cva(
   "rounded-full cursor-pointer inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
@@ -72,6 +74,7 @@ export interface ButtonProps
   asChild?: boolean;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
+  textVariant?: TypographyVariants["variant"];
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -86,6 +89,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       asChild = false,
       children,
       disabled,
+      textVariant,
       ...props
     },
     ref,
@@ -108,6 +112,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             (variant === "outlined" || variant === "link") && "red",
           )}
           className={cn(startIcon && "ml-2", endIcon && "mr-2")}
+          variant={textVariant}
         >
           {children}
         </Typography>

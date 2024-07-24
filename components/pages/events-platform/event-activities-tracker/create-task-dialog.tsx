@@ -27,13 +27,13 @@ import {
   ITaskPriority,
   ITaskStatus,
 } from "@/types/kanban-board";
-import { getFormattedDate } from "@/utils/get-formatted-date";
-import { formattedTaskStatusTitle } from "@/utils/get-status-title";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { PriorityBadge } from "./priority-badge";
 import { Textarea } from "@/components/ui/textarea";
 import Divider from "@/components/ui/divider";
 import { DialogTrigger } from "@radix-ui/react-dialog";
+import { getFormattedDate } from "@/utils/get-formatted-date";
+import { formattedTaskStatusTitle } from "@/utils/get-status-title";
 
 const initialTaskData = {
   id: "",

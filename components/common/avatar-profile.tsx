@@ -58,7 +58,18 @@ export default function AvatarProfile(props: AvatarProfileProps) {
     </Avatar>
   ) : (
     index === maxLength && (
-      <Typography className="ml-1 mt-[2px]">+{length - maxLength}</Typography>
+      <Avatar
+        className={cn(
+          "flex h-7 w-7 items-center justify-center border-[2px] border-red bg-white",
+          index > 0 && "-ml-[7px]",
+          colorList[index],
+          className,
+        )}
+      >
+        <Typography variant={"body-xs-bold"} color="red">
+          +{length - maxLength}
+        </Typography>
+      </Avatar>
     )
   );
 }

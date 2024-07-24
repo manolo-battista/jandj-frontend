@@ -12,6 +12,7 @@ import ActionBarPlatform from "@/components/layout/platform/action-bar-platform"
 import Divider from "@/components/ui/divider";
 import CrmDetailDialog from "@/components/pages/events-platform/crm/crm-detail-dialog";
 import SelectNewProfileDialog from "@/components/pages/events-platform/crm/select-new-profile-dialog";
+
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = [
