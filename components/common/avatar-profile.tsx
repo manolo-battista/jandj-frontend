@@ -21,15 +21,10 @@ export default function AvatarProfile(props: AvatarProfileProps) {
     index = 0,
     name = "",
     length = 0,
-    maxLength = 4,
+    maxLength = 3,
     textVariant = "body-xs",
   } = props;
-  const colorList = [
-    "bg-[#DF8F9B]",
-    "bg-[#0F68B2]",
-    "bg-[#43AB45]",
-    "bg-[#FDB022]",
-  ];
+  const colorList = ["bg-[#0F68B2]", "bg-[#43AB45]", "bg-[#FDB022]"];
 
   function getInitials() {
     let names = name.split(" "),

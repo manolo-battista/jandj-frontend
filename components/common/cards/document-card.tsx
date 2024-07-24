@@ -9,12 +9,13 @@ import Image from "next/image";
 
 interface DocumentCardProps {
   className?: string;
+  title: string;
 }
 export default function DocumentCard(props: DocumentCardProps) {
-  const { className } = props;
+  const { className, title } = props;
   return (
     <div className={cn("col-span-4 flex bg-background", className)}>
-      <div className="relative h-full w-36">
+      <div className="relative h-full w-36 min-w-36">
         <Image
           src="/dev/doc_template.png"
           width={500}
@@ -35,11 +36,14 @@ export default function DocumentCard(props: DocumentCardProps) {
         </div>
       </div>
       <div className="p-4">
-        <Typography variant="heading-xs">Agenda Evento</Typography>
+        <Typography variant="heading-xs">{title}</Typography>
         <Typography variant="body-sm" color="inverse" className="mt-4">
           pdf • {formatBytes(140000)} • {getDate(new Date())}
         </Typography>
-        <Typography variant="link" className="mt-2 flex gap-1 text-red">
+        <Typography
+          variant="link"
+          className="mt-2 flex cursor-pointer gap-1 text-red"
+        >
           Scarica
           <Icon.Download className="w-4" />
         </Typography>
@@ -47,3 +51,5 @@ export default function DocumentCard(props: DocumentCardProps) {
     </div>
   );
 }
+
+

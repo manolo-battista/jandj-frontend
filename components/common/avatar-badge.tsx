@@ -9,6 +9,7 @@ type AvatarBadgeProps = {
   role?: string;
   error?: boolean;
   className?: string;
+  textClassName?: string;
 };
 
 export default function AvatarBadge({
@@ -16,12 +17,15 @@ export default function AvatarBadge({
   className,
   role,
   error,
+  textClassName,
 }: AvatarBadgeProps) {
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <AvatarProfile name={name} />
-      <div className="">
-        <Typography variant="body-md">{name}</Typography>
+      <div>
+        <Typography variant="body-md" className={textClassName}>
+          {name}
+        </Typography>
         <div className="flex gap-1">
           {error && (
             <div className="gap-1">

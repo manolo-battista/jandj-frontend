@@ -7,7 +7,7 @@ import Icon from "@/components/ui/icon";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 import { horizontal } from "@hello-pangea/dnd/src/state/axis";
-interface DropzoneProps {
+export interface DropzoneProps {
   value?: any;
   label?: string;
   title?: string | ReactNode;

@@ -50,7 +50,7 @@ function PriorityBadge({ className, variant, priority, ...props }: BadgeProps) {
           priority === "placeholder" && "text-gray-700",
           priority === ITaskPriority.URGENT && "text-error-900",
           priority === ITaskPriority.LOW_PRIORITY && "text-blue-900",
-          priority === ITaskPriority.MEDIUM_PRIORITY && "text-yellow-500",
+          priority === ITaskPriority.MEDIUM_PRIORITY && "text-yellow-600",
           priority === ITaskPriority.HIGHT_PRIORITY && "text-yellow-800",
         )}
       >

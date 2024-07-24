@@ -41,8 +41,19 @@ export default function Page() {
           Template
         </Typography>
         <div className="mt-6 grid grid-cols-12 gap-6">
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((template) => (
-            <DocumentCard key={template} />
+          {[
+            "Agenda Evento",
+            "Attestato di Partecipazione",
+            "Curriculum Vitae",
+            "Lettera per Anagrafe delle Prestazioni",
+            "Minute Evento",
+            "Manifestazione d’Interesse",
+            "Liberatoria per Foto e Video",
+            "Questionario Incarichi",
+            "Questionario Incarichi",
+            "Questionario Incarichi",
+          ].map((template) => (
+            <DocumentCard title={template} key={template} />
           ))}
         </div>
       </PageContainerPlatform>

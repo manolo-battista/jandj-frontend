@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import CreateDocumentDialogStepper from "./create-document-dialog-stepper";
+import CreateDocumentDialogStepper from "./create-document-dialog";
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -15,6 +15,39 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import AvatarBadge from "@/components/common/avatar-badge";
+import DocumentAttachedsDialog from "./document-attacheds-dialog";
+import mockedFile from "@/constants/mockedFile";
+
+const mockedPartecipantsAttacheds = [
+  {
+    name: "Curriculum",
+    required: true,
+    // create file array on delivered
+    delivered: [mockedFile, mockedFile, mockedFile, mockedFile],
+    missing: [mockedFile, mockedFile, mockedFile, mockedFile],
+  },
+  {
+    name: "Questionario Incarichi",
+    required: true,
+    delivered: [mockedFile, mockedFile, mockedFile, mockedFile],
+    missing: [mockedFile, mockedFile, mockedFile, mockedFile],
+  },
+  {
+    name: "Privacy Agreement",
+    delivered: [mockedFile, mockedFile, mockedFile, mockedFile],
+    missing: [mockedFile, mockedFile, mockedFile, mockedFile],
+  },
+  {
+    name: "Transfer of value",
+    delivered: [mockedFile, mockedFile, mockedFile, mockedFile],
+    missing: [mockedFile, mockedFile, mockedFile, mockedFile],
+  },
+  {
+    name: "Service Performance Form",
+    delivered: [mockedFile, mockedFile, mockedFile, mockedFile],
+    missing: [mockedFile, mockedFile, mockedFile, mockedFile],
+  },
+];
 
 export default function EventDocuments() {
   const [tabToShow, setTabToShow] = useState<
@@ -66,7 +99,7 @@ export default function EventDocuments() {
             startIcon={<Icon.Person className="h-4 w-4" />}
             onClick={() => setTabToShow("by-partecipants")}
           >
-            Per Partecipane
+            Per Partecipante
           </Button>
         </div>
       </div>
@@ -82,19 +115,29 @@ export default function EventDocuments() {
 }
 
 const ByDocumentsTab = () => {
+  const [activeAttachments, setActiveAttachments] = useState<{
+    delivered: File[];
+    missing: File[];
+  } | null>(null);
+  const documentsRowDialogStyle = "cursor-pointer hover:bg-white group";
+
   const DocumentsRow = ({
     name,
     required,
     delivered = [],
     missing = [],
+    className,
+    onClick,
   }: {
     name: string;
     required?: boolean;
-    delivered?: any[];
-    missing?: any[];
+    delivered?: File[];
+    missing?: File[];
+    className?: string;
+    onClick?: () => void;
   }) => {
     return (
-      <>
+      <div className={className} onClick={onClick}>
         <div className="grid grid-cols-12 gap-4 py-6">
           <div className="col-span-3 flex gap-2">
             <Icon.Document className="h-4 w-4" />
@@ -162,8 +205,8 @@ const ByDocumentsTab = () => {
             )}
           </div>
         </div>
-        <Divider />
-      </>
+        <Divider className="mt-0 group-hover:bg-red" />
+      </div>
     );
   };
 
@@ -180,34 +223,30 @@ const ByDocumentsTab = () => {
         Allegati Partecipante
       </Typography>
       <div className="mt-2">
-        <DocumentsRow
-          name={"Curriculum"}
-          required
-          delivered={[1, 2, 3, 4, 5]}
-          missing={[6, 7, 8, 9, 10]}
-        />
-        <DocumentsRow
-          name={"Questionario Incarichi"}
-          required
-          delivered={[1, 2, 3, 4, 5, 6]}
-          missing={[6, 7, 8, 9, 10, 11]}
-        />
-        <DocumentsRow
-          name={"Privacy Agreement"}
-          delivered={[1, 2, 3]}
-          missing={[1, 2, 3]}
-        />
-        <DocumentsRow
-          name={"Transfer of value"}
-          delivered={[1]}
-          missing={[1]}
-        />
-        <DocumentsRow
-          name={"Service Performance Form"}
-          delivered={[1, 2, 3, 4, 5]}
-          missing={[6, 7, 8, 9, 10]}
-        />
+        {mockedPartecipantsAttacheds.map((partecipant, index) => (
+          <DocumentsRow
+            key={index}
+            name={partecipant.name}
+            required={partecipant.required}
+            delivered={partecipant.delivered}
+            missing={partecipant.missing}
+            className={documentsRowDialogStyle}
+            onClick={() =>
+              setActiveAttachments({
+                delivered: partecipant.delivered,
+                missing: partecipant.missing,
+              })
+            }
+          />
+        ))}
       </div>
+      <DocumentAttachedsDialog
+        isOpen={!!activeAttachments}
+        onOpenChange={(open) => {
+          if (!open) setActiveAttachments(null);
+        }}
+        attachments={activeAttachments}
+      />
     </>
   );
 };
