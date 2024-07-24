@@ -6,6 +6,7 @@ import DocumentCard from "@/components/common/cards/document-card";
 import ActionBarPlatform from "@/components/layout/platform/action-bar-platform";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import NewTemplateDialog from "@/components/pages/events-platform/documents/new-template-dialog";
 export default function Page() {
   return (
     <>
@@ -22,14 +23,18 @@ export default function Page() {
       <ActionBarPlatform
       // onSearch={(searchedText) => console.log("Cerca ", searchedText)}
       >
-        <Button
-          color="secondary"
-          size="sm"
-          variant="outlined"
-          endIcon={<Icon.Add className="h-4 w-4" />}
-        >
-          Carica un nuovo template
-        </Button>
+        <NewTemplateDialog
+          trigger={
+            <Button
+              color="secondary"
+              size="sm"
+              variant="outlined"
+              endIcon={<Icon.Add className="h-4 w-4" />}
+            >
+              Carica un nuovo template
+            </Button>
+          }
+        />
       </ActionBarPlatform>
       <PageContainerPlatform>
         <Typography variant="heading-card" color="red">
