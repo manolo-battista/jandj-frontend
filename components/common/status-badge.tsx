@@ -53,10 +53,10 @@ function StatusBadge({ className, variant, status, ...props }: BadgeProps) {
         )}
       >
         {status === IStatus.LIVE ? (
-          <div className="flex items-center gap-1">
-            <div className="h-2 w-2 rounded-full bg-red"></div>
+          <span className="flex items-center gap-1">
+            <span className="h-2 w-2 rounded-full bg-red"></span>
             {status}
-          </div>
+          </span>
         ) : (
           status
         )}
