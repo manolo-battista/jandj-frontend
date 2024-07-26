@@ -1,6 +1,6 @@
 import AvatarBadge from "@/components/common/avatar-badge";
 import EventTypeCard from "@/components/common/cards/event-type-card";
-import RowDropzone from "@/components/common/dropzones/RowDropzone";
+import RowDropzone from "@/components/common/dropzones/row-dropzone";
 import { SimpleDialog } from "@/components/common/simple-dialog";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";

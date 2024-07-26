@@ -1,6 +1,6 @@
 import DocumentCard from "@/components/common/cards/document-card";
 import FileCard from "@/components/common/cards/file-card";
-import CardDropzone from "@/components/common/dropzones/CardDropzone";
+import CardDropzone from "@/components/common/dropzones/card-dropzone";
 import { SimpleDialog } from "@/components/common/simple-dialog";
 import {
   Alert,

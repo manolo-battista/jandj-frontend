@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/alert";
 import Icon from "@/components/ui/icon";
 import { AttendeesRowProps } from "@/types/attendee";
-import CardDropzone from "@/components/common/dropzones/CardDropzone";
+import CardDropzone from "@/components/common/dropzones/card-dropzone";
 import mockedFile from "@/constants/mockedFile";
 
 interface AttendeesRowDetailDialogProps extends SimpleDialogProps {
