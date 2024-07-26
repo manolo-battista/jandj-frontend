@@ -66,7 +66,7 @@ export default function Page() {
             <div key={index} className="col-span-4">
               <CrmDetailDialog
                 trigger={
-                  <button>
+                  <button className="w-full">
                     <CrmCard />
                   </button>
                 }

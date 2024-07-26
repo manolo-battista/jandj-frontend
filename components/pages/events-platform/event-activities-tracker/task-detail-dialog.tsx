@@ -224,7 +224,7 @@ export default function TaskDetailDialog({
         <Typography variant="heading-sm" color="red" className="mt-10">
           Azioni Rapide
         </Typography>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
           <Button
             startIcon={<Icon.Email className="h-6 w-6" />}
             variant="default"

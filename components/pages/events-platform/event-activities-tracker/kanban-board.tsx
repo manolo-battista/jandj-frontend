@@ -217,7 +217,7 @@ function KanbanBoardColumn({
   setTasks,
 }: IKanbanBoardColumn) {
   return (
-    <div className="min-w-[300px] px-3">
+    <div className="min-w-[24%] max-w-[24%] px-3">
       <Typography variant="heading-xs" color="primary">
         {title}
       </Typography>
@@ -335,7 +335,7 @@ function KanbanBoardTask({
                   <Icon.DotsMenu />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-[150px] bg-white shadow-md">
-                  <DropdownMenuItem
+                  {/*<DropdownMenuItem
                     className="flex min-h-[34px] items-center gap-4 p-2 hover:bg-gray-200"
                     onClick={(e) => {
                       e.stopPropagation();
@@ -344,7 +344,7 @@ function KanbanBoardTask({
                   >
                     <Icon.Stationery className="h-4 w-4" />
                     <Typography variant="legal">Duplica</Typography>
-                  </DropdownMenuItem>
+                  </DropdownMenuItem>*/}
                   <DropdownMenuItem
                     className="flex min-h-[34px] items-center gap-4 p-2 hover:bg-gray-200"
                     onClick={(e) => {
