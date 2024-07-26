@@ -362,7 +362,7 @@ function KanbanBoardTask({
             <Typography
               variant="body-md"
               color="primary"
-              className="mt-2 group-hover:text-red"
+              className="mt-2 line-clamp-2 group-hover:text-red"
             >
               {taskProps.title}
             </Typography>

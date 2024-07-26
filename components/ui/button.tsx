@@ -99,7 +99,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         className={cn(
           buttonVariants({ variant, color, className, size }),
-          disabled && "cursor-not-allowed border-0 bg-gray-200 text-gray-400",
+          disabled &&
+            "cursor-not-allowed border-0 bg-gray-200 text-gray-400 hover:bg-gray-200 hover:text-gray",
         )}
         ref={ref}
         {...props}
@@ -110,6 +111,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           color={cn(
             "on-color",
             (variant === "outlined" || variant === "link") && "red",
+            disabled && "text-gray",
           )}
           className={cn(startIcon && "ml-2", endIcon && "mr-2")}
           variant={textVariant}

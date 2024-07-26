@@ -1,5 +1,6 @@
 import DocumentCard from "@/components/common/cards/document-card";
 import FileCard from "@/components/common/cards/file-card";
+import CardDropzone from "@/components/common/dropzones/CardDropzone";
 import { SimpleDialog } from "@/components/common/simple-dialog";
 import {
   Alert,
@@ -62,13 +63,16 @@ export default function DocumentAttachedsDialog({
       <Typography variant="heading-sm" color={"red"} className="mt-10">
         Documenti dei partecipanti
       </Typography>
-      <div className="grid-flow-rowgrid-cols-2 auto-row s-max mt-4 grid gap-2 xl:grid-cols-3">
+      <div className="flex flex-wrap gap-2">
         {attachments?.delivered.map((file, idx) => (
-          <>
-            <FileCard key={idx} file={file} />
-          </>
+          <CardDropzone
+            file={file}
+            key={idx}
+            enableOptions={true}
+            partecipantName="Dott. Nome Cognome"
+          />
         ))}
-        {attachments?.missing.map((_, index) => <FileCard key={index} />)}
+        {attachments?.missing.map((_, idx) => <CardDropzone key={idx} />)}
       </div>
     </SimpleDialog>
   );

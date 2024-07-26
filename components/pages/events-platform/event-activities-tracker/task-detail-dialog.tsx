@@ -229,10 +229,10 @@ export default function TaskDetailDialog({
             startIcon={<Icon.Email className="h-6 w-6" />}
             variant="default"
           >
-            Email Dott. Jonh Doe
+            Richiedi via email
           </Button>
-          <Button startIcon={<Icon.Download className="h-6 w-6" />}>
-            Download CV Template
+          <Button startIcon={<Icon.ArrowDiagonal className="h-6 w-6" />}>
+            Apri evento su IConnect
           </Button>
         </div>
 

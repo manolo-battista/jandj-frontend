@@ -1,5 +1,6 @@
 import AvatarBadge from "@/components/common/avatar-badge";
 import EventTypeCard from "@/components/common/cards/event-type-card";
+import RowDropzone from "@/components/common/dropzones/RowDropzone";
 import { SimpleDialog } from "@/components/common/simple-dialog";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
@@ -32,7 +33,7 @@ export default function CreateDocumentDialog({
     <SimpleDialog trigger={trigger}>
       {activeStep === "home" && <HomeScreen setActiveStep={setActiveStep} />}
       {activeStep === "event-documents" && (
-        <EventAttachementsScreen setActiveStep={setActiveStep} />
+        <EventDocumentsScreen setActiveStep={setActiveStep} />
       )}
       {activeStep === "partecipants" && (
         <PartecipantsScreen
@@ -80,8 +81,8 @@ const HomeScreen = ({
         />
         <EventTypeCard
           className="w-1/2 bg-gray-100"
-          icon={<Icon.Star className="w-10 fill-red" />}
-          title={"Allegati evento"}
+          icon={<Icon.Person className="w-10 fill-red" />}
+          title={"Allegati partecipante"}
           description={"Descrizione documenti evento"}
           action={
             <Button
@@ -97,7 +98,7 @@ const HomeScreen = ({
   );
 };
 
-const EventAttachementsScreen = ({
+const EventDocumentsScreen = ({
   setActiveStep,
 }: {
   setActiveStep: (step: StepsProps) => void;
@@ -108,6 +109,11 @@ const EventAttachementsScreen = ({
       <Typography variant="heading-md" color="red" className="mt-4">
         Carica un nuovo documento
       </Typography>
+      <div className="my-10 grid grid-cols-1 gap-10">
+        {["Agenda", "Foglio Firme", "Minute Evento", "Altro"].map((title) => (
+          <RowDropzone key={title} label={title} />
+        ))}
+      </div>
     </>
   );
 };
@@ -140,17 +146,25 @@ const PartecipantsScreen = ({
         Allegati Partecipante
       </Typography>
       <div>
-        <PartecipantRow
-          name="Dott. Nome e Cognome"
-          role="Specializzazione"
-          onClick={() => {
-            setSelectedPartecipant({
-              name: "Dott. Nome e Cognome",
-              role: "Specializzazione",
-            });
-            setActiveStep("partecipant-documents");
-          }}
-        />
+        {[
+          "Dott. Mario Rossi",
+          "Dott. Jonh Doe",
+          "Dott. Mario Rossi",
+          "Dott. Jonh Doe",
+        ].map((name) => (
+          <PartecipantRow
+            key={name}
+            name={name}
+            role="Specializzazione"
+            onClick={() => {
+              setSelectedPartecipant({
+                name: name,
+                role: "Specializzazione",
+              });
+              setActiveStep("partecipant-documents");
+            }}
+          />
+        ))}
       </div>
     </>
   );
@@ -169,6 +183,18 @@ const PartecipantDocumentsScreen = ({
       <Typography variant="heading-md" color="red" className="mt-4">
         {partecipant.name}
       </Typography>
+      <div className="my-10 grid grid-cols-1 gap-10">
+        {[
+          "Curriculum Vitae",
+          "Questionario Incarichi",
+          "Privacy Agreement",
+          "Transfer of value",
+          "Lettera d’Incarico",
+          "Integrazione alla Lettera d’Incarico",
+        ].map((title) => (
+          <RowDropzone key={title} label={title} />
+        ))}
+      </div>
     </>
   );
 };
