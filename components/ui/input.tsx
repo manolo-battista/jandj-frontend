@@ -10,7 +10,7 @@ const inputVariants = cva("h-10 px-3 py-2", {
       filled:
         "bg-background-active border-b border-gray placeholder-gray flex h-10 w-full px-3 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
       outlined:
-        "bg-background placeholder:text-muted-foreground placeholder:text-gray flex h-10 w-full rounded-md border-input px-3 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+        "bg-background placeholder:text-muted-foreground placeholder:text-gray border-1 border-gray flex h-10 w-full border border-gray px-3 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
     },
   },
   defaultVariants: {
@@ -31,6 +31,7 @@ export interface InputProps
   required?: boolean;
   hasError?: boolean;
   helperText?: string;
+  autocomplete?: HTMLInputElement["autocomplete"];
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
