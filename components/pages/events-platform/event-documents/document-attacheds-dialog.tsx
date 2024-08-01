@@ -1,7 +1,10 @@
 import DocumentCard from "@/components/common/cards/document-card";
 import FileCard from "@/components/common/cards/file-card";
 import CardDropzone from "@/components/common/dropzones/card-dropzone";
-import { SimpleDialog } from "@/components/common/simple-dialog";
+import {
+  SimpleDialog,
+  SimpleDialogProps,
+} from "@/components/common/simple-dialog";
 import {
   Alert,
   AlertContent,
@@ -12,14 +15,12 @@ import Dropzone from "@/components/ui/dropzone";
 import { Typography } from "@/components/ui/typography";
 import React, { useState } from "react";
 
-type DocumentAttachedsDialogProps = {
-  isOpen: boolean;
-  onOpenChange: (open: boolean) => false | void;
+interface DocumentAttachedsDialogProps extends SimpleDialogProps {
   attachments?: {
     delivered: File[];
     missing: File[];
   } | null;
-};
+}
 
 export default function DocumentAttachedsDialog({
   isOpen,
@@ -27,7 +28,6 @@ export default function DocumentAttachedsDialog({
   attachments,
 }: DocumentAttachedsDialogProps) {
   const [files, setFiles] = useState<File[]>([]);
-  console.log(files);
   return (
     <SimpleDialog isOpen={isOpen} onOpenChange={onOpenChange}>
       <Typography variant="heading-md" color={"red"} className="mt-4">

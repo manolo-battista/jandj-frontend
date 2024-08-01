@@ -5,6 +5,8 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 
 import { cn } from "@/lib/utils";
 import Icon from "./icon";
+import { Typography } from "./typography";
+import { cva, VariantProps } from "class-variance-authority";
 
 const Select = SelectPrimitive.Root;
 
@@ -12,23 +14,60 @@ const SelectGroup = SelectPrimitive.Group;
 
 const SelectValue = SelectPrimitive.Value;
 
+export interface SelectProps
+  extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>,
+    VariantProps<typeof selectVariants> {
+  label?: string;
+  required?: boolean;
+  hasError?: boolean;
+  helperText?: string;
+}
+
+const selectVariants = cva("h-10 px-3 py-2", {
+  variants: {
+    variant: {
+      filled:
+        "bg-background-active border-b border-gray placeholder-gray flex h-10 w-full items-center justify-between px-3 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+      outlined:
+        "bg-background placeholder:text-muted-foreground placeholder:text-gray flex h-10 w-full items-center justify-between rounded-md border-input px-3 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+    },
+  },
+  defaultVariants: {
+    variant: "filled",
+  },
+});
+
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Trigger
-    ref={ref}
-    className={cn(
-      "placeholder:text-muted-foreground flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
-      className,
+  SelectProps
+>(({ className, children, label, required, variant, ...props }, ref) => (
+  <div>
+    {label && (
+      <Typography variant="legal" className="mb-1">
+        {label}
+        {required && <span className="text-red">*</span>}
+      </Typography>
     )}
-    {...props}
-  >
-    {children}
-    <SelectPrimitive.Icon asChild>
-      <Icon.ChevronDown className="h-4 w-4 opacity-50" />
-    </SelectPrimitive.Icon>
-  </SelectPrimitive.Trigger>
+    <SelectPrimitive.Trigger
+      ref={ref}
+      className={cn(
+        selectVariants({ variant }),
+        props.hasError && "border-error text-error",
+      )}
+      {...props}
+    >
+      {children}
+      <SelectPrimitive.Icon asChild>
+        <Icon.ChevronDown className="h-4 w-4 opacity-50" />
+      </SelectPrimitive.Icon>
+    </SelectPrimitive.Trigger>
+    <Typography
+      variant="body-xs"
+      className={cn("mt-1", props.hasError && "text-error")}
+    >
+      {props.helperText}
+    </Typography>
+  </div>
 ));
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
@@ -75,7 +114,7 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        "bg-popover text-popover-foreground relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+        "text-popover-foreground relative z-50 max-h-96 min-w-[8rem] overflow-hidden border bg-white shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
         position === "popper" &&
           "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
         className,

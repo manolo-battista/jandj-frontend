@@ -1,15 +1,14 @@
 import AvatarBadge from "@/components/common/avatar-badge";
 import EventTypeCard from "@/components/common/cards/event-type-card";
 import RowDropzone from "@/components/common/dropzones/row-dropzone";
-import { SimpleDialog } from "@/components/common/simple-dialog";
+import {
+  SimpleDialog,
+  SimpleDialogProps,
+} from "@/components/common/simple-dialog";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import { Typography } from "@/components/ui/typography";
 import React, { useState } from "react";
-
-type CreateDocumentDialogStepperProps = {
-  trigger: React.ReactNode;
-};
 
 type StepsProps =
   | "event-documents"
@@ -23,9 +22,7 @@ type PartecipantProps = {
   onClick?: () => void;
 };
 
-export default function CreateDocumentDialog({
-  trigger,
-}: CreateDocumentDialogStepperProps) {
+export default function CreateDocumentDialog({ trigger }: SimpleDialogProps) {
   const [activeStep, setActiveStep] = useState<StepsProps>("home");
   const [selectedPartecipant, setSelectedPartecipant] =
     useState<PartecipantProps | null>();

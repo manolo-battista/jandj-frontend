@@ -16,6 +16,8 @@ import {
   AlertDescription,
   AlertTitle,
 } from "@/components/ui/alert";
+import CardDropzone from "@/components/common/dropzones/card-dropzone";
+import mockedFile from "@/constants/mockedFile";
 
 interface CrmDetailDialogProps extends SimpleDialogProps {}
 
@@ -138,6 +140,10 @@ export default function CrmDetailDialog({ trigger }: CrmDetailDialogProps) {
           <Typography variant="heading-sm" color="red">
             Allegati
           </Typography>
+          <div className="flex flex-wrap gap-2">
+            <CardDropzone file={mockedFile} />
+            <CardDropzone />
+          </div>
         </div>
 
         <div>

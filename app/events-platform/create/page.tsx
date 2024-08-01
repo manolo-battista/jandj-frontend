@@ -1,4 +1,5 @@
-import React, { ReactNode } from "react";
+"use client";
+
 import { Typography } from "@/components/ui/typography";
 import NavbarPlatform from "@/components/layout/platform/navbar-platform";
 import PageContainerPlatform from "@/components/layout/platform/page-container-platform";
@@ -6,8 +7,11 @@ import Icon from "@/components/ui/icon";
 import EventTypeCard from "@/components/common/cards/event-type-card";
 import { Button } from "@/components/ui/button";
 import { IEventType } from "@/types/event";
+import CreateCorporateEventDialog from "@/components/pages/events-platform/create-event/create-corporate-event-dialog";
+import { useState } from "react";
 
 export default function Page() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const eventTypes: IEventType[] = [
     {
       icon: <Icon.Hospital className="w-10 fill-red" />,
@@ -78,7 +82,12 @@ export default function Page() {
               className="col-span-4"
               action={
                 eventType.action === "internal" ? (
-                  <Button startIcon={<Icon.Add />}>Create</Button>
+                  <Button
+                    startIcon={<Icon.Add />}
+                    onClick={() => setIsDialogOpen(true)}
+                  >
+                    Create
+                  </Button>
                 ) : (
                   <Button variant="link" endIcon={<Icon.ArrowDiagonal />}>
                     Create on iConnect
@@ -88,6 +97,10 @@ export default function Page() {
             />
           ))}
         </div>
+        <CreateCorporateEventDialog
+          isOpen={isDialogOpen}
+          onOpenChange={(open: boolean) => !open && setIsDialogOpen(false)}
+        />
       </PageContainerPlatform>
     </>
   );
