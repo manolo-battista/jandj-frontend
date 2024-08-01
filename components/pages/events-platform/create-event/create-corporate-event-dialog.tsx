@@ -49,16 +49,13 @@ export default function CreateCorporateEventDialog({
   }
   return (
     <SimpleDialog isOpen={isOpen} onOpenChange={onOpenChange}>
-      <Typography variant="heading-md" color="red" className="mt-4">
-        Carica un nuovo documento
-      </Typography>
-      <Typography variant="heading-sm" color="red" className="mt-4">
-        Che tipo di documento vuoi aggiungere?
+      <Typography variant="heading-md" color="red" className="mb-4">
+        Nuovo Evento Corporate & Policy
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-8">
           <Typography variant="heading-sm" color="red">
-            Eventi in programma
+            Informazione generale
           </Typography>
           <div className="grid grid-cols-2 gap-4">
             <Input
@@ -136,7 +133,9 @@ export default function CreateCorporateEventDialog({
         </div>
 
         <div className="mt-8 flex justify-end">
-          <Button type="submit">Conferma</Button>
+          <Button type="submit" startIcon={<Icon.Check />}>
+            Invia evento per approvazione
+          </Button>
         </div>
       </form>
     </SimpleDialog>
