@@ -1,4 +1,3 @@
-import AvatarBadge from "../avatar-badge";
 import Icon from "@/components/ui/icon";
 import Image from "next/image";
 import { Typography } from "@/components/ui/typography";
@@ -16,6 +15,7 @@ import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { DropzoneProps } from "@/components/ui/dropzone";
+import AvatarBadge from "../avatar-badge";
 
 export default function FileCard({ file }: { file?: File }) {
   return (

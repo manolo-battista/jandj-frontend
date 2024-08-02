@@ -6,10 +6,6 @@ import Divider from "@/components/ui/divider";
 import { Typography } from "@/components/ui/typography";
 import { getFormattedDate } from "@/utils/get-formatted-date";
 import { ReactNode } from "react";
-import {
-  AttendeeBadgeStatus,
-  AttendeeStatusBadge,
-} from "./attendee-status-badge";
 import AvatarProfile from "@/components/common/avatar-profile";
 import {
   Alert,
@@ -22,6 +18,10 @@ import Icon from "@/components/ui/icon";
 import { AttendeesRowProps } from "@/types/attendee";
 import CardDropzone from "@/components/common/dropzones/card-dropzone";
 import mockedFile from "@/constants/mockedFile";
+import {
+  ContractStatus,
+  ContractStatusBadge,
+} from "@/components/common/contract-status-badge";
 
 interface AttendeesRowDetailDialogProps extends SimpleDialogProps {
   attendee?: AttendeesRowProps;
@@ -71,12 +71,12 @@ export const AttendeesRowDetailDialog = ({
   // TODO alert logic
   return (
     <SimpleDialog isOpen={isOpen} onOpenChange={onOpenChange}>
-      <AttendeeStatusBadge status={AttendeeBadgeStatus.APPROVED} />
+      <ContractStatusBadge status={ContractStatus.APPROVED} />
       <div className="mt-6 flex items-start gap-2">
         <AvatarProfile
           name="Marco Rossi"
-          className="h-[100px] w-[100px]"
-          textVariant={"body-xl"}
+          className="size-[100px]"
+          textClassName="text-[28px]"
         />
         <Typography variant={"heading-md"} color="red">
           Dott. Nome Cognome
@@ -156,9 +156,7 @@ export const AttendeesRowDetailDialog = ({
             icon={<Icon.Document />}
             title="Contratto"
             value={
-              <AttendeeStatusBadge
-                status={AttendeeBadgeStatus.SENT_FOR_SIGNATURE}
-              />
+              <ContractStatusBadge status={ContractStatus.SENT_FOR_SIGNATURE} />
             }
           />
         </div>

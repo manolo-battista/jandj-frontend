@@ -1,41 +1,56 @@
 import React from "react";
 import AvatarProfile from "./avatar-profile";
 import { cn } from "@/lib/utils";
-import { Typography } from "../ui/typography";
-import Icon from "../ui/icon";
+import { Typography, typographyVariants } from "../ui/typography";
+import { FrameworkAlertbadge } from "./framework-alert-badge";
+import { VariantProps } from "class-variance-authority";
 
 type AvatarBadgeProps = {
   name: string;
   role?: string;
   error?: boolean;
   className?: string;
+  variant?: "small" | "medium" | "large";
   textClassName?: string;
 };
 
-export default function AvatarBadge({
+type TypographyVariants = VariantProps<typeof typographyVariants>;
+
+function AvatarBadge({
   name,
   className,
   role,
   error,
+  variant = "medium",
   textClassName,
 }: AvatarBadgeProps) {
+  function getTypographyVariant(
+    variant: "small" | "medium" | "large",
+  ): TypographyVariants["variant"] {
+    switch (variant) {
+      case "small":
+        return "body-xs";
+      case "medium":
+        return "body-xs";
+      case "large":
+        return "body-md";
+      default:
+        return "body-xs";
+    }
+  }
+
   return (
     <div className={cn("flex items-center gap-2", className)}>
-      <AvatarProfile name={name} />
+      <AvatarProfile name={name} variant={variant} />
       <div>
-        <Typography variant="body-md" className={textClassName}>
-          {name}
-        </Typography>
+        <Typography variant={getTypographyVariant(variant)}>{name}</Typography>
         <div className="flex gap-1">
-          {error && (
-            <div className="gap-1">
-              <Icon.Alert className="text-red" />
-              <Typography variant="body-sm" color="red">
-                Out of Framework
-              </Typography>
-            </div>
-          )}
-          <Typography variant="body-sm" color="inverse">
+          {error && <FrameworkAlertbadge />}
+          <Typography
+            variant="body-sm"
+            color="inverse"
+            className={cn("capitalize", textClassName)}
+          >
             {role}
           </Typography>
         </div>
@@ -43,3 +58,5 @@ export default function AvatarBadge({
     </div>
   );
 }
+
+export default AvatarBadge;

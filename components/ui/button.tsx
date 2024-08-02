@@ -49,8 +49,14 @@ const buttonVariants = cva(
         className: "text-red",
       },
 
-      // secondary
-      //   outlined
+      // secondary default
+      {
+        color: "secondary",
+        variant: "default",
+        className:
+          "border border-gray-800 hover:border-transparent hover:bg-gray-300",
+      },
+      // secondary outlined
       {
         color: "secondary",
         variant: "outlined",
@@ -111,6 +117,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           color={cn(
             "on-color",
             (variant === "outlined" || variant === "link") && "red",
+            variant === "default" && color === "secondary" && "gray-800",
             disabled && "text-gray",
           )}
           className={cn(startIcon && "ml-2", endIcon && "mr-2")}

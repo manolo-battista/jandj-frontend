@@ -110,6 +110,7 @@ export default function EventKanbanBoard() {
     done: [...mockedTasks.done],
   });
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
+  const [taskCreateByUser, setTaskCreatedByUser] = useState(false);
   const allTasks = [
     ...tasks.todo,
     ...tasks.done,
@@ -185,11 +186,15 @@ export default function EventKanbanBoard() {
                 variant="outlined"
                 size={"sm"}
                 startIcon={<Icon.Add className="h-4 w-4" />}
-                onClick={() => setIsCreateDialogOpen(true)}
+                onClick={() => {
+                  setTaskCreatedByUser(true);
+                  setIsCreateDialogOpen(true);
+                }}
               >
-                Aggiungi una nuova task
+                Aggiungi una nuova Attività
               </Button>
             }
+            createByUser={taskCreateByUser}
           />
         </div>
         <div className="mt-4 flex gap-3 divide-x-2 divide-gray-300 overflow-x-auto overflow-y-hidden">
@@ -329,13 +334,17 @@ function KanbanBoardTask({
             onClick={() => setIsDialogOpen(true)}
           >
             <div className="flex items-center justify-between">
-              <PriorityBadge priority={taskProps.priority ?? "placeholder"} />
+              {taskProps.priority ? (
+                <PriorityBadge priority={taskProps.priority} />
+              ) : (
+                <div></div>
+              )}
               <DropdownMenu>
                 <DropdownMenuTrigger>
                   <Icon.DotsMenu />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-[150px] bg-white shadow-md">
-                  {/*<DropdownMenuItem
+                  <DropdownMenuItem
                     className="flex min-h-[34px] items-center gap-4 p-2 hover:bg-gray-200"
                     onClick={(e) => {
                       e.stopPropagation();
@@ -344,7 +353,7 @@ function KanbanBoardTask({
                   >
                     <Icon.Stationery className="h-4 w-4" />
                     <Typography variant="legal">Duplica</Typography>
-                  </DropdownMenuItem>*/}
+                  </DropdownMenuItem>
                   <DropdownMenuItem
                     className="flex min-h-[34px] items-center gap-4 p-2 hover:bg-gray-200"
                     onClick={(e) => {
@@ -392,6 +401,7 @@ function KanbanBoardTask({
         isOpen={isDialogOpen}
         task={taskProps}
         onSubmit={onEditTask}
+        onDelete={onDeleteTask}
       />
     </>
   );

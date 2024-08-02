@@ -15,7 +15,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import AvatarBadge from "../avatar-badge";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import isFileDateExpired from "@/utils/isFileDateExpired";
 import { UploadingFileProps, UploadingStep } from "@/types/customDropzone";
+import AvatarBadge from "../avatar-badge";
 
 interface CardDropzoneProps {
   value?: any;

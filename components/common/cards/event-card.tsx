@@ -7,15 +7,17 @@ import Icon from "@/components/ui/icon";
 import React from "react";
 import { IStatus } from "@/types/status";
 import AvatarProfile from "@/components/common/avatar-profile";
+import { FrameworkAlertbadge } from "../framework-alert-badge";
 
 interface EventCardProps {
   variant?: "default" | "compact";
   className?: string;
   status: IStatus;
   onClick?(): void;
+  alert?: boolean;
 }
 export default function EventCard(props: EventCardProps) {
-  const { variant = "default", status, className, onClick } = props;
+  const { variant = "default", status, className, onClick, alert } = props;
   const isCompact = variant == "compact";
   const isCancelled = status === IStatus.CANCELLED;
 
@@ -30,27 +32,27 @@ export default function EventCard(props: EventCardProps) {
         onClick && "cursor-pointer",
       )}
     >
-      <div className="absolute right-4 top-4">
-        <StatusBadge status={status} />
-      </div>
       <div className={cn(isCancelled && "cursor-disabled opacity-50")}>
-        <div className={cn("flex items-center")}>
+        <div className="mb-3 flex items-center justify-between">
           <Typography variant="body-xs" className="flex-1 uppercase">
             MEDICAL EDUCATIONAL EVENT
           </Typography>
+          <StatusBadge status={status} />
         </div>
-        <Typography variant="heading-card" className="w-2/3">
+        <Typography variant="heading-card" className="mb-10 w-2/3">
           Event name
         </Typography>
-        <div className="my-2 flex gap-1">
-          <Tag>#psychiatry</Tag>
-          <Tag>#neurology</Tag>
+        <div className="mb-3 flex gap-1">
+          <Tag>Event Number 123456</Tag>
+          {alert && <FrameworkAlertbadge />}
+          <FrameworkAlertbadge />
         </div>
 
         {!isCompact && (
-          <div className="flex">
+          <div className="mb-[70px] flex">
             {mockAttendees.map((item, index) => (
               <AvatarProfile
+                className="size-6"
                 index={index}
                 key={index}
                 name="Utente Prova"
@@ -60,22 +62,22 @@ export default function EventCard(props: EventCardProps) {
           </div>
         )}
 
-        <div className="mt-6 flex flex-col gap-3">
-          {!isCompact && (
+        <div className="flex flex-col gap-2">
+          {/* {!isCompact && (
             <div className="flex items-center gap-3">
               <Icon.Person className="w-5 fill-gray" />
               <Typography variant="body-xs">40</Typography>
             </div>
-          )}
+          )} */}
           <div className="flex items-center gap-3">
-            <Icon.Calendar className="w-5 fill-gray" />
-            <Typography variant="body-xs">21 - 23/02/2024</Typography>
+            <Icon.Calendar className="size-4 fill-gray" />
+            <Typography variant="body-xs">Data (Ex. 21-23 Feb 2024)</Typography>
           </div>
           {!isCompact && (
             <div className="flex items-center gap-3">
-              <Icon.Pin className="w-5 fill-gray" />
+              <Icon.Pin className="size-4 fill-gray" />
               <Typography variant="body-xs">
-                Ergife Palace Hotel, Rome (IT)
+                Luogo (Ex. Ergife Palace Hotel, Rome (IT))
               </Typography>
             </div>
           )}

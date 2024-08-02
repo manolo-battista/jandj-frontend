@@ -8,9 +8,9 @@ const inputVariants = cva("h-10 px-3 py-2", {
   variants: {
     variant: {
       filled:
-        "bg-background-active border-b border-gray placeholder-gray flex h-10 w-full px-3 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+        "bg-background-active border-b border-gray placeholder-gray flex h-10 w-full px-3 py-2  file:border-0 file:bg-transparent file:text-sm file:font-medium focus disabled:cursor-not-allowed disabled:opacity-50",
       outlined:
-        "bg-background placeholder:text-muted-foreground placeholder:text-gray border-1 border-gray flex h-10 w-full border border-gray px-3 py-2 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+        "focus-visible:outline-none border-none bg-background placeholder:text-muted-foreground placeholder:text-gray border-1 border-gray flex h-10 w-full border border-gray px-3 py-2 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50",
     },
   },
   defaultVariants: {
@@ -63,7 +63,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </Typography>
           )}
           {startIcon && (
-            <div className="absolute left-3 top-2">{startIcon}</div>
+            <div className="absolute left-3 top-3">{startIcon}</div>
           )}
           {!readOnly ? (
             <input

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { Typography } from "@/components/ui/typography";
 
 const badgeVariants = cva(
-  " inline-flex items-center rounded-sm border px-1 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  " border-l-[5px] border-red inline-flex items-center  px-1 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
   {
     variants: {
       variant: {
@@ -26,7 +26,6 @@ export interface BadgeProps
 function Tag({ className, variant, ...props }: BadgeProps) {
   return (
     <div className={cn(badgeVariants({ variant }), className)} {...props}>
-      <div className="mx-1 h-4 w-1 rounded-md bg-red" />
       <Typography variant="footer-header-card">{props.children}</Typography>
     </div>
   );

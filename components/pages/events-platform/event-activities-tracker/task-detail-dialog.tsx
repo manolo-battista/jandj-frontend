@@ -27,18 +27,21 @@ import { PriorityBadge } from "./priority-badge";
 import { Textarea } from "@/components/ui/textarea";
 import { getFormattedDate } from "@/utils/get-formatted-date";
 import { formattedTaskStatusTitle } from "@/utils/get-status-title";
+import DocumentCard from "@/components/common/cards/document-card";
 
 type TaskDetailProps = {
   setOpen: (open: boolean) => false | void;
   isOpen: boolean;
   task: IKanbanBoardTask | null;
   onSubmit(task: IKanbanBoardTask): void;
+  onDelete(task: IKanbanBoardTask): void;
 };
 
 export default function TaskDetailDialog({
   setOpen,
   task,
   onSubmit,
+  onDelete,
   isOpen,
 }: TaskDetailProps) {
   const [isEditing, setIsEditing] = useState(false);
@@ -66,14 +69,25 @@ export default function TaskDetailDialog({
   return (
     <Dialog open={isOpen} onOpenChange={setOpen}>
       <DialogContent className="max-h-[80%] max-w-[80%] overflow-y-scroll py-14">
-        <DialogHeader
-          className="flex cursor-pointer flex-row items-center gap-2"
-          onClick={handleEditing}
-        >
-          <IconComponent className="text-red" />
-          <Typography variant="body-label" color="red">
-            {buttonText}
-          </Typography>
+        <DialogHeader className="flex cursor-pointer flex-row items-center gap-2">
+          <div className="flex items-center gap-2">
+            <Button
+              onClick={handleEditing}
+              variant="default"
+              color="secondary"
+              startIcon={<IconComponent />}
+            >
+              {buttonText}
+            </Button>
+            <Button
+              onClick={() => onDelete(taskData)}
+              variant="default"
+              color="secondary"
+              startIcon={<Icon.Rubbish />}
+            >
+              Elimina
+            </Button>
+          </div>
         </DialogHeader>
 
         {isEditing ? (
@@ -236,14 +250,12 @@ export default function TaskDetailDialog({
           </Button>
         </div>
 
-        <Typography variant="heading-sm" color="red" className="mt-10">
-          Allegati
-        </Typography>
-        <Dropzone onChange={(files) => setFiles(files)}>
-          {/* <Button variant="outlined" className="mt-2">
-            {files.length > 0 ? "Replace file" : "Select file"}
-          </Button> */}
-        </Dropzone>
+        <div className="mt-10">
+          <Typography variant="heading-sm" color="red">
+            Allegati
+          </Typography>
+          <DocumentCard title={"CV Template"} className="mt-4" />
+        </div>
       </DialogContent>
     </Dialog>
   );

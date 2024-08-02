@@ -29,6 +29,7 @@ const typographyVariants = cva("", {
       "body-sm": "font-johnson-text text-[0.875rem]",
       "body-xs": "font-johnson-text text-[0.75rem]",
       "body-xs-bold": "font-johnson-text text-[0.75rem] font-semibold",
+      "body-xxs": "font-johnson-text text-[0.5rem]",
       "body-label": "font-johnson-text text-[1rem]",
       legal: "font-johnson-text text-[0.75rem]",
       "legal-button": "font-johnson-text text-[1rem]",

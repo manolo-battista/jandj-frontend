@@ -4,22 +4,24 @@
 
 /* === FONTS === */
 @font-face {
-  font-family: 'Johnson Display';
-  src: url('../public/fonts/johnson-display/JohnsonDisplay-Regular.otf') format('opentype');
+  font-family: "Johnson Display";
+  src: url("../public/fonts/johnson-display/JohnsonDisplay-Regular.otf")
+    format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Johnson Text';
-  src: url('../public/fonts/johnson-text/JohnsonText-Regular.otf') format('opentype');
+  font-family: "Johnson Text";
+  src: url("../public/fonts/johnson-text/JohnsonText-Regular.otf")
+    format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 /* === FONTS === */
 
 body {
-  font-family: 'Johnson Text', sans-serif;
+  font-family: "Johnson Text", sans-serif;
   background: #f8f7f6;
 }
 
@@ -114,10 +116,9 @@ body {
     --green-900: 151, 83%, 16%;
     --green-900-foreground: 0, 0%, 100%;
 
-
     --yellow-100: 45, 96%, 89%;
     --yellow-100-foreground: 0 0% 0%;
-    --yellow-200: 45, 96%, 89%;
+    --yellow-200: 44, 98%, 77%;
     --yellow-200-foreground: 0 0% 0%;
     --yellow-300: 45, 96%, 89%;
     --yellow-300-foreground: 0 0% 0%;

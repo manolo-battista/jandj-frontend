@@ -34,6 +34,7 @@ import Divider from "@/components/ui/divider";
 import { DialogTrigger } from "@radix-ui/react-dialog";
 import { getFormattedDate } from "@/utils/get-formatted-date";
 import { formattedTaskStatusTitle } from "@/utils/get-status-title";
+import DocumentCard from "@/components/common/cards/document-card";
 
 const initialTaskData = {
   id: "",
@@ -48,12 +49,14 @@ type CreateTaskProps = {
   onOpenChange: (open: boolean) => false | void;
   onSubmit: (task: IKanbanBoardTask) => void;
   trigger: React.ReactNode;
+  createByUser?: boolean;
 };
 
 export default function TaskDetailDialog({
   onOpenChange,
   onSubmit,
   trigger,
+  createByUser = false,
 }: CreateTaskProps) {
   const [files, setFiles] = useState<File[]>([]);
   const [taskData, setTaskData] = useState<IKanbanBoardTask>(initialTaskData);
@@ -73,8 +76,12 @@ export default function TaskDetailDialog({
 
       <DialogContent className="max-h-[80%] max-w-[80%] overflow-y-scroll py-14">
         <Textarea
-          className={cn("mt-4 border-none text-md")}
-          placeholder="Titolo"
+          className={cn("mt-4 resize-none border-none text-md")}
+          placeholder={
+            createByUser
+              ? "[Attività creata manualmente]"
+              : "[Attività creata da sistema]"
+          }
           value={taskData.title}
           onChange={(e) => setTaskData({ ...taskData, title: e.target.value })}
         />
@@ -180,15 +187,17 @@ export default function TaskDetailDialog({
           }
         />
 
-        <Typography variant="heading-sm" color="red" className="mt-10">
-          Allegati
-        </Typography>
-        <Dropzone onChange={(files) => setFiles(files)}>
-          {/* <Button variant="outlined" className="mt-2">
-            {files.length > 0 ? "Replace file" : "Select file"}
-          </Button> */}
-        </Dropzone>
-        <Divider className="mt-10" />
+        {!createByUser && (
+          <>
+            <Typography variant="heading-sm" color="red" className="mt-10">
+              Allegati
+            </Typography>
+            <div>
+              <DocumentCard title={"CV Template"} />
+              <Divider className="mt-10" />
+            </div>
+          </>
+        )}
         <div className="mt-6 flex justify-end">
           <DialogClose asChild>
             <Button

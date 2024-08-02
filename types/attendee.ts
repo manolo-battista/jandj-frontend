@@ -1,18 +1,19 @@
-import { AttendeeBadgeStatus } from "@/components/pages/events-platform/event-attendees/attendee-status-badge";
-
-type AttendeesDocumentStatus = "approved" | "rejected" | "pending";
+import { ApprovationStatus } from "@/components/common/approvation-status-badge";
+import { ContractStatus } from "@/components/common/contract-status-badge";
+import { DocumentStatus } from "@/components/common/document-status-badge";
+import { PaymentStatus } from "@/components/common/payment-status-badge";
 
 type AttendeesRowProps = {
   name: string;
   role: string;
-  CVdocument: AttendeesDocumentStatus;
-  QIdocument: AttendeesDocumentStatus;
+  CVdocumentStatus: DocumentStatus;
+  QIdocumentStatus: DocumentStatus;
   fee: string;
   iCd: string;
   CODS: string;
-  approvationStatus: AttendeeBadgeStatus;
-  contractStatus: AttendeeBadgeStatus;
-  paymentStatus: AttendeeBadgeStatus;
+  approvationStatus: ApprovationStatus;
+  contractStatus: ContractStatus;
+  paymentStatus: PaymentStatus;
 };
 
-export type { AttendeesRowProps, AttendeesDocumentStatus };
+export type { AttendeesRowProps };

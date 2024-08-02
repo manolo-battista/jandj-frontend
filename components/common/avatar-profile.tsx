@@ -2,9 +2,6 @@ import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import React from "react";
 import { Typography, typographyVariants } from "@/components/ui/typography";
-import { VariantProps } from "class-variance-authority";
-
-type TypographyVariants = VariantProps<typeof typographyVariants>;
 
 interface AvatarProfileProps {
   index?: number;
@@ -12,7 +9,22 @@ interface AvatarProfileProps {
   length?: number;
   maxLength?: number;
   className?: string;
-  textVariant?: TypographyVariants["variant"];
+  textClassName?: string;
+  variant?: "small" | "medium" | "large";
+  showCount?: boolean;
+}
+
+function getTypographyVariant(variant: "small" | "medium" | "large") {
+  switch (variant) {
+    case "small":
+      return "body-xxs";
+    case "medium":
+      return "body-xs";
+    case "large":
+      return "body-md";
+    default:
+      return "body-xs";
+  }
 }
 
 export default function AvatarProfile(props: AvatarProfileProps) {
@@ -22,7 +34,9 @@ export default function AvatarProfile(props: AvatarProfileProps) {
     name = "",
     length = 0,
     maxLength = 3,
-    textVariant = "body-xs",
+    variant = "medium",
+    showCount = true,
+    textClassName,
   } = props;
   const colorList = ["bg-[#0F68B2]", "bg-[#43AB45]", "bg-[#FDB022]"];
 
@@ -39,29 +53,42 @@ export default function AvatarProfile(props: AvatarProfileProps) {
   return index < maxLength ? (
     <Avatar
       className={cn(
-        "h-7 w-7 border-[2px] border-white",
-        index > 0 && "-ml-[7px]",
+        "h-7 w-7 border-[1px] border-white",
+        index > 0 && index !== 0 && "-ml-[5px]",
         colorList[index],
+        variant === "small" && "-ml-[7px] size-4",
+        variant === "medium" && "size-7",
+        variant === "large" && "size-12",
         className,
       )}
     >
       <AvatarFallback>
-        <Typography className="text-white" variant={textVariant}>
+        <Typography
+          className={cn("text-white", textClassName)}
+          variant={getTypographyVariant(variant)}
+        >
           {getInitials()}
         </Typography>
       </AvatarFallback>
     </Avatar>
   ) : (
-    index === maxLength && (
+    index === maxLength && showCount && (
       <Avatar
         className={cn(
-          "flex h-7 w-7 items-center justify-center border-[2px] border-red bg-white",
-          index > 0 && "-ml-[7px]",
+          "flex size-7 items-center justify-center border-[2px] border-red bg-white",
+          index > 0 && "-ml-[5px]",
           colorList[index],
+          variant === "small" && "-ml-[10px] size-4",
+          variant === "medium" && "size-7",
+          variant === "large" && "size-12",
           className,
         )}
       >
-        <Typography variant={"body-xs-bold"} color="red">
+        <Typography
+          variant={"body-xs-bold"}
+          color="red"
+          className={textClassName}
+        >
           +{length - maxLength}
         </Typography>
       </Avatar>

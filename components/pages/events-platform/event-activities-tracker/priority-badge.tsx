@@ -6,7 +6,7 @@ import { Typography } from "@/components/ui/typography";
 import { ITaskPriority } from "@/types/kanban-board";
 
 const badgeVariants = cva(
-  "border-transparent capitalize inline-flex items-center border px-1 py-0.5 text-[10px] font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 h-fit w-fit",
+  "border-transparent uppercase inline-flex items-center border px-1 py-0.5 text-[10px] font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 h-fit w-fit",
   {
     variants: {
       variant: {
@@ -48,9 +48,9 @@ function PriorityBadge({ className, variant, priority, ...props }: BadgeProps) {
         variant="body-xs"
         className={cn(
           priority === "placeholder" && "text-gray-700",
-          priority === ITaskPriority.URGENT && "text-error-900",
+          priority === ITaskPriority.URGENT && "text-error-700",
           priority === ITaskPriority.LOW_PRIORITY && "text-blue-900",
-          priority === ITaskPriority.MEDIUM_PRIORITY && "text-yellow-600",
+          priority === ITaskPriority.MEDIUM_PRIORITY && "text-warning-600",
           priority === ITaskPriority.HIGHT_PRIORITY && "text-yellow-800",
         )}
       >
