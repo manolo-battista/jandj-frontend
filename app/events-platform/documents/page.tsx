@@ -7,17 +7,16 @@ import ActionBarPlatform from "@/components/layout/platform/action-bar-platform"
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import NewTemplateDialog from "@/components/pages/events-platform/documents/new-template-dialog";
+import WelcomeMessage from "@/components/layout/platform/welcome-message";
 export default function Page() {
   return (
     <>
       <NavbarPlatform
         title={
-          <>
-            <Typography variant="body-xl" color="red">
-              Hello Annie!
-            </Typography>
-            <Typography variant="body-lg">Welcome to your dashboard</Typography>
-          </>
+          <WelcomeMessage
+            userName="Donatella"
+            message="Benvenuta nella tua dashboard"
+          />
         }
       />
       <ActionBarPlatform

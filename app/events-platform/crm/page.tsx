@@ -12,6 +12,7 @@ import ActionBarPlatform from "@/components/layout/platform/action-bar-platform"
 import Divider from "@/components/ui/divider";
 import CrmDetailDialog from "@/components/pages/events-platform/crm/crm-detail-dialog";
 import SelectNewProfileDialog from "@/components/pages/events-platform/crm/select-new-profile-dialog";
+import WelcomeMessage from "@/components/layout/platform/welcome-message";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
@@ -27,12 +28,10 @@ export default function Page() {
     <>
       <NavbarPlatform
         title={
-          <>
-            <Typography variant="body-xl" color="red">
-              Hello Annie!
-            </Typography>
-            <Typography variant="body-lg">Welcome to your dashboard</Typography>
-          </>
+          <WelcomeMessage
+            userName="Donatella"
+            message="Benvenuta nella tua dashboard"
+          />
         }
       />
       <ActionBarPlatform>

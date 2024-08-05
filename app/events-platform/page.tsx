@@ -6,6 +6,7 @@ import NavbarPlatform from "@/components/layout/platform/navbar-platform";
 import PageContainerPlatform from "@/components/layout/platform/page-container-platform";
 import { useRouter } from "next/navigation";
 import { IStatus } from "@/types/status";
+import WelcomeMessage from "@/components/layout/platform/welcome-message";
 import ActionBarPlatform from "@/components/layout/platform/action-bar-platform";
 import Icon from "@/components/ui/icon";
 import AvatarProfile from "@/components/common/avatar-profile";
@@ -68,14 +69,10 @@ export default function Page() {
     <>
       <NavbarPlatform
         title={
-          <>
-            <Typography variant="body-xl" color="red">
-              Ciao Donatella
-            </Typography>
-            <Typography variant="body-lg">
-              Benvenuta nella tua dashboard
-            </Typography>
-          </>
+          <WelcomeMessage
+            userName="Donatella"
+            message="Benvenuta nella tua dashboard"
+          />
         }
       />
 

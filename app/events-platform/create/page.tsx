@@ -7,6 +7,7 @@ import Icon from "@/components/ui/icon";
 import EventTypeCard from "@/components/common/cards/event-type-card";
 import { Button } from "@/components/ui/button";
 import { IEventType } from "@/types/event";
+import WelcomeMessage from "@/components/layout/platform/welcome-message";
 import CreateCorporateEventDialog from "@/components/pages/events-platform/create-event/create-corporate-event-dialog";
 import { useState } from "react";
 
@@ -61,16 +62,16 @@ export default function Page() {
       <NavbarPlatform
         title={
           <>
-            <Typography variant="body-xl" color="red">
-              Hello Annie!
-            </Typography>
-            <Typography variant="body-lg">Welcome to your dashboard</Typography>
+            <WelcomeMessage
+              userName="Donatella"
+              message="Benvenuta nella tua dashboard"
+            />
           </>
         }
       />
       <PageContainerPlatform>
         <Typography variant="heading-card" color="red">
-          Create a New Event
+          Crea un Nuovo Evento
         </Typography>
         <div className="mt-6 grid grid-cols-12 gap-6">
           {eventTypes.map((eventType, index) => (
@@ -86,11 +87,11 @@ export default function Page() {
                     startIcon={<Icon.Add />}
                     onClick={() => setIsDialogOpen(true)}
                   >
-                    Create
+                    Crea
                   </Button>
                 ) : (
                   <Button variant="link" endIcon={<Icon.ArrowDiagonal />}>
-                    Create on iConnect
+                    Crea su IConnect
                   </Button>
                 )
               }
